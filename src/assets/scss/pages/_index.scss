@@ -1,0 +1,37 @@
+.index {
+  &__logo {
+    width: 50%;
+    margin: 2rem 0;
+  }
+  &__header {
+    margin-bottom: 2rem;
+    &--wrap {
+      padding-left: 0.7em;
+    }
+  }
+  &__role {
+    font-size: 3.1rem;
+    font-family: $font--display;
+    text-transform: uppercase;
+    line-height: 0.9;
+  }
+  &__name {
+    color: $color--mid;
+  }
+  &__content {
+    display: grid;
+    color: $color--mid;
+    grid-template-areas: "purpose" "status" "date";
+    grid-gap: 2rem;
+    font-weight: 200;
+  }
+  &__date {
+    color: $color--neutral;
+    grid-area: date;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  &__hireability {
+    font-style: italic;
+  }
+}

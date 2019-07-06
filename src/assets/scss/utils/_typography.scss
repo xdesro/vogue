@@ -1,0 +1,84 @@
+@import url("https://rsms.me/inter/inter.css");
+
+@font-face {
+  font-family: "GT Super";
+  src: url("~assets/fonts/gt-super/gt-super-display-trial-bold-italic-webfont.woff2")
+      format("woff2"),
+    url("~assets/fonts/gt-super/gt-super-display-trial-bold-italic-webfont.woff")
+      format("woff");
+  font-display: swap;
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "GT Super";
+  src: url("~assets/fonts/gt-super/gt-super-display-trial-bold-webfont.woff2")
+      format("woff2"),
+    url("~assets/fonts/gt-super/gt-super-display-trial-bold-webfont.woff")
+      format("woff");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GT Super";
+  src: url("~assets/fonts/gt-super/gt-super-display-trial-light-italic-webfont.woff2")
+      format("woff2"),
+    url("~assets/fonts/gt-super/gt-super-display-trial-light-italic-webfont.woff")
+      format("woff");
+  font-display: swap;
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "GT Super";
+  src: url("~assets/fonts/gt-super/gt-super-display-trial-light-webfont.woff2")
+      format("woff2"),
+    url("~assets/fonts/gt-super/gt-super-display-trial-light-webfont.woff")
+      format("woff");
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal;
+}
+
+html {
+  font-family: $font--sans;
+  font-size: 18px;
+  font-variant-ligatures: none;
+  text-rendering: optimizeLegibility;
+  font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration-skip-ink: auto;
+}
+
+p {
+  margin-block-end: 1rem;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.014em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $font--display;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 3.1rem;
+  line-height: 0.9;
+}
+h2 {
+  font-size: 1.7rem;
+  margin-block-end: 1em;
+}

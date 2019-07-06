@@ -1,0 +1,7 @@
+@mixin border($dir: null) {
+  @if ($dir) {
+    border-#{$dir}: 2px solid $color--neutral;
+  } @else {
+    border: 2px solid $color--neutral;
+  }
+}

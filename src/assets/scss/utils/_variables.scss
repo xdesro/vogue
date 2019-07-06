@@ -1,0 +1,14 @@
+$font--sans: "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol";
+$font--display: "GT Super", "Bodoni MT", Didot, "Didot LT STD", "Hoefler Text",
+  Garamond, "Times New Roman", serif;
+
+:root {
+  --color--neutral: hsl(0, 0%, 1%);
+  --color--mid: hsl(0, 0%, 47%);
+  --color--contrast: hsl(0, 0%, 95%);
+}
+$color--neutral: var(--color--neutral);
+$color--mid: var(--color--mid);
+$color--contrast: var(--color--contrast);
