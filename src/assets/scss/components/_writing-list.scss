@@ -1,0 +1,54 @@
+.writing-list {
+  display: grid;
+  @include border(top);
+  &__item {
+    @include border(bottom);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    align-content: end;
+    align-items: end;
+    justify-content: end;
+    align-items: end;
+    height: 14rem;
+    color: $color--contrast;
+    background-color: $color--neutral;
+  }
+  &__content {
+    @include container;
+  }
+  &__category {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+  }
+  &__title {
+    font-family: $font--display;
+    font-size: 1.7rem;
+    font-weight: 700;
+  }
+  &__excerpt {
+    display: none;
+  }
+  &__link {
+    color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  &__image {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    object-fit: cover;
+    width: 120vw;
+    z-index: -1;
+    filter: brightness(50%) grayscale(50%) blur(3px);
+  }
+}

@@ -2,9 +2,7 @@
   <div>
     <!-- <div class="container"> -->
     <header class="header">
-      <div class="container">
-        <h1 class="header__title">Work—</h1>
-      </div>
+      <h1 class="header__title">Work—</h1>
     </header>
     <main class="main">
       <ul class="work-list">

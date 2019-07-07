@@ -10,11 +10,11 @@ body {
 }
 .container {
   @include container;
-}
-.main {
   img {
     max-width: 100%;
   }
+}
+.main {
   &__img {
     margin-bottom: 1.5rem;
     &--profile-pic {
