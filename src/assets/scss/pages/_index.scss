@@ -22,14 +22,15 @@
     display: grid;
     color: $color--mid;
     grid-template-areas: "purpose" "status" "date";
-    grid-gap: 2rem;
-    font-weight: 200;
   }
   &__date {
     color: $color--neutral;
     grid-area: date;
     font-weight: 700;
     text-transform: uppercase;
+  }
+  &__location {
+    margin: 0;
   }
   &__hireability {
     font-style: italic;

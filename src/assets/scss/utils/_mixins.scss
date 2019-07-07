@@ -5,3 +5,9 @@
     border: 2px solid $color--neutral;
   }
 }
+
+@mixin container {
+  padding: 0 1rem;
+  width: 100%;
+  margin: 0 auto;
+}

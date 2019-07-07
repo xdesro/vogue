@@ -10,7 +10,7 @@
       <h2 class="main__subtitle">
         Hey there, I'm
         <br />
-        <span class="main__subtitle--light">Henry Desroches</span>
+        <span class="main__subtitle--light">Henry Desroches.</span>
       </h2>
 
       <p>I’m a creative developer currently based in Denver, Colorado. I’m really into CSS, animation, developer experience, and deleting code.</p>

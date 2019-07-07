@@ -1,0 +1,49 @@
+.work-list {
+  display: grid;
+  &__item {
+    @include container;
+    @include border(bottom);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  &__counter {
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: $color--mid;
+  }
+  &__title {
+    font-family: $font--display;
+    font-weight: 700;
+    font-size: 1.7rem;
+  }
+  &__image {
+    width: 60%;
+  }
+  &__details {
+    font-size: 0.8rem;
+    margin-top: 1em;
+    text-transform: uppercase;
+  }
+  &__contribution {
+    margin: 0;
+    font-weight: 700;
+  }
+  &__date {
+    font-weight: 700;
+    color: $color--mid;
+  }
+  &__excerpt {
+    color: $color--mid;
+    font-size: 0.6rem;
+    font-style: italic;
+  }
+  &__link {
+    font-size: 0.8rem;
+    // font-weight: 200;
+    // letter-spacing: 0px;
+    // line-height: 1.2;
+    // text-align: left;
+    font-family: $font--display;
+  }
+}

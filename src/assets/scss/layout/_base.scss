@@ -9,9 +9,7 @@ body {
   background-color: $color--contrast;
 }
 .container {
-  padding: 1.6rem;
-  width: 100%;
-  margin: 0 auto;
+  @include container;
 }
 .main {
   img {
