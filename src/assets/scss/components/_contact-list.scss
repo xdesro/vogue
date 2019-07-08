@@ -1,0 +1,41 @@
+$main-icon-size: 1.3rem;
+$grid-column-gap: 1.3rem;
+$grid-row-gap: 1.5rem;
+.contact-list {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-row-gap: 1.5rem;
+  &__link {
+    display: grid;
+    text-decoration: none;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 1.3rem;
+  }
+  &__icon {
+    width: 1.3rem;
+    grid-row: 1 / span 2;
+  }
+  &__title {
+    @include wide-sans;
+  }
+  &__description {
+    color: $color--mid;
+  }
+}
+.additional-links-list {
+  color: $color--mid;
+  display: grid;
+  grid-gap: $grid-row-gap / 2;
+  &__link {
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: $grid-column-gap;
+  }
+  &__icon {
+    width: $main-icon-size;
+  }
+  &__title {
+    font-weight: 700;
+  }
+}

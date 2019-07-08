@@ -11,3 +11,9 @@
   width: 100%;
   margin: 0 auto;
 }
+@mixin wide-sans {
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  margin-bottom: 1em;
+}

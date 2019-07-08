@@ -49,7 +49,7 @@ html {
   font-size: 18px;
   font-variant-ligatures: none;
   text-rendering: optimizeLegibility;
-  font-smoothing: antialiased;
+  // font-smoothing: antialiased;
 }
 
 a {
@@ -81,4 +81,19 @@ h1 {
 h2 {
   font-size: 1.7rem;
   margin-block-end: 1em;
+}
+
+.text {
+  &--display {
+    font-family: $font--display;
+  }
+  &--large {
+    font-size: 1.7rem;
+  }
+  &--emphasis {
+    font-weight: 700;
+  }
+  &--italic {
+    font-style: italic;
+  }
 }

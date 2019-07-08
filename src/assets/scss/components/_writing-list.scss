@@ -20,10 +20,7 @@
   }
   &__category {
     font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.3rem;
-    text-transform: uppercase;
-    margin-bottom: 1em;
+    @include wide-sans;
   }
   &__title {
     font-family: $font--display;
