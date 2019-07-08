@@ -5,6 +5,7 @@ $grid-row-gap: 1.5rem;
   margin-top: 3.5rem;
   display: grid;
   grid-row-gap: 1.5rem;
+  max-width: 24rem;
   &__link {
     display: grid;
     text-decoration: none;

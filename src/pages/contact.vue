@@ -34,6 +34,7 @@
             </ul>
           </li>
         </ul>
+        <img class="contact__accent-img" src="~assets/img/illustration-02.svg" alt />
       </div>
     </main>
   </div>
