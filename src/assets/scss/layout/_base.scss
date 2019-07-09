@@ -16,6 +16,18 @@ body {
 }
 .main {
   padding-bottom: 4rem;
+  &--content {
+    ol,
+    ul {
+      list-style: initial;
+      padding-left: 1.3em;
+      list-style-position: outside;
+      margin-bottom: 1rem;
+    }
+    ul {
+      list-style-type: square;
+    }
+  }
   &__img {
     margin-bottom: 1.5rem;
     &--profile-pic {

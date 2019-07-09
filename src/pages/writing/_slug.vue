@@ -3,7 +3,7 @@
     <header class="header">
       <h1 class="header__title">{{ currentPost.fields.title }}</h1>
     </header>
-    <main class="main">
+    <main class="main main--content">
       <!-- <div v-for="(post, index) in posts" :key="index">{{post.fields}}</div> -->
       <div class="container" v-html="$md.render(currentPost.fields.body)"></div>
     </main>
