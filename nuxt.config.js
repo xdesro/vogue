@@ -1,23 +1,6 @@
-import glob from "glob";
-import path from "path";
-/**
- * Create an array of URLs from a list of files
- * @param {*} urlFilepathTable
- */
-const getDynamicPaths = urlFilepathTable => {
-  return [].concat(
-    ...Object.keys(urlFilepathTable).map(url => {
-      const filepathGlob = urlFilepathTable[url];
-      return glob
-        .sync(filepathGlob, { cwd: "content" })
-        .map(filepath => `${url}/${path.basename(filepath, ".json")}`);
-    })
-  );
-};
-
-const dynamicRoutes = getDynamicPaths({
-  "/writing": "writing/*.json"
-});
+/* eslint-disable no-undef */
+require("dotenv").config();
+const contentful = require("contentful");
 
 export default {
   srcDir: "src",
@@ -32,7 +15,24 @@ export default {
     ]
   },
   generate: {
-    routes: dynamicRoutes
+    routes: () => {
+      const client = contentful.createClient({
+        space: process.env.CTF_SPACE_ID,
+        accessToken: process.env.CTF_CD_ACCESS_TOKEN
+      });
+      return client
+        .getEntries({
+          content_type: "blogPost"
+        })
+        .then(response => {
+          return response.items.map(entry => {
+            return {
+              route: `writing/${entry.fields.slug}`,
+              payload: entry
+            };
+          });
+        });
+    }
   },
   modules: ["@nuxtjs/markdownit", "@nuxtjs/dotenv"],
   markdownit: {

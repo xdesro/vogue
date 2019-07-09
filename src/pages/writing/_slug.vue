@@ -14,6 +14,7 @@
 export default {
   computed: {
     currentPost() {
+      // console.log(this.$store.state.post.currentPost.entry_id);
       return this.$store.state.post.currentPost;
     },
     isLoading() {

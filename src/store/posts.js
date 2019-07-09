@@ -1,4 +1,5 @@
-import client from "../plugins/contentful";
+import { createClient } from "~/plugins/contentful";
+const client = createClient();
 
 export const state = () => ({
   posts: []
