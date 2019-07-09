@@ -44,10 +44,14 @@ export default {
     preset: "default",
     breaks: true,
     html: true,
+    linkify: true,
     typographer: true,
     quotes: "“”‘’",
     highlight: (code, lang) => {
+      /* eslint-disable no-undef */
       const Prism = require("prismjs");
+      require("prismjs/components/prism-scss");
+      /* eslint-enable no-undef */
       return Prism.highlight(
         code,
         Prism.languages[lang] || Prism.languages.markup

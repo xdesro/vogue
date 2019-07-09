@@ -64,25 +64,45 @@ p {
   letter-spacing: -0.014em;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: $font--display;
-  text-transform: uppercase;
-  font-weight: 300;
-}
-
 h1 {
   font-size: 3.1rem;
+  text-transform: uppercase;
   line-height: 0.9;
+  font-weight: 300;
+  font-family: $font--display;
+}
+h2,
+h3,
+h4 {
+  font-weight: 700;
 }
 h2 {
-  font-size: 1.7rem;
-  margin-block-end: 1em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-size: var(--h2-size);
+  line-height: calc(var(--line-height) * 2);
+  margin-left: calc(var(--h2-size) / -26);
+  margin-bottom: var(--line-height);
 }
-
+h3 {
+  letter-spacing: -0.02em;
+  font-size: var(--h3-size);
+  padding-top: calc(var(--baseline) * 0.75);
+  padding-bottom: calc(var(--baseline) * 0.25);
+  margin-bottom: var(--baseline);
+}
+h4 {
+  padding-top: calc(var(--baseline) * 0.75);
+  padding-bottom: calc(var(--baseline) * 0.25);
+  margin-bottom: var(--baseline);
+  letter-spacing: -0.012em;
+  font-size: var(--h4-size);
+}
+h5 {
+  font-weight: 670;
+  letter-spacing: -0.015em;
+  margin-bottom: 0;
+}
 .text {
   &--display {
     font-family: $font--display;

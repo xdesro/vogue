@@ -23,14 +23,4 @@
     </main>
   </div>
 </template>
-<script>
-import IconLogo from "~/components/icons/icon-logo";
-import Nav from "~/components/nav";
-export default {
-  components: {
-    Nav,
-    IconLogo
-  },
-  computed: {}
-};
-</script>
+
