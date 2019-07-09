@@ -1,6 +1,5 @@
 import glob from "glob";
 import path from "path";
-
 /**
  * Create an array of URLs from a list of files
  * @param {*} urlFilepathTable
@@ -27,9 +26,6 @@ export default {
     linkExactActiveClass: "nav__link--active"
   },
   head: {
-    script: [
-      { src: `https://identity.netlify.com/v1/netlify-identity-widget.js` }
-    ],
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" }
@@ -38,7 +34,7 @@ export default {
   generate: {
     routes: dynamicRoutes
   },
-  modules: ["@nuxtjs/markdownit"],
+  modules: ["@nuxtjs/markdownit", "@nuxtjs/dotenv"],
   markdownit: {
     injected: true,
     preset: "default",
@@ -56,6 +52,13 @@ export default {
         code,
         Prism.languages[lang] || Prism.languages.markup
       );
+    }
+  },
+  build: {
+    extend(config) {
+      config.node = {
+        fs: "empty"
+      };
     }
   }
 };
