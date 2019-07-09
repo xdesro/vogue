@@ -48,6 +48,9 @@
       }
     }
   }
+  &__link-icon {
+    display: none;
+  }
   &__link-text {
     color: $color--mid;
     .nav__link--active & {

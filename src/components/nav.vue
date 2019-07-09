@@ -27,7 +27,11 @@
 </template>
 
 <script>
+import IconLogo from "~/components/icons/icon-logo";
 export default {
+  components: {
+    IconLogo
+  },
   computed: {
     routes() {
       const routes = this.$router.options.routes.filter(
