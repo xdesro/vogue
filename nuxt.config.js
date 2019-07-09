@@ -45,6 +45,13 @@ export default {
     breaks: true,
     html: true,
     typographer: true,
-    quotes: "“”‘’"
+    quotes: "“”‘’",
+    highlight: (code, lang) => {
+      const Prism = require("prismjs");
+      return Prism.highlight(
+        code,
+        Prism.languages[lang] || Prism.languages.markup
+      );
+    }
   }
 };

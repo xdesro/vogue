@@ -13,7 +13,7 @@ collections:
     format: "json"
     label: "Writing"
     folder: "src/content/writing"
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }

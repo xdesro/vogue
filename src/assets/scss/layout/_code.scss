@@ -1,0 +1,220 @@
+/*
+Name: Duotone Dark
+Author: Simurai, adapted from DuoTone themes for Atom (http://simurai.com/projects/2016/01/01/duotone-themes)
+Conversion: Bram de Haan (http://atelierbram.github.io/Base2Tone-prism/output/prism/prism-base2tone-evening-dark.css)
+Generated with Base16 Builder (https://github.com/base16-builder/base16-builder)
+*/
+
+code[class*="language-"] {
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono",
+    "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
+    "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L",
+    "Courier New", Courier, monospace;
+  font-size: 14px;
+  line-height: 1.375;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  background: #2a2734;
+  color: #9a86fd;
+}
+
+pre[class*="language-"] {
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono",
+    "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
+    "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L",
+    "Courier New", Courier, monospace;
+  font-size: 14px;
+  line-height: 1.375;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  background: #2a2734;
+  color: #9a86fd;
+  &::-moz-selection,
+  ::-moz-selection {
+    text-shadow: none;
+    background: #6a51e6;
+  }
+}
+
+code[class*="language-"] {
+  &::-moz-selection,
+  ::-moz-selection {
+    text-shadow: none;
+    background: #6a51e6;
+  }
+}
+
+pre[class*="language-"] {
+  &::selection,
+  ::selection {
+    text-shadow: none;
+    background: #6a51e6;
+  }
+}
+
+code[class*="language-"] {
+  &::selection,
+  ::selection {
+    text-shadow: none;
+    background: #6a51e6;
+  }
+}
+
+/* Code blocks */
+
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+/* Inline code */
+
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+}
+
+.token {
+  &.comment,
+  &.prolog,
+  &.doctype,
+  &.cdata,
+  &.punctuation {
+    color: #6c6783;
+  }
+  &.namespace {
+    opacity: 0.7;
+  }
+  &.tag,
+  &.operator,
+  &.number {
+    color: #e09142;
+  }
+  &.property,
+  &.function {
+    color: #9a86fd;
+  }
+  &.tag-id,
+  &.selector,
+  &.atrule-id {
+    color: #eeebff;
+  }
+}
+
+code.language-javascript,
+.token.attr-name {
+  color: #c4b9fe;
+}
+
+code {
+  &.language-css,
+  &.language-scss {
+    color: #ffcc99;
+  }
+}
+
+.token {
+  &.boolean,
+  &.string,
+  &.entity,
+  &.url {
+    color: #ffcc99;
+  }
+}
+
+.language-css .token.string,
+.language-scss .token.string,
+.style .token.string {
+  color: #ffcc99;
+}
+
+.token {
+  &.attr-value,
+  &.keyword,
+  &.control,
+  &.directive,
+  &.unit,
+  &.statement,
+  &.regex,
+  &.atrule,
+  &.placeholder,
+  &.variable {
+    color: #ffcc99;
+  }
+  &.deleted {
+    text-decoration: line-through;
+  }
+  &.inserted {
+    border-bottom: 1px dotted #eeebff;
+    text-decoration: none;
+  }
+  &.italic {
+    font-style: italic;
+  }
+  &.important,
+  &.bold {
+    font-weight: bold;
+  }
+  &.important {
+    color: #c4b9fe;
+  }
+  &.entity {
+    cursor: help;
+  }
+}
+
+pre > code.highlight {
+  outline: 0.4em solid #8a75f5;
+  outline-offset: 0.4em;
+}
+
+/* overrides color-values for the Line Numbers plugin
+   * http://prismjs.com/plugins/line-numbers/
+   */
+
+.line-numbers .line-numbers-rows {
+  border-right-color: #2c2937;
+}
+
+.line-numbers-rows > span:before {
+  color: #3c3949;
+}
+
+/* overrides color-values for the Line Highlight plugin
+  * http://prismjs.com/plugins/line-highlight/
+  */
+
+.line-highlight {
+  background: rgba(224, 145, 66, 0.2);
+  background: -webkit-linear-gradient(
+    left,
+    rgba(224, 145, 66, 0.2) 70%,
+    rgba(224, 145, 66, 0)
+  );
+  background: linear-gradient(
+    to right,
+    rgba(224, 145, 66, 0.2) 70%,
+    rgba(224, 145, 66, 0)
+  );
+}
