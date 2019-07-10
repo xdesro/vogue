@@ -20,8 +20,8 @@
           <nuxt-link
             class="writing-list__link writing-list__link--external"
             :to="`writing/${post.fields.slug}`"
-          ></nuxt-link>
-          <img class="writing-list__image" src="https://placehold.it/1280x720" alt />
+          >view the post—</nuxt-link>
+          <img class="writing-list__image" :src="post.fields.heroImage.fields.file.url" alt />
         </li>
       </ul>
     </main>

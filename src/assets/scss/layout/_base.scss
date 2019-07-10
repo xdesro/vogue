@@ -10,9 +10,6 @@ body {
 }
 .container {
   @include container;
-  img {
-    max-width: 100%;
-  }
 }
 .main {
   padding-bottom: 4rem;
@@ -30,31 +27,8 @@ body {
   }
   &__img {
     margin-bottom: 1.5rem;
-    &--profile-pic {
-      max-width: 50%;
-      position: relative;
-
-      &:after {
-        content: "";
-        width: 50%;
-        height: 55%;
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        background-image: url("~assets/img/icon-logo.png");
-        background-repeat: no-repeat;
-        background-size: contain;
-        filter: invert(1);
-      }
-    }
   }
-  &__subtitle {
-    font-family: $font--display;
-    font-weight: 200;
-    text-transform: uppercase;
-    line-height: 0.9em;
-    &--light {
-      color: $color--mid;
-    }
-  }
+}
+img {
+  max-width: 100%;
 }

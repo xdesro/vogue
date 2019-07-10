@@ -1,23 +1,39 @@
 .writing-list {
-  display: grid;
   @include border(top);
+  display: grid;
+  grid-auto-rows: 1fr;
+
   &__item {
     @include border(bottom);
-    overflow: hidden;
     position: relative;
     z-index: 1;
     display: grid;
-    align-items: end;
+    overflow: hidden;
     height: 14rem;
     color: $color--contrast;
     background-color: $color--neutral;
+    align-items: end;
+    @include screen(md) {
+      // @include container;
+      height: unset;
+      padding: 2rem 1rem 1rem;
+      align-items: unset;
+      color: $color--neutral;
+      background-color: unset;
+      grid-column-gap: 1rem;
+      grid-template-columns: 3fr 2fr;
+    }
   }
   &__content {
     @include container;
+    @include screen(md) {
+      @include container-unset;
+      grid-row: span 2;
+    }
   }
   &__category {
-    font-size: 0.8rem;
     @include wide-sans;
+    font-size: 0.8rem;
   }
   &__title {
     font-family: $font--display;
@@ -28,21 +44,41 @@
     display: none;
   }
   &__link {
-    color: transparent;
+    font-family: $font--display;
+    font-size: 1.2rem;
+    text-align: right;
     position: absolute;
+    z-index: 1;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1;
+    left: 0;
+    color: transparent;
+    @include screen(md) {
+      position: relative;
+      color: $color--neutral;
+      grid-column: 2;
+      grid-row: 1;
+    }
   }
   &__image {
     position: absolute;
+    z-index: -1;
     top: -5px;
     left: -5px;
-    object-fit: cover;
     width: 120vw;
-    z-index: -1;
+    object-fit: cover;
     filter: brightness(50%) grayscale(50%) blur(3px);
+    @include screen(md) {
+      position: relative;
+      z-index: unset;
+      top: unset;
+      left: unset;
+      width: auto;
+      max-width: 100%;
+      object-fit: unset;
+      filter: unset;
+      grid-column: 2;
+    }
   }
 }

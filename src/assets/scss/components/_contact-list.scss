@@ -6,6 +6,11 @@ $grid-row-gap: 1.5rem;
   display: grid;
   grid-row-gap: 1.5rem;
   max-width: 24rem;
+  @include screen(md) {
+    grid-template-columns: 1fr 1fr;
+    max-width: unset;
+    grid-column-gap: 1rem;
+  }
   &__link {
     display: grid;
     text-decoration: none;

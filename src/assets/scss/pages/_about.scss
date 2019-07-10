@@ -1,0 +1,42 @@
+.about {
+  @include container;
+  @include screen(md) {
+    display: grid;
+    grid-template-areas:
+      "header img"
+      "content img";
+    grid-template-columns: 1.3fr 1fr;
+    grid-column-gap: 1rem;
+  }
+  &__profile-pic {
+    grid-area: img;
+    max-width: 50%;
+    position: relative;
+    @include screen(md) {
+      max-width: unset;
+    }
+
+    &:after {
+      content: "";
+      width: 50%;
+      height: 55%;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-image: url("~assets/img/icon-logo.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      filter: invert(1);
+    }
+  }
+  &__subtitle {
+    font-family: $font--display;
+    font-weight: 200;
+    text-transform: uppercase;
+    line-height: 0.9em;
+    align-self: end;
+    &--light {
+      color: $color--mid;
+    }
+  }
+}

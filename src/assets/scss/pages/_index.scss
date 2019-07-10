@@ -2,6 +2,9 @@
   &__logo {
     width: 50%;
     margin: 2rem 0;
+    @include screen(md) {
+      max-width: 16rem;
+    }
   }
   &__header {
     margin-bottom: 2rem;
