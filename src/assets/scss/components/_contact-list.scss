@@ -18,6 +18,7 @@ $grid-row-gap: 1.5rem;
   }
   &__title {
     @include wide-sans;
+    margin-bottom: 0.5em;
   }
   &__description {
     color: $color--mid;

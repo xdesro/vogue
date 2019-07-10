@@ -49,6 +49,10 @@ body {
     }
   }
   &__subtitle {
+    font-family: $font--display;
+    font-weight: 200;
+    text-transform: uppercase;
+    line-height: 0.9em;
     &--light {
       color: $color--mid;
     }

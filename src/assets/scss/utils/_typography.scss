@@ -68,8 +68,8 @@ h1 {
   font-size: 3.1rem;
   text-transform: uppercase;
   line-height: 0.9;
-  font-weight: 300;
   font-family: $font--display;
+  font-weight: 300;
 }
 h2,
 h3,
@@ -82,6 +82,7 @@ h2 {
   font-size: var(--h2-size);
   line-height: calc(var(--line-height) * 2);
   margin-left: calc(var(--h2-size) / -26);
+  font-family: $font--display;
   margin-bottom: var(--line-height);
 }
 h3 {
