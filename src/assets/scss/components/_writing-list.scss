@@ -41,6 +41,11 @@
   }
   &__excerpt {
     display: none;
+    font-size: 0.7rem;
+    color: $color--mid;
+    @include screen(md) {
+      display: block;
+    }
   }
   &__link {
     font-family: $font--display;

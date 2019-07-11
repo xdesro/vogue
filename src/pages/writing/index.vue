@@ -13,10 +13,6 @@
               class="writing-list__excerpt"
             >It's a simple enough animation, with a really nice loading effect and staggered timeline that make it feel super fluid. I've been really into Vue.js lately, and this seemed like a perfect opportunity to code out a little app. Live your life, but I'm gonna use SCSS for style here.</p>
           </div>
-          <!-- <a
-            href="#"
-            class="writing-list__link writing-list__link--external"
-          >view the post on CodePen —</a>-->
           <nuxt-link
             class="writing-list__link writing-list__link--external"
             :to="`writing/${post.fields.slug}`"
