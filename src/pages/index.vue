@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container index">
     <img class="index__logo" src="~/assets/img/icon-logo.svg" />
     <header class="index__header">
       <h1 class="index__name">
@@ -21,6 +21,7 @@
         <p class="index__hireability">available for hire</p>
       </div>
     </main>
+    <img src="~/assets/img/spooky-profile-pic.png" alt class="index__profile-pic" />
   </div>
 </template>
 

@@ -1,10 +1,23 @@
 .work-list {
   display: grid;
+  @include screen(md) {
+    grid-template-columns: 1fr 1fr;
+  }
   &__item {
     @include container;
     @include border(bottom);
     padding-top: 3rem;
     padding-bottom: 3rem;
+    @include screen(md) {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      &:nth-of-type(odd) {
+        @include border(right);
+      }
+      &:nth-of-type(-n + 2) {
+        @include border(top);
+      }
+    }
   }
   &__counter {
     font-size: 0.8rem;
@@ -19,11 +32,16 @@
   }
   &__image {
     width: 60%;
+    @include screen(md) {
+      width: auto;
+    }
   }
   &__details {
-    font-size: 0.8rem;
     margin-top: 1em;
     text-transform: uppercase;
+    @include screen(md) {
+      font-size: 0.8rem;
+    }
   }
   &__contribution {
     margin: 0;
@@ -35,12 +53,18 @@
   }
   &__excerpt {
     color: $color--mid;
-    font-size: 0.6rem;
     max-width: 24rem;
     font-style: italic;
+    @include screen(md) {
+      font-size: 0.6rem;
+    }
   }
   &__link {
-    font-size: 0.8rem;
     font-family: $font--display;
+    @include screen(md) {
+      font-size: 0.8rem;
+      text-align: right;
+      display: block;
+    }
   }
 }

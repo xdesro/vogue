@@ -1,4 +1,12 @@
 .header {
   @include container;
   margin: 4rem 0 2rem;
+  @include screen(md) {
+    margin-top: 7.5rem;
+  }
+  &__title {
+    @include screen(md) {
+      font-size: 10vw;
+    }
+  }
 }
