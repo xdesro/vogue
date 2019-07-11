@@ -4,7 +4,7 @@
     border-bottom: none;
     @include border(right);
     width: 3.3rem;
-    height: 100vh;
+    min-height: 100vh;
   }
   &__list {
     display: grid;
@@ -18,6 +18,8 @@
       padding: 0 5rem 0 1rem;
       height: 3.3rem;
       justify-content: unset;
+      position: sticky;
+      top: 0;
     }
   }
   &__link {

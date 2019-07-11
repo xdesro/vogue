@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="layout layout--writing">
     <header class="header">
       <h1 class="header__title">Writing—</h1>
     </header>

@@ -34,7 +34,7 @@ export default {
         });
     }
   },
-  modules: ["@nuxtjs/markdownit", "@nuxtjs/dotenv"],
+  modules: ["@nuxtjs/markdownit", "@nuxtjs/dotenv", "@nuxtjs/moment"],
   markdownit: {
     injected: true,
     preset: "default",

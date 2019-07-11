@@ -3,8 +3,8 @@
     <header class="header">
       <h1 class="header__title">{{ currentProject.fields.title }}</h1>
     </header>
-    <main class="main main--content">
-      <div class="container" v-html="$md.render(currentProject.fields.body)"></div>
+    <main class="main main--content" v-html="$md.render(currentProject.fields.body)">
+      <!-- <div class="container" ></div> -->
     </main>
   </div>
 </template>

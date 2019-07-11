@@ -7,6 +7,8 @@
 body {
   min-height: 100vh;
   background-color: $color--contrast;
+  // Not sure why this cropped up but TODO fix.
+  overflow-x: hidden;
 }
 .app {
   @include screen(md) {
@@ -17,6 +19,12 @@ body {
     justify-content: start;
   }
   @include screen(lg) {
+  }
+}
+.layout {
+  max-width: 100vw;
+  &--post {
+    @include container;
   }
 }
 .container {
