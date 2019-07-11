@@ -2,7 +2,7 @@
   &__logo {
     width: 50%;
     margin: 2rem 0;
-    @include screen(md) {
+    @include screen(sm) {
       max-width: 16rem;
     }
   }

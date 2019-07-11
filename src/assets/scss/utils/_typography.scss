@@ -46,7 +46,7 @@
 
 html {
   font-family: $font--sans;
-  font-size: 18px;
+  font-size: var(--font-size);
   font-variant-ligatures: none;
   text-rendering: optimizeLegibility;
   // font-smoothing: antialiased;

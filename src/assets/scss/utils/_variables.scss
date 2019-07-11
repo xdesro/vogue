@@ -5,7 +5,9 @@ $font--display: "GT Super", "Bodoni MT", Didot, "Didot LT STD", "Hoefler Text",
   Garamond, "Times New Roman", serif;
 
 $breakpoints: (
-  md: 38rem
+  sm: 38rem,
+  md: 44rem,
+  lg: 55rem
 );
 
 :root {

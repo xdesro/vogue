@@ -1,14 +1,23 @@
 .nav {
   @include border(bottom);
+  @include screen(md) {
+    border-bottom: none;
+    @include border(right);
+    width: 3.3rem;
+    height: 100vh;
+  }
   &__list {
     display: grid;
     grid-auto-flow: column;
     justify-content: space-between;
     padding: 0 1.1rem;
-  }
-  &__list-item {
-    &--icon {
-      display: none;
+    @include screen(md) {
+      width: 100vh;
+      transform: rotate(90deg) translateX(-60px);
+      transform-origin: bottom left;
+      padding: 0 5rem 0 1rem;
+      height: 3.3rem;
+      justify-content: unset;
     }
   }
   &__link {
@@ -19,6 +28,7 @@
     text-decoration: none;
     text-transform: uppercase;
     position: relative;
+
     &:before {
       content: "";
       left: 0;
@@ -47,14 +57,29 @@
         content: unset;
       }
     }
+    @include screen(md) {
+      &:before {
+        content: unset;
+      }
+    }
   }
   &__link-icon {
     display: none;
+    @include screen(sm) {
+      display: block;
+      width: 1.3rem;
+    }
+    @include screen(md) {
+      transform: rotate(-90deg);
+    }
   }
   &__link-text {
     color: $color--mid;
     .nav__link--active & {
       color: $color--neutral;
+    }
+    @include screen(sm) {
+      display: none;
     }
   }
 }

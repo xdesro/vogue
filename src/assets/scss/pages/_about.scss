@@ -1,6 +1,6 @@
 .about {
   @include container;
-  @include screen(md) {
+  @include screen(sm) {
     display: grid;
     grid-template-areas:
       "header img"
@@ -12,7 +12,7 @@
     grid-area: img;
     max-width: 50%;
     position: relative;
-    @include screen(md) {
+    @include screen(sm) {
       max-width: unset;
     }
 

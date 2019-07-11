@@ -13,8 +13,7 @@
     color: $color--contrast;
     background-color: $color--neutral;
     align-items: end;
-    @include screen(md) {
-      // @include container;
+    @include screen(sm) {
       height: unset;
       padding: 2rem 1rem 1rem;
       align-items: unset;
@@ -26,7 +25,7 @@
   }
   &__content {
     @include container;
-    @include screen(md) {
+    @include screen(sm) {
       @include container-unset;
       grid-row: span 2;
     }
@@ -54,7 +53,7 @@
     bottom: 0;
     left: 0;
     color: transparent;
-    @include screen(md) {
+    @include screen(sm) {
       position: relative;
       color: $color--neutral;
       grid-column: 2;
@@ -69,7 +68,7 @@
     width: 120vw;
     object-fit: cover;
     filter: brightness(50%) grayscale(50%) blur(3px);
-    @include screen(md) {
+    @include screen(sm) {
       position: relative;
       z-index: unset;
       top: unset;

@@ -8,6 +8,12 @@ body {
   min-height: 100vh;
   background-color: $color--contrast;
 }
+.app {
+  @include screen(md) {
+    display: grid;
+    grid-auto-flow: column;
+  }
+}
 .container {
   @include container;
 }
