@@ -35,7 +35,7 @@ body {
   @include container;
 }
 .main {
-  padding-bottom: 4rem;
+  // padding-bottom: 4rem;
   &--container {
     @include container;
   }

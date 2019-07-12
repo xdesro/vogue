@@ -1,8 +1,12 @@
 .writing-list {
+  $p: &;
+
   @include border(top);
   display: grid;
   grid-auto-rows: 1fr;
-
+  @include screen(lg) {
+    border-top: 0;
+  }
   &__item {
     @include border(bottom);
     position: relative;
@@ -21,6 +25,13 @@
       background-color: unset;
       grid-column-gap: 1rem;
       grid-template-columns: 3fr 2fr;
+    }
+    &:first-of-type {
+      // border: 1px solid red;
+      @debug $p;
+      #{$p}__content {
+        // border: 1px solid green !important;
+      }
     }
   }
   &__content {
