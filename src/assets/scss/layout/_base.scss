@@ -26,12 +26,19 @@ body {
   &--post {
     @include container;
   }
+  @include screen(lg) {
+    display: grid;
+    grid-auto-flow: column;
+  }
 }
 .container {
   @include container;
 }
 .main {
   padding-bottom: 4rem;
+  &--container {
+    @include container;
+  }
   &--content {
     ol,
     ul {

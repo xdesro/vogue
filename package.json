@@ -1,21 +1,26 @@
 {
   "name": "vogue",
   "version": "1.0.0",
-  "description": "",
+  "description": "Personal site and portfolio for twitter user xdesro",
   "main": "index.js",
+  "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "✨": "nuxt",
+    "🚧": "nuxt build",
+    "🏃": "nuxt start",
+    "📦": "nuxt generate"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xdesro/vogue.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "personal site",
+    "portfolio",
+    "creative technologist",
+    "interaction developer"
+  ],
+  "author": "Henry Desroches <yo@henry.codes> https://henry.codes",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/xdesro/vogue/issues"

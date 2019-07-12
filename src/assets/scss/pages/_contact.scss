@@ -1,5 +1,34 @@
+.layout {
+  &--contact {
+    .main {
+      @include screen(lg) {
+        display: grid;
+        grid-template-columns: 3.7fr 4.7fr;
+        grid-template-areas: "img text" ". list";
+        max-width: 50rem;
+        grid-gap: 3rem;
+        grid-template-rows: auto 1fr;
+      }
+    }
+  }
+}
 .contact {
+  &__content {
+    grid-area: text;
+    align-self: end;
+    @include screen(lg) {
+      margin-bottom: 0;
+    }
+  }
+  &__list {
+    grid-area: list;
+  }
   &__accent-img {
     display: none;
+    @include screen(lg) {
+      display: block;
+      grid-area: img;
+      // align-self: end;
+    }
   }
 }

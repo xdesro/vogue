@@ -8,5 +8,9 @@
     @include screen(md) {
       font-size: 10vw;
     }
+    @include screen(lg) {
+      width: 10vw;
+      transform: rotate(90deg) translateX(-5vw) translateY(10%);
+    }
   }
 }

@@ -1,41 +1,39 @@
 <template>
-  <div>
+  <div class="layout layout--contact">
     <header class="header">
       <h1 class="header__title">Contact—</h1>
     </header>
-    <main class="main">
-      <div class="container">
-        <p class="text--display text--large">
-          I’m most active and reachable on Twitter or via email, but you can find me most places on the internet as
-          <span
-            class="text--emphasis"
-          >@xdesro</span>.
-        </p>
-        <ul class="contact-list">
-          <li class="contact-list__item" v-for="(link, index) in social" :key="index">
-            <a :href="link.url" class="contact-list__link">
-              <IconSocial class="contact-list__icon" :icon="link.name" />
-              <p class="contact-list__title">{{link.name}}</p>
-              <p class="contact-list__description" v-html="link.description" />
-            </a>
-          </li>
-          <li class="contact-list__item">
-            <ul class="additional-links-list">
-              <li
-                class="additional-links-list__item"
-                v-for="(link, index) in additionalLinks"
-                :key="index"
-              >
-                <a :href="link.url" class="additional-links-list__link">
-                  <IconSocial class="additional-links-list__icon" :icon="link.name" />
-                  <p class="additional-links-list__title">{{link.name}}</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <img class="contact__accent-img" src="~assets/img/illustration-02.svg" alt />
-      </div>
+    <main class="main main--container">
+      <p class="contact__content text--display text--large">
+        I’m most active and reachable on Twitter or via email, but you can find me most places on the internet as
+        <span
+          class="text--emphasis"
+        >@xdesro</span>.
+      </p>
+      <ul class="contact__list contact-list">
+        <li class="contact-list__item" v-for="(link, index) in social" :key="index">
+          <a :href="link.url" class="contact-list__link">
+            <IconSocial class="contact-list__icon" :icon="link.name" />
+            <p class="contact-list__title">{{link.name}}</p>
+            <p class="contact-list__description" v-html="link.description" />
+          </a>
+        </li>
+        <li class="contact-list__item">
+          <ul class="additional-links-list">
+            <li
+              class="additional-links-list__item"
+              v-for="(link, index) in additionalLinks"
+              :key="index"
+            >
+              <a :href="link.url" class="additional-links-list__link">
+                <IconSocial class="additional-links-list__icon" :icon="link.name" />
+                <p class="additional-links-list__title">{{link.name}}</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <img class="contact__accent-img" src="~assets/img/illustration-02.svg" alt />
     </main>
   </div>
 </template>

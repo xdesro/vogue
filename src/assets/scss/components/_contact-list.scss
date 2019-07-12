@@ -11,6 +11,10 @@ $grid-row-gap: 1.5rem;
     max-width: unset;
     grid-column-gap: 1rem;
   }
+  @include screen(lg) {
+    margin-top: 0;
+    align-content: start;
+  }
   &__link {
     display: grid;
     text-decoration: none;
@@ -24,25 +28,46 @@ $grid-row-gap: 1.5rem;
   &__title {
     @include wide-sans;
     margin-bottom: 0.5em;
+    @include screen(lg) {
+      font-size: 0.9rem;
+    }
   }
   &__description {
     color: $color--mid;
+    @include screen(lg) {
+      font-size: 0.6rem;
+      margin-bottom: 0;
+    }
   }
 }
 .additional-links-list {
   color: $color--mid;
   display: grid;
   grid-gap: $grid-row-gap / 2;
+  @include screen(lg) {
+    padding-left: 2.6rem;
+  }
   &__link {
     text-decoration: none;
     display: grid;
     grid-template-columns: auto 1fr;
     grid-gap: $grid-column-gap;
+    align-items: center;
+    @include screen(lg) {
+      grid-gap: 0.55rem;
+    }
   }
   &__icon {
     width: $main-icon-size;
+    @include screen(lg) {
+      width: 1rem;
+    }
   }
   &__title {
     font-weight: 700;
+    @include screen(lg) {
+      margin-bottom: 0;
+      font-size: 0.6rem;
+    }
   }
 }
