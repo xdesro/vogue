@@ -10,7 +10,13 @@
     border: 2px solid $color--neutral;
   }
 }
-
+@mixin full-bleed-hero-image {
+  top: -5px;
+  left: -5px;
+  width: 120%;
+  object-fit: cover;
+  position: absolute;
+}
 @mixin container {
   padding: 0 1rem;
   width: 100%;
