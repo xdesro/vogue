@@ -6,6 +6,10 @@
     width: 3.3rem;
     min-height: 100vh;
   }
+  @include screen(lg) {
+    z-index: 1;
+    background: $color--contrast;
+  }
   &__list {
     display: grid;
     grid-auto-flow: column;

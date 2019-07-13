@@ -1,11 +1,16 @@
 .index {
   display: grid;
+  $p: &;
   @include screen(md) {
     grid-template-columns: repeat(4, 1fr);
     padding: 2rem;
     grid-column-gap: 1rem;
     align-content: center;
-    // width: 100%;
+  }
+  @include screen(lg) {
+    grid-template-columns: repeat(5, 1fr);
+    align-content: start;
+    grid-template-rows: auto 1fr;
   }
   &__logo {
     width: 50%;
@@ -17,6 +22,9 @@
     @include screen(md) {
       width: 20vw;
     }
+    @include screen(lg) {
+      display: none;
+    }
   }
   &__header {
     margin-bottom: 2rem;
@@ -24,6 +32,13 @@
     @include screen(md) {
       font-size: 10vw;
       grid-column: 2 / span 2;
+    }
+    @include screen(lg) {
+      grid-column: 1 / -1;
+      font-size: 18vw;
+      margin-left: -7vw;
+      margin-bottom: 0;
+      position: relative;
     }
     &--wrap {
       padding-left: 0.7em;
@@ -33,12 +48,47 @@
     font-family: $font--display;
     text-transform: uppercase;
     line-height: 0.9;
+    @include screen(lg) {
+      margin: 0;
+    }
+    #{$p}__header--wrap {
+      @include screen(lg) {
+        padding-left: 0.2em;
+      }
+    }
   }
   &__name {
     color: $color--mid;
     font-size: 3.1rem;
     @include screen(md) {
       font-size: 10vw;
+    }
+    @include screen(lg) {
+      position: absolute;
+      font-family: $font--sans;
+      font-weight: 700;
+      font-size: 2vw;
+      color: $color--neutral;
+      text-transform: none;
+      // top: 2.5vw;
+      top: 0;
+      right: 2.5vw;
+      width: 12vw;
+      height: 12vw;
+      display: grid;
+      align-content: end;
+      padding: 0.2em;
+      border: 0.2em solid $color--neutral;
+      #{$p}__header--wrap {
+        padding-left: 0;
+      }
+      &:before {
+        content: "";
+        height: 7vw;
+        background-image: url("~assets/img/icon-logo.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
     }
   }
   &__content {
@@ -68,15 +118,27 @@
   }
   &__location {
     margin: 0;
+    @include screen(lg) {
+      margin-bottom: 1em;
+    }
   }
   &__hireability {
     font-style: italic;
   }
-  &__profile-pic {
+  &__profile-pic-container {
     display: none;
     @include screen(md) {
       grid-column: span 1;
       display: block;
+    }
+    @include screen(lg) {
+      grid-column: span 2;
+      margin-top: -16%;
+      z-index: -1;
+      position: relative;
+      img {
+        position: absolute;
+      }
     }
   }
 }

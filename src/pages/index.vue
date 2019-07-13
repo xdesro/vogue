@@ -21,7 +21,9 @@
         <p class="index__hireability">available for hire</p>
       </div>
     </main>
-    <img src="~/assets/img/spooky-profile-pic.png" alt class="index__profile-pic" />
+    <div class="index__profile-pic-container">
+      <img src="~/assets/img/spooky-profile-pic.png" alt class="index__profile-pic" />
+    </div>
   </div>
 </template>
 
