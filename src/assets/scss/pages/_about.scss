@@ -8,6 +8,20 @@
     grid-template-columns: 1.3fr 1fr;
     grid-column-gap: 1rem;
   }
+  @include screen(lg) {
+    grid-template-areas: unset;
+    grid-template-columns: repeat(3, 1fr);
+    align-content: center;
+    grid-column-gap: 2rem;
+  }
+  &__logo {
+    display: none;
+    @include screen(lg) {
+      display: block;
+      grid-row: 2;
+      grid-column: 2;
+    }
+  }
   &__profile-pic {
     grid-area: img;
     max-width: 50%;
@@ -15,7 +29,12 @@
     @include screen(sm) {
       max-width: unset;
     }
-
+    @include screen(lg) {
+      grid-area: unset;
+      grid-column: 3;
+      grid-row: 1 / span 2;
+      z-index: -1;
+    }
     &:after {
       content: "";
       width: 50%;
@@ -27,6 +46,9 @@
       background-repeat: no-repeat;
       background-size: contain;
       filter: invert(1);
+      @include screen(lg) {
+        content: unset;
+      }
     }
   }
   &__subtitle {
@@ -35,8 +57,20 @@
     text-transform: uppercase;
     line-height: 0.9em;
     align-self: end;
+    @include screen(lg) {
+      grid-column: 1 / span 3;
+      grid-row: 1;
+      align-self: unset;
+      font-size: 7.5vw;
+    }
     &--light {
       color: $color--mid;
+    }
+  }
+  &__content {
+    @include screen(lg) {
+      grid-row: 2;
+      grid-column: 1;
     }
   }
 }
