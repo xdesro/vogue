@@ -10,6 +10,8 @@
     }
     @include screen(lg) {
       width: 10vw;
+      position: sticky;
+      top: 4rem;
       margin: 0;
       transform: rotate(90deg) translateX(-5vw) translateY(10%);
     }
