@@ -1,12 +1,17 @@
 .writing-list {
   $image-filter: brightness(50%) grayscale(50%) blur(3px);
-  $p: &;
+  $amp: &;
 
   @include border(top);
-  display: grid;
-  grid-auto-rows: 1fr;
+  @include screen(md) {
+    @include container;
+    display: grid;
+    grid-column-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
   @include screen(lg) {
     border-top: 0;
+    grid-template-columns: 1fr;
   }
   &__item {
     @include border(bottom);
@@ -20,71 +25,128 @@
     align-items: end;
     @include screen(sm) {
       height: unset;
-      padding: 2rem 1rem 1rem;
+      padding: 2rem 0;
       align-items: unset;
       color: $color--neutral;
       background-color: unset;
-      grid-column-gap: 1rem;
-      grid-template-columns: 3fr 2fr;
     }
+
     @include screen(lg) {
-      padding-left: 0;
+      position: relative;
       &:first-of-type {
         min-height: 50vh;
         color: $color--contrast;
-        align-content: center;
-        padding: 2rem 2.5rem;
-        #{$p}__content {
-          grid-column: span 2;
-          max-width: 50rem;
+        padding: unset;
+        #{$amp}__content {
+          align-content: center;
+          padding: 2rem 2.5rem;
+          position: relative;
+          grid-template-columns: 1fr;
+          grid-template-areas: "category" "title" "excerpt" "link";
         }
-        #{$p}__title {
+        #{$amp}__title {
           font-size: 2.6rem;
         }
-        #{$p}__excerpt {
+        #{$amp}__excerpt {
           color: $color--contrast;
           font-size: 1rem;
+          padding: 0;
         }
-        #{$p}__image {
+        #{$amp}__image {
           @include full-bleed-hero-image;
           position: absolute;
+          grid-area: unset;
           min-height: calc(100% + 20px);
           min-width: calc(100% + 20px);
           grid-column: unset;
           z-index: -1;
           filter: $image-filter;
         }
-        #{$p}__link {
-          grid-column: 1;
-          grid-row: 3;
+        #{$amp}__link {
           text-align: left;
           color: $color--contrast;
           font-size: 1.3rem;
+        }
+        #{$amp}__date,
+        #{$amp}__tags {
+          display: none;
         }
       }
     }
   }
   &__content {
     @include container;
-    @include screen(sm) {
+    @include screen(md) {
       @include container-unset;
-      grid-row: span 2;
+      display: grid;
+      align-content: start;
+    }
+    @include screen(lg) {
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-areas:
+        "title title ."
+        "img excerpt category"
+        "img excerpt tags"
+        "img excerpt tags"
+        "link excerpt date";
+      grid-column-gap: 1rem;
+    }
+  }
+  &__tags {
+    display: none;
+    color: $color--mid;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.9px;
+    line-height: 1.5;
+    @include screen(lg) {
+      grid-area: tags;
+      display: block;
+      > li {
+        line-height: 1.5;
+      }
     }
   }
   &__category {
     @include wide-sans;
     font-size: 0.8rem;
+    @include screen(lg) {
+      color: $color--mid;
+      grid-area: category;
+      margin: 0;
+    }
   }
   &__title {
     font-family: $font--display;
     font-size: 1.7rem;
     font-weight: 700;
+    @include screen(lg) {
+      grid-area: title;
+    }
   }
   &__excerpt {
     display: none;
     font-size: 0.7rem;
     color: $color--mid;
     @include screen(md) {
+      display: block;
+    }
+    @include screen(lg) {
+      grid-area: excerpt;
+      border-right: 1px solid $color--mid;
+      padding-right: 1rem;
+    }
+  }
+  &__date {
+    display: none;
+    text-transform: uppercase;
+    font-family: $font--display;
+    font-size: 1.3rem;
+    margin: 0;
+    @include screen(lg) {
+      grid-area: date;
+      align-self: end;
       display: block;
     }
   }
@@ -102,8 +164,10 @@
     @include screen(sm) {
       position: relative;
       color: $color--neutral;
-      grid-column: 2;
-      grid-row: 1;
+    }
+    @include screen(lg) {
+      grid-area: link;
+      text-align: left;
     }
   }
   &__image {
@@ -119,7 +183,10 @@
       max-width: 100%;
       object-fit: unset;
       filter: unset;
-      grid-column: 2;
+      margin-bottom: 1rem;
+    }
+    @include screen(lg) {
+      grid-area: img;
     }
   }
 }

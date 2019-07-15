@@ -5,7 +5,8 @@
     </header>
     <main class="main">
       <ul class="writing-list">
-        <li class="writing-list__item" v-for="(post, index) in posts" :key="index">
+        <WritingListItem v-for="(post, index) in posts" :key="index" :post="post" />
+        <!-- <li class="writing-list__item" v-for="(post, index) in posts" :key="index">
           <div class="writing-list__content">
             <p class="writing-list__category">Tutorial</p>
             <p class="writing-list__title">{{ post.fields.title }}</p>
@@ -18,14 +19,16 @@
             :to="`writing/${post.fields.slug}`"
           >view the post—</nuxt-link>
           <img class="writing-list__image" :src="post.fields.heroImage.fields.file.url" alt />
-        </li>
+        </li>-->
       </ul>
     </main>
   </div>
 </template>
 
 <script>
+import WritingListItem from "~/components/WritingListItem";
 export default {
+  components: { WritingListItem },
   computed: {
     posts() {
       return this.$store.state.posts.posts;
