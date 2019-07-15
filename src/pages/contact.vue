@@ -1,8 +1,6 @@
 <template>
   <div class="layout layout--contact">
-    <header class="header">
-      <h1 class="header__title">Contact—</h1>
-    </header>
+    <Header title="Contact" />
     <main class="main main--container">
       <p class="contact__content text--display text--large">
         I’m most active and reachable on Twitter or via email, but you can find me most places on the internet as
@@ -39,9 +37,11 @@
 </template>
 <script>
 import IconSocial from "~/components/icons/icon-social";
+import Header from "~/components/Header";
 export default {
   components: {
-    IconSocial
+    IconSocial,
+    Header
   },
   data() {
     return {

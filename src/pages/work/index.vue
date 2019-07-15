@@ -1,9 +1,6 @@
 <template>
   <div class="layout layout--writing">
-    <!-- <div class="container"> -->
-    <header class="header">
-      <h1 class="header__title">Work—</h1>
-    </header>
+    <Header title="Work" />
     <main class="main">
       <ul class="work-list">
         <li class="work-list__item" v-for="(project, index) in projects" :key="index">
