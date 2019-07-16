@@ -1,36 +1,18 @@
 <template>
   <div class="layout layout--work">
-    <Header title="Work" />
+    <PageHeader title="Work" />
     <main class="main">
       <ul class="work-list">
-        <li class="work-list__item" v-for="(project, index) in projects" :key="index">
-          <div class="work-list__item-upper">
-            <span class="work-list__counter">0{{index}}</span>
-            <p class="work-list__title">{{project.fields.title}}</p>
-          </div>
-          <div class="work-list__item-lower">
-            <img class="work-list__image" :src="project.fields.heroImage.fields.file.url" />
-            <div class="work-list__details">
-              <p class="work-list__contribution">
-                <span v-for="(discipline, index) in project.fields.involvement" :key="index">
-                  {{discipline}}
-                  <span v-if="index < project.fields.involvement.length - 1">&amp;</span>
-                </span>
-              </p>
-              <p class="work-list__date">Summer 2019</p>
-            </div>
-            <p class="work-list__excerpt">{{project.fields.description}}</p>
-            <a class="work-list__link" :href="`work/${project.fields.slug}`">view the project—</a>
-          </div>
-        </li>
+        <WorkListItem v-for="(project, index) in projects" :project="project" :key="index" :index="index" />
       </ul>
     </main>
   </div>
 </template>
 <script>
-import Header from "~/components/Header";
+import PageHeader from "~/components/PageHeader";
+import WorkListItem from "~/components/WorkListItem";
 export default {
-  components: { Header },
+  components: { PageHeader, WorkListItem },
   computed: {
     projects() {
       return this.$store.state.projects.projects;

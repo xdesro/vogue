@@ -7,7 +7,6 @@
 body {
   min-height: 100vh;
   background-color: $color--contrast;
-  // Not sure why this cropped up but TODO fix.
   overflow-x: hidden;
 }
 .app {
@@ -32,7 +31,6 @@ body {
   @include container;
 }
 .main {
-  // padding-bottom: 4rem;
   &--container {
     @include container;
   }

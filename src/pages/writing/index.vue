@@ -1,6 +1,6 @@
 <template>
   <div class="layout layout--writing">
-    <Header title="Writing" />
+    <PageHeader title="Writing" />
     <main class="main">
       <ul class="writing-list">
         <WritingListItem v-for="(post, index) in posts" :key="index" :post="post" />
@@ -11,9 +11,9 @@
 
 <script>
 import WritingListItem from "~/components/WritingListItem";
-import Header from "~/components/Header";
+import PageHeader from "~/components/PageHeader";
 export default {
-  components: { WritingListItem, Header },
+  components: { WritingListItem, PageHeader },
   computed: {
     posts() {
       return this.$store.state.posts.posts;

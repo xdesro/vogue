@@ -1,16 +1,23 @@
 <template>
-  <div>
-    <header class="header">
-      <h1 class="header__title">{{ currentProject.fields.title }}</h1>
-    </header>
-    <main class="main main--content" v-html="$md.render(currentProject.fields.body)">
-      <!-- <div class="container" ></div> -->
+  <div class="layout layout--post">
+    <PostHeader :post="currentProject" section="work" />
+    <main class="main post__content">
+      <ul class="post__tags">
+        <li
+          class="post__tag"
+          v-for="(tag, index) in currentProject.fields.tags"
+          :key="index"
+        >{{tag}}</li>
+      </ul>
+      <div class="post__text" v-html="$md.render(currentProject.fields.body)"></div>
     </main>
   </div>
 </template>
 
 <script>
+import PostHeader from "~/components/PostHeader";
 export default {
+  components: { PostHeader },
   computed: {
     currentProject() {
       return this.$store.state.project.currentProject;

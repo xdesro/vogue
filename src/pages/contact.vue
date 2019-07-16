@@ -1,6 +1,6 @@
 <template>
   <div class="layout layout--contact">
-    <Header title="Contact" />
+    <PageHeader title="Contact" />
     <main class="main main--container">
       <p class="contact__content text--display text--large">
         I’m most active and reachable on Twitter or via email, but you can find me most places on the internet as
@@ -37,20 +37,19 @@
 </template>
 <script>
 import IconSocial from "~/components/icons/icon-social";
-import Header from "~/components/Header";
+import PageHeader from "~/components/PageHeader";
 export default {
   components: {
     IconSocial,
-    Header
+    PageHeader
   },
   data() {
     return {
       social: [
         {
-          name: "Twitter",
-          description:
-            "Home of the majority of my social sharing about new projects progress, new tech, and killer puns.",
-          url: "https://i.ncredibly.online"
+          name: `Twitter`,
+          description: `Home of the majority of my social sharing about new projects progress, new tech, and killer puns.`,
+          url: `https://i.ncredibly.online`
         },
         {
           name: `CodePen`,

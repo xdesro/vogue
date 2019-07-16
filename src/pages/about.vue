@@ -1,6 +1,6 @@
 <template>
   <div class="layout layout--about">
-    <Header title="About" />
+    <PageHeader title="About" />
     <main class="main about">
       <figure class="main__img about__profile-pic">
         <img src="~/assets/img/spooky-profile-pic.png" alt="Henry Desroches lookin' spooky." />
@@ -24,9 +24,9 @@
 </template>
 
 <script>
-import Header from "~/components/Header";
+import PageHeader from "~/components/PageHeader";
 export default {
-  components: { Header }
+  components: { PageHeader }
 };
 </script>
 

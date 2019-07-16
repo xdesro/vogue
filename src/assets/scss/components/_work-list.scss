@@ -34,7 +34,6 @@
       align-content: space-between;
       padding-left: 2rem;
       padding-right: 2rem;
-      // max-width: 23rem;
       @include border(right);
     }
   }
@@ -86,7 +85,6 @@
   &__link {
     font-family: $font--display;
     @include screen(md) {
-      // font-size: 0.8rem;
       text-align: right;
       display: block;
     }
