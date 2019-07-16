@@ -5,7 +5,10 @@
       <p class="work-list__title">{{project.fields.title}}</p>
     </div>
     <div class="work-list__item-lower">
-      <img class="work-list__image" :src="project.fields.heroImage.fields.file.url" />
+      <img
+        class="work-list__image"
+        :src="`${project.fields.heroImage.fields.file.url}?fm=jpg&fl=progressive`"
+      />
       <div class="work-list__details">
         <p class="work-list__contribution">
           <span v-for="(discipline, index) in project.fields.involvement" :key="index">
@@ -32,3 +35,4 @@ export default {
   }
 };
 </script>
+

@@ -9,9 +9,9 @@
       <h2 class="about__subtitle">
         Hey there, I'm
         <br />
-        <span class="about__subtitle--light">Henry Desroches.</span>
+        <span class="about__subtitle--light">{{person.name}}.</span>
       </h2>
-      <div class="about__content">
+      <div class="about__content" v-html="$md.render(person.shortBio)">
         <p>I’m a creative developer currently based in Denver, Colorado. I’m really into CSS, animation, developer experience, and deleting code.</p>
         <p>I love bending the rules of CSS, making generative art, and WebGL. I have a lot of experience with style code at scale, JS-agnostic design systems, and static site generators. In my non-code time, I foster greyhounds, tweet too much, and ride bikes.</p>
         <p>I’m looking for a new role working on design systems, creative and innovative web projects, or building design & development tooling.</p>
@@ -26,7 +26,15 @@
 <script>
 import PageHeader from "~/components/PageHeader";
 export default {
-  components: { PageHeader }
+  components: { PageHeader },
+  computed: {
+    person() {
+      return this.$store.state.person.person.fields;
+    }
+  },
+  async fetch({ store }) {
+    await store.dispatch("person/getPerson");
+  }
 };
 </script>
 

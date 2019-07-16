@@ -104,6 +104,9 @@ h5 {
   letter-spacing: -0.015em;
   margin-bottom: 0;
 }
+strong {
+  font-weight: 700;
+}
 .text {
   &--display {
     font-family: $font--display;

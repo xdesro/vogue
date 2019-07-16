@@ -2,30 +2,25 @@
   <div class="layout layout--contact">
     <PageHeader title="Contact" />
     <main class="main main--container">
-      <p class="contact__content text--display text--large">
-        I’m most active and reachable on Twitter or via email, but you can find me most places on the internet as
-        <span
-          class="text--emphasis"
-        >@xdesro</span>.
-      </p>
+      <div class="contact__content text--display text--large" v-html="$md.render(contactText)"></div>
       <ul class="contact__list contact-list">
-        <li class="contact-list__item" v-for="(link, index) in social" :key="index">
-          <a :href="link.url" class="contact-list__link">
-            <IconSocial class="contact-list__icon" :icon="link.name" />
-            <p class="contact-list__title">{{link.name}}</p>
-            <p class="contact-list__description" v-html="link.description" />
+        <li class="contact__list-item" v-for="(link, index) in primarySocialLinks" :key="index">
+          <a :href="link.fields.url" class="contact-list__link">
+            <IconSocial class="contact-list__icon" :icon="link.fields.name" />
+            <p class="contact-list__title">{{link.fields.name}}</p>
+            <div class="contact-list__description" v-html="$md.render(link.fields.description)" />
           </a>
         </li>
         <li class="contact-list__item">
           <ul class="additional-links-list">
             <li
               class="additional-links-list__item"
-              v-for="(link, index) in additionalLinks"
+              v-for="(link, index) in secondarySocialLinks"
               :key="index"
             >
-              <a :href="link.url" class="additional-links-list__link">
-                <IconSocial class="additional-links-list__icon" :icon="link.name" />
-                <p class="additional-links-list__title">{{link.name}}</p>
+              <a :href="link.fields.url" class="additional-links-list__link">
+                <IconSocial class="additional-links-list__icon" :icon="link.fields.name" />
+                <p class="additional-links-list__title">{{link.fields.name}}</p>
               </a>
             </li>
           </ul>
@@ -38,10 +33,31 @@
 <script>
 import IconSocial from "~/components/icons/icon-social";
 import PageHeader from "~/components/PageHeader";
+
 export default {
   components: {
     IconSocial,
     PageHeader
+  },
+  computed: {
+    contactText() {
+      return this.$store.state.person.person.fields.contactText;
+    },
+    primarySocialLinks() {
+      const { socialLinks } = this.$store.state.person.person.fields;
+      return socialLinks.filter(link => {
+        return link.fields.description;
+      });
+    },
+    secondarySocialLinks() {
+      const { socialLinks } = this.$store.state.person.person.fields;
+      return socialLinks.filter(link => {
+        return !link.fields.description;
+      });
+    }
+  },
+  async fetch({ store }) {
+    await store.dispatch("person/getPerson");
   },
   data() {
     return {
