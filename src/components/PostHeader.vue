@@ -1,8 +1,8 @@
 <template>
   <header class="post__header">
     <div class="post__header-inner">
-      <nuxt-link :to="`/${section}`" class="post__return-link">« Return to list</nuxt-link>
-      <h2 class="post__section">{{section}}</h2>
+      <nuxt-link :to="`/${ section }`" class="post__return-link">« Return to list</nuxt-link>
+      <h2 class="post__section">{{ section }}</h2>
       <p class="post__date">{{ postDate }}</p>
       <h1 class="post__title">{{ post.fields.title }}</h1>
       <p class="post__category">{{ category }}</p>

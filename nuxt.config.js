@@ -20,36 +20,25 @@ export default {
         space: process.env.CTF_SPACE_ID,
         accessToken: process.env.CTF_CD_ACCESS_TOKEN
       });
-      const routes = [];
-      routes.push(
-        client
-          .getEntries({
-            content_type: "project"
+      return client.getEntries().then(response => {
+        return response.items
+          .filter(entry => {
+            const { id } = entry.sys.contentType.sys;
+            return id === `project` || id === `blogPost`;
           })
-          .then(response => {
-            return response.items.map(entry => {
-              return {
-                route: `work/${entry.fields.slug}`,
-                payload: entry
-              };
-            });
-          })
-      );
-      routes.push(
-        client
-          .getEntries({
-            content_type: "blogPost"
-          })
-          .then(response => {
-            return response.items.map(entry => {
-              return {
-                route: `writing/${entry.fields.slug}`,
-                payload: entry
-              };
-            });
-          })
-      );
-      return routes;
+          .map(entry => {
+            let slugBase;
+            if (entry.sys.contentType.sys.id === `project`) {
+              slugBase = `work`;
+            } else {
+              slugBase = `writing`;
+            }
+            return {
+              route: `${slugBase}/${entry.fields.slug}`,
+              payload: entry
+            };
+          });
+      });
     }
   },
   modules: ["@nuxtjs/markdownit", "@nuxtjs/dotenv", "@nuxtjs/moment"],
