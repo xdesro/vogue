@@ -12,7 +12,6 @@
 
 <script>
 import PostHeader from "~/components/PostHeader";
-// import moment from "moment";
 export default {
   components: { PostHeader },
   computed: {
