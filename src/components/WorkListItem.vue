@@ -16,7 +16,7 @@
         <p class="work-list__date">{{ projectDate }}</p>
       </div>
       <p class="work-list__excerpt">{{project.fields.description}}</p>
-      <a class="work-list__link" :href="`work/${project.fields.slug}`">view the project—</a>
+      <nuxt-link class="work-list__link" :to="`work/${project.fields.slug}`">view the project—</nuxt-link>
     </div>
   </li>
 </template>
