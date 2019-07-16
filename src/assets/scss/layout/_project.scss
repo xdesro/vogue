@@ -1,0 +1,10 @@
+.layout {
+  &--work {
+    @include screen(lg) {
+      .main {
+        overflow-x: scroll;
+        @include border(left);
+      }
+    }
+  }
+}

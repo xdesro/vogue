@@ -1,5 +1,5 @@
 <template>
-  <div class="layout layout--writing">
+  <div class="layout layout--work">
     <Header title="Work" />
     <main class="main">
       <ul class="work-list">
@@ -28,7 +28,9 @@
   </div>
 </template>
 <script>
+import Header from "~/components/Header";
 export default {
+  components: { Header },
   computed: {
     projects() {
       return this.$store.state.projects.projects;
