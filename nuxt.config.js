@@ -43,6 +43,19 @@ export default {
     linkify: true,
     typographer: true,
     quotes: "“”‘’",
+    use: [
+      [
+        "markdown-it-anchor",
+        { permalink: true, permalinkBefore: true, level: [1, 2, 3] }
+      ],
+      [
+        "markdown-it-table-of-contents",
+        {
+          containerClass: "post__toc",
+          listType: "ol"
+        }
+      ]
+    ],
     highlight: (code, lang) => {
       /* eslint-disable no-undef */
       const Prism = require("prismjs");

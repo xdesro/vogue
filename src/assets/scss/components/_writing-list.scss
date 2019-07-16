@@ -1,5 +1,4 @@
 .writing-list {
-  $image-filter: brightness(50%) grayscale(50%) blur(3px);
   $amp: &;
 
   @include border(top);
@@ -11,6 +10,7 @@
   }
   @include screen(lg) {
     border-top: 0;
+    padding: 0;
     grid-template-columns: 1fr;
   }
   &__item {
@@ -47,9 +47,15 @@
         #{$amp}__title {
           font-size: 2.6rem;
         }
+        #{$amp}__category {
+          margin-bottom: 1rem;
+          color: $color--contrast;
+        }
         #{$amp}__excerpt {
           color: $color--contrast;
+          margin-bottom: 1rem;
           font-size: 1rem;
+          border: 0;
           padding: 0;
         }
         #{$amp}__image {
@@ -60,7 +66,7 @@
           min-width: calc(100% + 20px);
           grid-column: unset;
           z-index: -1;
-          filter: $image-filter;
+          @include image-filter;
         }
         #{$amp}__link {
           text-align: left;
@@ -123,6 +129,7 @@
     font-weight: 700;
     @include screen(lg) {
       grid-area: title;
+      font-size: 2.5vw;
     }
   }
   &__excerpt {
@@ -173,7 +180,7 @@
   &__image {
     z-index: -1;
     @include full-bleed-hero-image;
-    filter: $image-filter;
+    @include image-filter;
     @include screen(sm) {
       position: relative;
       z-index: unset;

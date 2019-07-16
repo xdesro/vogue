@@ -80,12 +80,13 @@
     font-style: italic;
     @include screen(md) {
       font-size: 0.6rem;
+      margin-bottom: 2rem;
     }
   }
   &__link {
     font-family: $font--display;
     @include screen(md) {
-      font-size: 0.8rem;
+      // font-size: 0.8rem;
       text-align: right;
       display: block;
     }

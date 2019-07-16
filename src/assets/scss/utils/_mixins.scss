@@ -17,6 +17,9 @@
   object-fit: cover;
   position: absolute;
 }
+@mixin image-filter {
+  filter: brightness(50%) grayscale(50%) blur(3px);
+}
 @mixin container {
   padding: 0 1rem;
   width: 100%;

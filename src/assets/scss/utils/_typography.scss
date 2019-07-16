@@ -118,3 +118,13 @@ h5 {
     font-style: italic;
   }
 }
+.header-anchor {
+  font-family: $font--sans;
+  color: $color--mid;
+  text-decoration: none;
+  font-size: 1rem;
+  &:hover {
+    color: $color--neutral;
+    text-decoration: underline;
+  }
+}

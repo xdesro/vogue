@@ -1,0 +1,158 @@
+.layout {
+  &--post {
+    display: initial;
+    // @include container;
+    @include screen(lg) {
+      width: calc(100vw - #{$nav-size});
+      //   grid-auto-flow: unset;
+    }
+  }
+}
+
+.post {
+  &__header {
+    position: relative;
+    overflow: hidden;
+    min-height: 50vh;
+    display: grid;
+  }
+  &__header-inner {
+    // @include container;
+    display: grid;
+    // max-width: 50rem;
+    color: $color--contrast;
+
+    height: 100%;
+    width: 100%;
+    max-width: 70rem;
+    grid-column-gap: 1rem;
+    margin: 0 auto;
+    grid-template-areas: "link" "date" "category" "title";
+    padding: 2rem;
+    @include screen(lg) {
+      padding: 2rem 4rem;
+      justify-content: start;
+      align-content: end;
+      grid-template-columns: 15rem 1fr;
+      grid-template-areas: "link ." "section ." ". category" "date title";
+      grid-template-rows: auto 1fr auto auto;
+    }
+  }
+  &__hero-image {
+    z-index: -1;
+    // min-width: 100vw;
+    min-width: calc(100% + 20px);
+    // height: 100%;
+    min-height: calc(100% + 20px);
+    object-fit: cover;
+    @include full-bleed-hero-image;
+    @include image-filter;
+  }
+  &__return-link {
+    @include wide-sans;
+    font-size: 0.7rem;
+    text-decoration: none;
+    margin: 0;
+    grid-area: link;
+  }
+  &__section {
+    font-weight: 200;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    display: none;
+    grid-area: section;
+    @include screen(lg) {
+      display: initial;
+    }
+  }
+  &__category {
+    align-self: end;
+    @include wide-sans;
+    grid-area: category;
+    @include screen(lg) {
+      align-self: unset;
+    }
+  }
+  &__title {
+    font-weight: 700;
+    text-transform: none;
+    grid-area: title;
+  }
+  &__date {
+    align-self: end;
+    font-family: $font--display;
+    font-size: 1.3rem;
+    grid-area: date;
+  }
+  &__tags {
+    display: none;
+    @include wide-sans;
+    font-size: 0.7rem;
+    color: $color--mid;
+    line-height: 1.5;
+    list-style-type: none;
+    margin: 0 auto 2rem;
+    @include screen(md) {
+      display: inline-block;
+    }
+    @include screen(lg) {
+      margin: initial;
+      display: block;
+    }
+  }
+  &__tag {
+    display: inline-block;
+    &:not(:last-child) {
+      &:after {
+        content: "|";
+        padding: 1rem;
+      }
+    }
+    @include screen(lg) {
+      display: block;
+      &:not(:last-child) {
+        &:after {
+          content: unset;
+        }
+      }
+    }
+  }
+  &__content {
+    @include container;
+    // max-width: 50rem;
+    // margin: 0 auto;
+
+    max-width: 100%;
+    margin: 0 auto;
+    grid-column-gap: 1rem;
+    display: grid;
+    // margin-top: 4rem;
+    padding: 4rem 2rem;
+    @include screen(lg) {
+      padding: 4rem;
+      grid-template-columns: 15rem 1fr;
+      width: 70rem;
+    }
+  }
+  &__text {
+    display: grid;
+    line-height: 1.2;
+    ol,
+    ul {
+      list-style: initial;
+      padding-left: 1.3em;
+      list-style-position: outside;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    ol {
+      list-style-type: upper-roman;
+      ::marker {
+        font-family: $font--display;
+      }
+    }
+    ul {
+      list-style-type: square;
+    }
+  }
+}
