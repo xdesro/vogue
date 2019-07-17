@@ -52,16 +52,16 @@ export default {
     quotes: "“”‘’",
     use: [
       [
-        "markdown-it-anchor",
-        { permalink: true, permalinkBefore: true, level: [1, 2, 3] }
-      ],
-      [
         "markdown-it-table-of-contents",
         {
           containerClass: "post__toc",
           listType: "ol"
         }
       ]
+      // [
+      //   "markdown-it-anchor",
+      //   { permalink: true, permalinkBefore: true, level: [1, 2, 3] }
+      // ]
     ],
     highlight: (code, lang) => {
       /* eslint-disable no-undef */
