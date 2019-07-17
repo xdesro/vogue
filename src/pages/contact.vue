@@ -31,7 +31,7 @@
   </div>
 </template>
 <script>
-import IconSocial from "~/components/icons/icon-social";
+import IconSocial from "~/components/icons/IconSocial";
 import PageHeader from "~/components/PageHeader";
 
 export default {

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import IconLogo from "~/components/icons/icon-logo";
+import IconLogo from "~/components/icons/IconLogo";
 export default {
   components: {
     IconLogo

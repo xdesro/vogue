@@ -1,0 +1,53 @@
+.spotify {
+  $this: &;
+
+  display: grid;
+  align-self: end;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "icon track" "icon artists";
+  font-size: 0.6rem;
+  grid-column-gap: 1rem;
+  position: relative;
+  padding-top: 1.5rem;
+  justify-self: start;
+  &:before {
+    content: "recent listening:";
+    position: absolute;
+    top: 0;
+    font-size: 1rem;
+    white-space: nowrap;
+    font-style: italic;
+    font-family: $font--display;
+  }
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+  }
+  &-enter-active,
+  &-leave-active {
+    transition: opacity 0.5s;
+  }
+  &__link {
+    grid-area: icon;
+  }
+  &__icon {
+    width: 1.5rem;
+  }
+  &__track {
+    grid-area: track;
+    font-weight: 500;
+    margin: 0;
+  }
+  &__artists {
+    font-weight: 300;
+    grid-area: artists;
+  }
+  &__artist {
+    display: inline-block;
+    + #{$this}__artist {
+      &:before {
+        content: ", ";
+      }
+    }
+  }
+}

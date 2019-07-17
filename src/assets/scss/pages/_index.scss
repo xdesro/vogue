@@ -132,6 +132,9 @@
   }
   &__hireability {
     font-style: italic;
+    @include screen(md) {
+      margin: 0;
+    }
   }
   &__profile-pic-container {
     display: none;

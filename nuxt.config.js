@@ -8,7 +8,10 @@ export default {
   srcDir: "src",
   env: {
     contentfulSpace: process.env.CTF_SPACE_ID,
-    contentfulAccessToken: process.env.CTF_CD_ACCESS_TOKEN
+    contentfulAccessToken: process.env.CTF_CD_ACCESS_TOKEN,
+    spotifyId: process.env.SPOTIFY_ID,
+    spotifySecret: process.env.SPOTIFY_SECRET,
+    spotifyToken: process.env.SPOTIFY_TOKEN
   },
   css: ["~/assets/scss/style.scss"],
   router: {
