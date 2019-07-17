@@ -4,6 +4,10 @@ const contentful = require("contentful");
 
 export default {
   srcDir: "src",
+  env: {
+    contentfulSpace: process.env.CTF_SPACE_ID,
+    contentfulAccessToken: process.env.CTF_CD_ACCESS_TOKEN
+  },
   css: ["~/assets/scss/style.scss"],
   router: {
     linkExactActiveClass: "nav__link--active"
