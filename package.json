@@ -1,7 +1,7 @@
 {
   "name": "vogue",
   "version": "1.0.0",
-  "description": "Personal site and portfolio for twitter user xdesro",
+  "description": "Personal site and portfolio of UX engineer and prolific twitter user xdesro.",
   "main": "index.js",
   "private": true,
   "scripts": {
@@ -44,5 +44,13 @@
     "eslint-plugin-vue": "^5.2.3",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0"
+  },
+  "headMeta": {
+    "title": "Henry Desroches | Creative Developer & UX Engineer",
+    "description": "Personal site and portfolio of UX engineer and prolific twitter user xdesro.",
+    "siteUrl": "https://henry.codes",
+    "imageUrl": "https://henry.codes/open-graph.jpg",
+    "themeColor": "#030303",
+    "twitter": "@xdesro"
   }
 }
