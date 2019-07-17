@@ -3,7 +3,12 @@
     <div class="writing-list__content">
       <p class="writing-list__category">{{category}}</p>
       <p class="writing-list__title">{{ post.fields.title }}</p>
-      <img :src="post.fields.heroImage.fields.file.url" alt class="writing-list__image" />
+
+      <img
+        :src="`${post.fields.heroImage.fields.file.url}?w=500&fm=jpg&fl=progressive`"
+        alt
+        class="writing-list__image"
+      />
       <div class="writing-list__excerpt" v-html="$md.render(post.fields.excerpt)" />
       <ul class="writing-list__tags">
         <li class="writing-list__tag" v-for="(tag, index) in post.fields.tags" :key="index">{{tag}}</li>

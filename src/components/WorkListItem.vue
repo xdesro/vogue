@@ -7,7 +7,7 @@
     <div class="work-list__item-lower">
       <img
         class="work-list__image"
-        :src="`${project.fields.heroImage.fields.file.url}?fm=jpg&fl=progressive`"
+        :src="`${project.fields.heroImage.fields.file.url}?w=500&fm=jpg&fl=progressive`"
       />
       <div class="work-list__details">
         <p class="work-list__contribution">

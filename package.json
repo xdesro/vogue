@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/xdesro/vogue#readme",
   "dependencies": {
+    "@bazzite/nuxt-optimized-images": "^0.2.1",
     "@nuxtjs/dotenv": "^1.3.0",
     "@nuxtjs/moment": "^1.2.0",
     "contentful": "^7.8.1",

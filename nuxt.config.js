@@ -45,7 +45,15 @@ export default {
       });
     }
   },
-  modules: ["@nuxtjs/markdownit", "@nuxtjs/dotenv", "@nuxtjs/moment"],
+  modules: [
+    "@nuxtjs/markdownit",
+    "@nuxtjs/dotenv",
+    "@nuxtjs/moment",
+    "@bazzite/nuxt-optimized-images"
+  ],
+  optimizedImages: {
+    optimizeImages: true
+  },
   markdownit: {
     injected: true,
     preset: "default",
