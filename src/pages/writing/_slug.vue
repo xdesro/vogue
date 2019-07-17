@@ -24,9 +24,6 @@ export default {
   },
   async fetch({ store, params }) {
     await store.dispatch("post/getPostBySlug", params.slug);
-  },
-  mounted() {
-    console.log(this);
   }
 };
 </script>

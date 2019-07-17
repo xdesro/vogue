@@ -27,3 +27,35 @@
   </div>
 </template>
 
+<script>
+import { TweenLite } from "gsap";
+export default {
+  data() {
+    return {
+      deltaX: 0,
+      easedDeltaX: 0
+    };
+  },
+  beforeDestroy() {
+    document.removeEventListener("mousemove", this.handleMouseMove);
+  },
+  mounted() {
+    document.addEventListener("mousemove", this.handleMouseMove);
+    this.$nextTick(() => {
+      TweenLite.ticker.addEventListener("tick", this.updateAnimation);
+    });
+  },
+  methods: {
+    handleMouseMove(e) {
+      this.deltaX =
+        ((e.clientX - window.innerWidth / 2) / window.innerWidth) * 2;
+      TweenLite.to(this, 1, {
+        easedDeltaX: this.deltaX
+      });
+    },
+    updateAnimation() {
+      this.$el.style.setProperty("--translateX", `${this.easedDeltaX * 10}px`);
+    }
+  }
+};
+</script>
