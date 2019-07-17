@@ -66,7 +66,7 @@
           min-width: calc(100% + 20px);
           grid-column: unset;
           z-index: -1;
-          @include image-filter;
+          // @include image-filter;
         }
         #{$amp}__link {
           text-align: left;

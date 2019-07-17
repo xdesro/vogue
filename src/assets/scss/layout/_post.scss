@@ -13,6 +13,7 @@
     display: grid;
     overflow: hidden;
     min-height: 50vh;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
   &__header-inner {
     display: grid;
@@ -35,7 +36,7 @@
   }
   &__hero-image {
     @include full-bleed-hero-image;
-    @include image-filter;
+    // @include image-filter;
     z-index: -1;
     min-width: calc(100% + 20px);
     min-height: calc(100% + 20px);
@@ -47,6 +48,7 @@
     margin: 0;
     text-decoration: none;
     grid-area: link;
+    clip-path: $clip-path-wide-open;
   }
   &__section {
     font-size: 1.3rem;
@@ -54,8 +56,13 @@
     display: none;
     text-transform: uppercase;
     grid-area: section;
+    clip-path: $clip-path-wide-open;
     @include screen(lg) {
       display: initial;
+
+      font-size: 3rem;
+      mix-blend-mode: overlay;
+      transform: translate(-1rem, -0.5rem);
     }
   }
   &__category {
@@ -70,12 +77,14 @@
     font-weight: 700;
     text-transform: none;
     grid-area: title;
+    clip-path: polygon(0 -2%, 100% -2%, 100% 100%, 0 100%);
   }
   &__date {
     font-family: $font--display;
     font-size: 1.3rem;
     align-self: end;
     grid-area: date;
+    clip-path: $clip-path-wide-open;
   }
   &__tags {
     @include wide-sans;

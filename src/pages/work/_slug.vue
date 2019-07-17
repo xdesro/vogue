@@ -17,6 +17,7 @@
 <script>
 import PostHeader from "~/components/PostHeader";
 export default {
+  transition: "project",
   components: { PostHeader },
   computed: {
     currentProject() {

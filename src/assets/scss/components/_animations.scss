@@ -1,9 +1,65 @@
 .page {
   &-enter-active,
   &-leave-active {
-    transition: opacity 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: opacity 0.5s $easing-slow;
   }
   &-enter,
+  &-leave-to {
+    opacity: 0;
+  }
+}
+
+.project {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity 0.5s $easing-slow;
+    .post {
+      &__header {
+        transition: clip-path 0.5s $easing-slow;
+      }
+      &__return-link,
+      &__section,
+      &__date {
+        transition: clip-path 0.3s $easing-slow;
+      }
+      &__return-link {
+        transition-delay: 0.7s;
+      }
+      &__section {
+        transition-delay: 0.8s;
+      }
+      &__date {
+        transition-delay: 0.9s;
+      }
+      &__title {
+        transition: clip-path 0.5s $easing-slow;
+        transition-delay: 0.5s;
+      }
+      &__content {
+        transition: all 0.3s $ease-out-circ;
+        transition-delay: 1.1s;
+      }
+    }
+  }
+  &-enter {
+    .post {
+      &__header {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      }
+      &__return-link,
+      &__section,
+      &__date {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+      }
+      &__title {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+      }
+      &__content {
+        transform: translateY(2rem);
+        opacity: 0;
+      }
+    }
+  }
   &-leave-to {
     opacity: 0;
   }
