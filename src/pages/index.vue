@@ -16,7 +16,7 @@
     <main class="index__content">
       <p class="index__purpose">interaction | animation | accessibility</p>
       <p class="index__date">Fall 2019</p>
-      <SpotifyWidget class="index__music" />
+      <!-- <SpotifyWidget class="index__music" /> -->
       <div class="index__status">
         <p class="index__location">denver, colorado</p>
         <p class="index__hireability">available for hire</p>
@@ -31,7 +31,7 @@
 <script>
 import { TweenLite } from "gsap";
 
-import SpotifyWidget from "~/components/SpotifyWidget";
+// import SpotifyWidget from "~/components/SpotifyWidget";
 
 export default {
   data() {
@@ -41,7 +41,7 @@ export default {
     };
   },
   components: {
-    SpotifyWidget
+    // SpotifyWidget
   },
   beforeDestroy() {
     document.removeEventListener("mousemove", this.handleMouseMove);

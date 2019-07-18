@@ -39,6 +39,9 @@ export default {
     /* eslint-disable no-undef */
     spot.setAccessToken(process.env.spotifyToken);
     spot.getMyRecentlyPlayedTracks({ limit: 1 }, (err, result) => {
+      if (err) {
+        console.log(err);
+      }
       const { track } = result.items[0];
       const { artists } = track;
       this.spotify.track = track.name;

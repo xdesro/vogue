@@ -59,7 +59,7 @@
     clip-path: $clip-path-wide-open;
     @include screen(lg) {
       display: initial;
-
+      pointer-events: none;
       font-size: 3rem;
       mix-blend-mode: overlay;
       transform: translate(-1rem, -0.5rem);

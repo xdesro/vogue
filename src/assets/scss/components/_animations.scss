@@ -35,9 +35,16 @@
         transition: clip-path 0.5s $easing-slow;
         transition-delay: 0.5s;
       }
-      &__content {
-        transition: all 0.3s $ease-out-circ;
-        transition-delay: 1.1s;
+      &__text {
+        * {
+          transition: all 0.7s $ease-out-circ;
+        }
+        @for $i from 1 through 20 {
+          :nth-child(#{$i}) {
+            transition-delay: #{1 + ($i / 10)}s;
+          }
+        }
+        // transition-delay: 1.1s;
       }
     }
   }
@@ -54,10 +61,49 @@
       &__title {
         clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
       }
-      &__content {
-        transform: translateY(2rem);
-        opacity: 0;
+      &__text {
+        * {
+          transform-origin: bottom center;
+          transform: translateY(2rem) scale(0.95);
+          opacity: 0;
+        }
       }
+    }
+  }
+  &-leave-to {
+    opacity: 0;
+  }
+}
+
+.about {
+  $this: &;
+  transition: opacity 0.5s $easing-slow;
+
+  &-enter-active,
+  &-leave-active {
+    .header,
+    #{$this}__subtitle,
+    #{$this}__profile-pic,
+    #{$this}__subtitle,
+    #{$this}__content,
+    #{$this}__logo {
+      transition: opacity 0.8s;
+    }
+    @for $i from 1 through 7 {
+      :nth-child(#{$i}) {
+        transition-delay: #{$i / 5}s;
+      }
+    }
+  }
+  &-enter {
+    opacity: 0.99999;
+    .header,
+    #{$this}__subtitle,
+    #{$this}__profile-pic,
+    #{$this}__subtitle,
+    #{$this}__content,
+    #{$this}__logo {
+      opacity: 0;
     }
   }
   &-leave-to {

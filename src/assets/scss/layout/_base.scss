@@ -8,8 +8,8 @@ body {
   min-height: 100vh;
   background-color: $color--contrast;
   overflow-x: hidden;
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="36" style="font-size: 2rem;font-family:GT Super;"><text y="24">†</text></svg>'),
-    auto;
+  // cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="36" style="font-size: 2rem;font-family:GT Super;"><text y="24">†</text></svg>'),
+  // auto;
 }
 .app {
   @include screen(md) {

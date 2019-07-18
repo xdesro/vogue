@@ -26,6 +26,7 @@
 <script>
 import PageHeader from "~/components/PageHeader";
 export default {
+  transition: "about",
   components: { PageHeader },
   computed: {
     person() {
