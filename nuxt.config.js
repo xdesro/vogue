@@ -25,13 +25,13 @@ export default {
       {
         hid: "description",
         name: "description",
+        itemprop: "description",
         content: pkg.headMeta.description
       },
       { name: "theme-color", content: pkg.headMeta.themeColor },
       { name: "msapplication-TileColor", content: pkg.headMeta.themeColor },
       { name: "image", content: pkg.headMeta.imageUrl },
       { itemprop: "name", content: pkg.headMeta.title },
-      { itemprop: "description", content: pkg.headMeta.description },
       { itemprop: "image", content: pkg.headMeta.imageUrl },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: pkg.headMeta.title },

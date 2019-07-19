@@ -23,6 +23,19 @@ export default {
       return this.$store.state.post.isLoading;
     }
   },
+  head() {
+    return {
+      title: `Henry Desroches | ${this.currentPost.fields.title}`,
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          itemprop: "description",
+          content: this.currentPost.fields.excerpt
+        }
+      ]
+    };
+  },
   async fetch({ store, params }) {
     await store.dispatch("post/getPostBySlug", params.slug);
   }

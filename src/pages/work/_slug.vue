@@ -27,6 +27,19 @@ export default {
       return this.$store.state.project.isLoading;
     }
   },
+  head() {
+    return {
+      title: `Henry Desroches | ${this.currentProject.fields.title}`,
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          itemprop: "description",
+          content: this.currentProject.fields.description
+        }
+      ]
+    };
+  },
   async fetch({ store, params }) {
     await store.dispatch("project/getProjectBySlug", params.slug);
   }
