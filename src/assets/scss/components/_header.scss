@@ -9,11 +9,12 @@
       font-size: 10vw;
     }
     @include screen(lg) {
-      width: 10vw;
       position: sticky;
       top: 7.5rem;
+      width: 10vw;
       margin: 0;
       transform: rotate(90deg) translateX(-5vw) translateY(10%);
+      white-space: nowrap;
     }
   }
 }
