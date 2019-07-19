@@ -107,6 +107,9 @@ h5 {
 strong {
   font-weight: 700;
 }
+em {
+  font-style: italic;
+}
 .text {
   &--display {
     font-family: $font--display;
