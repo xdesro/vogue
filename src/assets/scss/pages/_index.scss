@@ -39,6 +39,7 @@
       margin-left: -7vw;
       margin-bottom: 0;
       position: relative;
+      max-width: 100%;
     }
     &--wrap {
       padding-left: 0.7em;
@@ -84,7 +85,8 @@
       color: $color--neutral;
       text-transform: none;
       top: 0;
-      right: 3.5rem;
+      // right: 0;
+      right: -5.5rem;
       width: 12vw;
       height: 12vw;
       display: grid;

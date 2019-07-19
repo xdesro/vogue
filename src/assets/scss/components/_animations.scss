@@ -154,10 +154,10 @@
 
 .about {
   $this: &;
-  transition: opacity 0.5s $easing-slow;
-
   &-enter-active,
   &-leave-active {
+    transition: opacity 1s $easing-slow;
+
     .header,
     #{$this}__subtitle,
     #{$this}__profile-pic,
@@ -225,7 +225,8 @@
   &-enter-active,
   &-leave-active {
     transition: opacity 0.5s $easing-slow;
-    [class$="-list__item"] {
+    [class$="-list__item"],
+    .header {
       transition: opacity 0.5s $easing-slow;
       @for $i from 1 through 20 {
         &:nth-child(#{$i}) {
@@ -236,7 +237,8 @@
   }
   &-enter {
     opacity: 0.99999;
-    [class$="-list__item"] {
+    [class$="-list__item"],
+    .header {
       opacity: 0;
     }
   }
