@@ -35,6 +35,7 @@ import IconSocial from "~/components/icons/IconSocial";
 import PageHeader from "~/components/PageHeader";
 
 export default {
+  transition: "contact",
   components: {
     IconSocial,
     PageHeader

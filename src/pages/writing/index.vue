@@ -13,6 +13,7 @@
 import WritingListItem from "~/components/WritingListItem";
 import PageHeader from "~/components/PageHeader";
 export default {
+  transition: 'list-page',
   components: { WritingListItem, PageHeader },
   computed: {
     posts() {

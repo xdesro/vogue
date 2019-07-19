@@ -3,7 +3,12 @@
     <PageHeader title="Work" />
     <main class="main">
       <ul class="work-list">
-        <WorkListItem v-for="(project, index) in projects" :project="project" :key="index" :index="index" />
+        <WorkListItem
+          v-for="(project, index) in projects"
+          :project="project"
+          :key="index"
+          :index="index"
+        />
       </ul>
     </main>
   </div>
@@ -12,6 +17,7 @@
 import PageHeader from "~/components/PageHeader";
 import WorkListItem from "~/components/WorkListItem";
 export default {
+  transition: "list-page",
   components: { PageHeader, WorkListItem },
   computed: {
     projects() {

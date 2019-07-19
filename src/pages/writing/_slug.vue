@@ -3,7 +3,7 @@
     <PostHeader :post="currentPost" section="writing" />
     <main class="main post__content">
       <ul class="post__tags">
-        <li class="post__tag" v-for="(tag, index) in currentPost.fields.tags" :key="index">{{tag}}</li>
+        <li v-for="(tag, index) in currentPost.fields.tags" :key="index" class="post__tag">{{tag}}</li>
       </ul>
       <div class="post__text" v-html="$md.render(currentPost.fields.body)"></div>
     </main>
@@ -13,6 +13,7 @@
 <script>
 import PostHeader from "~/components/PostHeader";
 export default {
+  transition: "post",
   components: { PostHeader },
   computed: {
     currentPost() {
