@@ -15,7 +15,7 @@ export const actions = {
   async getProjects({ commit }) {
     const response = await client.getEntries({
       content_type: "project",
-      order: "-sys.createdAt"
+      order: "-fields.date"
     });
     if (response.items.length > 0) {
       commit("setProjects", response.items);

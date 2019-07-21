@@ -111,6 +111,18 @@ strong {
 em {
   font-style: italic;
 }
+
+blockquote {
+  border-left: 0.3rem solid $color--mid;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  color: $color--mid;
+  margin-block-end: 1rem;
+  p {
+    margin: 0;
+  }
+}
+
 .text {
   &--display {
     font-family: $font--display;

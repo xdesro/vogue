@@ -4,6 +4,8 @@
     grid-template-columns: 1fr 1fr;
   }
   @include screen(lg) {
+    transform-origin: 0 0;
+
     grid-auto-columns: 20rem;
     justify-content: start;
     height: 100%;
@@ -29,6 +31,7 @@
       }
     }
     @include screen(lg) {
+      transform-origin: 0 0;
       border-bottom: 0;
       display: grid;
       align-content: space-between;
@@ -80,6 +83,7 @@
     @include screen(md) {
       font-size: 0.6rem;
       margin-bottom: 2rem;
+      min-height: 3.6rem;
     }
   }
   &__link {

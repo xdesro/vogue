@@ -17,7 +17,7 @@
 import PageHeader from "~/components/PageHeader";
 import WorkListItem from "~/components/WorkListItem";
 export default {
-  transition: "list-page",
+  transition: "work-list-page",
   components: { PageHeader, WorkListItem },
   computed: {
     projects() {

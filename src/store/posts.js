@@ -15,7 +15,7 @@ export const actions = {
   async getPosts({ commit }) {
     const response = await client.getEntries({
       content_type: "blogPost",
-      order: "-sys.createdAt"
+      order: "-fields.publishDate"
     });
     if (response.items.length > 0) {
       commit("setPosts", response.items);
