@@ -1,6 +1,5 @@
 .header {
   @include container;
-  --translateX: 0vw;
   margin: 4rem 0 2rem;
   @include screen(md) {
     margin-top: 7.5rem;

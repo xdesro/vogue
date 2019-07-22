@@ -12,6 +12,7 @@ body {
   // auto;
 }
 .app {
+  --translateX: 0vw;
   @include screen(md) {
     display: grid;
     grid-auto-flow: column;
