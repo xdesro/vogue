@@ -64,7 +64,7 @@
         transform: translateX(calc(var(--translateX) * -2));
       }
       @include screen(lg) {
-        padding-left: 0.2em;
+        padding-left: 0.3em;
       }
       @media (prefers-reduced-motion: reduce) {
         transform: none;

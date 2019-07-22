@@ -36,3 +36,17 @@
   text-transform: uppercase;
   margin-bottom: 1em;
 }
+@mixin external-link-icon {
+  &[href^="http"] {
+    &:after {
+      content: "";
+      background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0iY3VycmVudENvbG9yIj4NCiAgPHBhdGggZD0iTTMgM3YxOGgxOHYtOWgtMnY3SDVWNWg3VjNIM3ptMTEgMHYyaDMuNTg2bC05LjI5MyA5LjI5MyAxLjQxNCAxLjQxNEwxOSA2LjQxNFYxMGgyVjNoLTd6IiBmb250LXdlaWdodD0iNDAwIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgd2hpdGUtc3BhY2U9Im5vcm1hbCIgb3ZlcmZsb3c9InZpc2libGUiLz4NCjwvc3ZnPg==");
+      opacity: 0.5;
+      background-size: cover;
+      width: 1em;
+      height: 1em;
+      margin-left: 0.2em;
+      display: inline-block;
+    }
+  }
+}

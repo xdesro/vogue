@@ -78,7 +78,7 @@
     font-weight: 700;
     text-transform: none;
     grid-area: title;
-    clip-path: polygon(0 -2%, 100% -2%, 100% 100%, 0 100%);
+    clip-path: $clip-path-extended;
   }
   &__date {
     font-family: $font--display;
@@ -120,6 +120,9 @@
   }
   &__content {
     @include container;
+    a {
+      @include external-link-icon;
+    }
     display: grid;
     max-width: 100%;
     margin: 0 auto;

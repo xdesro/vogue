@@ -1,8 +1,14 @@
 .header {
   @include container;
+  --translateX: 0vw;
   margin: 4rem 0 2rem;
   @include screen(md) {
     margin-top: 7.5rem;
+  }
+  @include screen(lg) {
+    overflow: hidden;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   &__title {
     @include screen(md) {
@@ -10,11 +16,26 @@
     }
     @include screen(lg) {
       position: sticky;
-      top: 7.5rem;
+      top: 1em;
       width: 10vw;
       margin: 0;
-      transform: rotate(90deg) translateX(-5vw) translateY(10%);
+      transform: rotate(90deg) translateX(calc(-5vw - var(--translateX)))
+        translateY(10%);
       white-space: nowrap;
+      &:before,
+      &:after {
+        position: absolute;
+        opacity: 0.2;
+      }
+      &:before {
+        content: attr(data-title) "—";
+        left: 0;
+        transform: translateX(-100%);
+      }
+      &:after {
+        content: attr(data-title) "—" attr(data-title) "—" attr(data-title) "—"
+          attr(data-title) "—";
+      }
     }
   }
 }

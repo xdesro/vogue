@@ -126,16 +126,16 @@ export default {
           containerClass: "post__toc",
           listType: "ol"
         }
-      ],
-      [
-        "markdown-it-anchor",
-        {
-          permalink: true,
-          permalinkBefore: true,
-          permalinkSymbol: "§",
-          level: [2]
-        }
       ]
+      // [
+      //   "markdown-it-anchor",
+      //   {
+      //     permalink: true,
+      //     permalinkBefore: true,
+      //     permalinkSymbol: "§",
+      //     level: [2]
+      //   }
+      // ]
     ],
     highlight: (code, lang) => {
       /* eslint-disable no-undef */
