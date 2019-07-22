@@ -55,6 +55,7 @@
     font-weight: 200;
     display: none;
     text-transform: uppercase;
+    margin: 0;
     grid-area: section;
     clip-path: $clip-path-wide-open;
     @include screen(lg) {

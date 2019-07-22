@@ -7,6 +7,7 @@ Generated with Base16 Builder (https://github.com/base16-builder/base16-builder)
 
 pre {
   filter: grayscale(1);
+  margin-block-end: 1rem;
 }
 code {
   font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono",
@@ -22,7 +23,6 @@ code[class*="language-"] {
     "Courier New", Courier, monospace;
   font-size: 14px;
   line-height: 1.375;
-  direction: ltr;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -34,21 +34,20 @@ code[class*="language-"] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-  background: #2a2734;
   color: #9a86fd;
+  background: #2a2734;
+  direction: ltr;
 }
 
 pre {
-  padding: 1em;
-  margin: 0.5em 0;
-  overflow: auto;
   font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono",
     "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
     "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L",
     "Courier New", Courier, monospace;
   font-size: 14px;
   line-height: 1.375;
-  direction: ltr;
+  overflow: auto;
+  padding: 1em;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -60,36 +59,37 @@ pre {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-  background: #2a2734;
   color: #9a86fd;
+  background: #2a2734;
+  direction: ltr;
   &::-moz-selection,
   ::-moz-selection {
-    text-shadow: none;
     background: #6a51e6;
+    text-shadow: none;
   }
 }
 
 code[class*="language-"] {
   &::-moz-selection,
   ::-moz-selection {
-    text-shadow: none;
     background: #6a51e6;
+    text-shadow: none;
   }
 }
 
 pre[class*="language-"] {
   &::selection,
   ::selection {
-    text-shadow: none;
     background: #6a51e6;
+    text-shadow: none;
   }
 }
 
 code[class*="language-"] {
   &::selection,
   ::selection {
-    text-shadow: none;
     background: #6a51e6;
+    text-shadow: none;
   }
 }
 
@@ -171,8 +171,8 @@ code {
     text-decoration: line-through;
   }
   &.inserted {
-    border-bottom: 1px dotted #eeebff;
     text-decoration: none;
+    border-bottom: 1px dotted #eeebff;
   }
   &.italic {
     font-style: italic;
