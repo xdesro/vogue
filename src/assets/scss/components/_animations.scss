@@ -78,7 +78,7 @@
 .post {
   &-enter-active,
   &-leave-active {
-    transition: opacity 0.5s $easing-slow;
+    transition: opacity 2s $easing-slow;
     .post {
       &__header {
         transition: clip-path 0.5s $easing-slow;
@@ -120,6 +120,9 @@
         }
       }
     }
+  }
+  &-leave-active {
+    transition-duration: 0.5s;
   }
   &-enter {
     .post {
@@ -255,7 +258,7 @@
   @include screen(lg) {
     &-enter-active,
     &-leave-active {
-      transition: opacity 0.5s $easing-slow;
+      transition: opacity 2s $easing-slow;
       .header {
         transition: opacity 0.5s $easing-slow;
       }
@@ -276,6 +279,9 @@
           }
         }
       }
+    }
+    &-leave-active {
+      transition-duration: 0.5s;
     }
     &-enter {
       opacity: 0.99999;

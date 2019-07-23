@@ -21,7 +21,6 @@ export default {
     document.removeEventListener("mousemove", this.handleMouseMove);
   },
   mounted() {
-    console.log("test");
     document.addEventListener("mousemove", this.handleMouseMove);
     this.$nextTick(() => {
       TweenLite.ticker.addEventListener("tick", this.updateAnimation);
