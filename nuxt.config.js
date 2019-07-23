@@ -18,6 +18,9 @@ export default {
     linkExactActiveClass: "nav__link--active"
   },
   head: {
+    htmlAttrs: {
+      lang: "en"
+    },
     title: pkg.headMeta.title,
     meta: [
       { charset: "utf-8" },
