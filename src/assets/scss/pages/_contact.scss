@@ -16,6 +16,9 @@
   &__content {
     grid-area: text;
     align-self: end;
+    p {
+      line-height: 1.3;
+    }
     @include screen(lg) {
       margin-bottom: 0;
     }

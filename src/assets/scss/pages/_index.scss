@@ -144,10 +144,8 @@
       align-self: end;
     }
   }
-
   &__accent-pic-container {
     display: none;
-
     @include screen(md) {
       display: block;
       grid-column: span 1;
@@ -155,7 +153,6 @@
     @include screen(lg) {
       position: relative;
       z-index: -1;
-      z-index: 1;
       overflow: hidden;
       min-height: 50vh;
       margin-top: -16%;

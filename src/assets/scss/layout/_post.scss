@@ -76,6 +76,7 @@
     text-transform: none;
     grid-area: title;
     clip-path: $clip-path-extended;
+    max-width: 60ch;
   }
   &__date {
     font-family: $font--display;
@@ -83,6 +84,7 @@
     align-self: end;
     grid-area: date;
     clip-path: $clip-path-wide-open;
+    text-transform: uppercase;
   }
   &__tags {
     @include wide-sans;

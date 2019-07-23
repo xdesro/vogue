@@ -35,8 +35,11 @@ $grid-row-gap: 1.5rem;
   &__description {
     color: $color--mid;
     @include screen(lg) {
-      font-size: 0.6rem;
+      font-size: 0.8rem;
       margin-bottom: 0;
+      p {
+        line-height: 1.3;
+      }
     }
   }
 }
@@ -67,7 +70,7 @@ $grid-row-gap: 1.5rem;
     font-weight: 700;
     @include screen(lg) {
       margin-bottom: 0;
-      font-size: 0.6rem;
+      font-size: 0.8rem;
     }
   }
 }

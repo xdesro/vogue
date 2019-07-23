@@ -32,12 +32,21 @@
     }
     @include screen(lg) {
       transform-origin: 0 0;
+      @include border(right);
       border-bottom: 0;
       display: grid;
-      align-content: space-between;
+      align-items: end;
       padding-left: 2rem;
       padding-right: 2rem;
-      @include border(right);
+      grid-template-rows: auto 1fr;
+    }
+  }
+  &__item-lower {
+    @include screen(lg) {
+      min-height: 50vh;
+      display: grid;
+      align-content: start;
+      grid-template-rows: auto auto 1fr;
     }
   }
   &__counter {
@@ -81,9 +90,7 @@
     max-width: 24rem;
     font-style: italic;
     @include screen(md) {
-      font-size: 0.6rem;
-      margin-bottom: 2rem;
-      min-height: 3.6rem;
+      font-size: 0.8rem;
     }
   }
   &__link {

@@ -8,6 +8,7 @@
   @include screen(lg) {
     margin-top: 7.5rem;
     margin-bottom: 7.5rem;
+    grid-gap: 4rem;
   }
   &__item {
     display: grid;
@@ -31,6 +32,7 @@
     font-weight: 200;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    color: $color--mid;
     @include screen(lg) {
       width: 3.5rem;
       grid-column: unset;
@@ -87,6 +89,10 @@
     font-family: $font--display;
     font-weight: 700;
     line-height: 1;
+    @include screen(lg) {
+      font-size: 2.6rem;
+      max-width: 30ch;
+    }
   }
   &__tags {
     font-size: 0.9rem;

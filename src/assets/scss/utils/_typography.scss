@@ -59,11 +59,13 @@ a {
 
 p {
   font-weight: 400;
-  line-height: 1.3;
+  line-height: 1.5;
   letter-spacing: -0.014em;
   margin-block-end: 1rem;
 }
-
+li {
+  line-height: 1.5;
+}
 h1 {
   font-family: $font--display;
   font-size: 3.1rem;
