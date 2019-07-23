@@ -161,13 +161,14 @@
       min-height: 50vh;
       z-index: 1;
       overflow: hidden;
+      margin-bottom: -2rem;
       &:before,
       &:after {
         content: "";
         background-image: url("~assets/img/sky.jpg");
         background-repeat: no-repeat;
         position: absolute;
-        top: 0;
+        bottom: 0;
         left: 0;
         mix-blend-mode: multiply;
         background-size: cover;
@@ -186,6 +187,7 @@
       }
       img {
         width: 100%;
+        bottom: 0;
         object-fit: cover;
         position: absolute;
       }
