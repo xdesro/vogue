@@ -4,7 +4,6 @@
   </header>
 </template>
 <script>
-import { TweenLite } from "gsap";
 export default {
   props: ["title"]
 };

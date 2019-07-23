@@ -1,5 +1,9 @@
 .nav {
   @include border(bottom);
+  font-size: 0.9rem;
+  @include screen(sm) {
+    font-size: 1rem;
+  }
   @include screen(md) {
     border-bottom: none;
     @include border(right);

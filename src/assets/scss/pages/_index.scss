@@ -8,18 +8,20 @@
     align-content: center;
   }
   @include screen(lg) {
+    height: 100vh;
+    overflow: hidden;
     grid-template-columns: repeat(5, 1fr);
     align-content: start;
     grid-template-rows: auto 1fr;
   }
   &__logo {
-    width: 50%;
+    width: 40%;
     margin: 2rem 0;
     @include screen(sm) {
       max-width: 16rem;
-      margin: 0;
     }
     @include screen(md) {
+      margin: 0;
       width: 20vw;
     }
     @include screen(lg) {
@@ -106,15 +108,15 @@
   }
   &__content {
     display: grid;
-    color: $color--mid;
-    grid-template-areas: "purpose" "status" "date";
+    // color: $color--mid;
+    grid-template-areas: "purpose" "location" "date";
     @include screen(md) {
       grid-column: 1 / span 3;
-      grid-template-areas: "purpose date" ". status";
+      grid-template-areas: "purpose date" ". location";
     }
   }
   &__date {
-    color: $color--neutral;
+    // color: $color--neutral;
     grid-area: date;
     font-weight: 700;
     text-transform: uppercase;
@@ -122,26 +124,30 @@
       text-align: right;
     }
   }
-  &__status {
-    grid-area: status;
-    @include screen(md) {
-      text-align: right;
-      align-self: end;
-    }
+  &__hire {
+    font-family: $font--display;
+    grid-area: purpose;
+    color: $color--mid;
   }
-  &__location {
-    margin: 0;
-    @include screen(lg) {
-      margin-bottom: 1em;
-    }
-  }
+
   &__hireability {
     font-style: italic;
     @include screen(md) {
       margin: 0;
     }
   }
-  &__profile-pic-container {
+  &__location {
+    grid-area: location;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    @include screen(md) {
+      text-align: right;
+      align-self: end;
+    }
+  }
+
+  &__accent-pic-container {
     display: none;
     @include screen(md) {
       grid-column: span 1;
@@ -152,7 +158,35 @@
       margin-top: -16%;
       z-index: -1;
       position: relative;
+      min-height: 50vh;
+      z-index: 1;
+      overflow: hidden;
+      &:before,
+      &:after {
+        content: "";
+        background-image: url("~assets/img/sky.jpg");
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 0;
+        left: 0;
+        mix-blend-mode: multiply;
+        background-size: cover;
+        z-index: 2;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      &:before {
+        transform: translateX(calc(var(--translateX) / 2));
+        filter: sepia(1) hue-rotate(-76deg);
+      }
+      &:after {
+        transform: translateX(calc(var(--translateX) / -2));
+        filter: sepia(1) hue-rotate(130deg);
+      }
       img {
+        width: 100%;
+        object-fit: cover;
         position: absolute;
       }
     }

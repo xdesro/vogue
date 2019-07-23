@@ -14,16 +14,18 @@
       </p>
     </header>
     <main class="index__content">
-      <p class="index__purpose">interaction | animation | accessibility</p>
+      <div class="index__hire">
+        <p class="index__purpose">interaction & animation & accessibility</p>
+        <p class="index__hireability">
+          <nuxt-link to="/contact">available for full-time hire</nuxt-link>
+        </p>
+      </div>
       <p class="index__date">Fall 2019</p>
       <!-- <SpotifyWidget class="index__music" /> -->
-      <div class="index__status">
-        <p class="index__location">denver, colorado</p>
-        <p class="index__hireability">available for hire</p>
-      </div>
+      <p class="index__location">denver, colorado</p>
     </main>
-    <div class="index__profile-pic-container">
-      <img src="~/assets/img/spooky-profile-pic.png" alt class="index__profile-pic" />
+    <div class="index__accent-pic-container">
+      <img src="~/assets/img/sky.jpg" alt class="index__accent-pic" />
     </div>
   </div>
 </template>

@@ -70,6 +70,7 @@
   }
   &__content {
     @include screen(lg) {
+      font-size: 0.9rem;
       grid-row: 2;
       grid-column: 1;
     }
