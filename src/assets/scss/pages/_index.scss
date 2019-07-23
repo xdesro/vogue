@@ -1,67 +1,57 @@
 .index {
-  display: grid;
-  $p: &;
   @include screen(md) {
-    grid-template-columns: repeat(4, 1fr);
     padding: 2rem;
+    grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 1rem;
     align-content: center;
   }
   @include screen(lg) {
-    height: 100vh;
     overflow: hidden;
+    height: 100vh;
     grid-template-columns: repeat(5, 1fr);
     align-content: start;
     grid-template-rows: auto 1fr;
   }
+  $p: &;
+  display: grid;
   &__logo {
-    width: 40%;
-    margin: 2rem 0;
     @include screen(sm) {
       max-width: 16rem;
     }
     @include screen(md) {
-      margin: 0;
       width: 20vw;
+      margin: 0;
     }
     @include screen(lg) {
       display: none;
     }
+    width: 40%;
+    margin: 2rem 0;
   }
   &__header {
-    margin-bottom: 2rem;
-    font-size: 3.1rem;
     @include screen(md) {
       font-size: 10vw;
       grid-column: 2 / span 2;
     }
     @include screen(lg) {
-      grid-column: 1 / -1;
       font-size: 18vw;
-      margin-left: -7vw;
-      margin-bottom: 0;
       position: relative;
       max-width: 100%;
+      margin-bottom: 0;
+      margin-left: -7vw;
+      grid-column: 1 / -1;
     }
+    font-size: 3.1rem;
+    margin-bottom: 2rem;
     &--wrap {
       padding-left: 0.7em;
     }
   }
   &__role {
     font-family: $font--display;
-    text-transform: uppercase;
     line-height: 0.9;
-    @include screen(md) {
-      transform: translateX(var(--translateX));
-    }
-    @include screen(lg) {
-      margin: 0;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      transform: none;
-    }
+    text-transform: uppercase;
     #{$p}__header--wrap {
-      display: inline-block;
       @include screen(md) {
         transform: translateX(calc(var(--translateX) * -2));
       }
@@ -71,44 +61,53 @@
       @media (prefers-reduced-motion: reduce) {
         transform: none;
       }
+      display: inline-block;
+    }
+    @include screen(md) {
+      transform: translateX(var(--translateX));
+    }
+    @include screen(lg) {
+      margin: 0;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      transform: none;
     }
   }
   &__name {
-    color: $color--mid;
     font-size: 3.1rem;
+    color: $color--mid;
     @include screen(md) {
       font-size: 10vw;
     }
     @include screen(lg) {
-      position: absolute;
       font-family: $font--sans;
-      font-weight: 700;
       font-size: 2vw;
-      color: $color--neutral;
-      text-transform: none;
+      font-weight: 700;
+      position: absolute;
       top: 0;
       right: -5.5rem;
+      display: grid;
       width: 12vw;
       height: 12vw;
-      display: grid;
-      align-content: end;
       padding: 0.2em;
+      text-transform: none;
+      color: $color--neutral;
       border: 0.2em solid $color--neutral;
+      align-content: end;
       #{$p}__header--wrap {
         padding-left: 0;
       }
       &:before {
-        content: "";
         height: 7vw;
+        content: "";
         background-image: url("~assets/img/icon-logo.png");
-        background-size: contain;
         background-repeat: no-repeat;
+        background-size: contain;
       }
     }
   }
   &__content {
     display: grid;
-    // color: $color--mid;
     grid-template-areas: "purpose" "location" "date";
     @include screen(md) {
       grid-column: 1 / span 3;
@@ -116,18 +115,17 @@
     }
   }
   &__date {
-    // color: $color--neutral;
-    grid-area: date;
     font-weight: 700;
     text-transform: uppercase;
+    grid-area: date;
     @include screen(md) {
       text-align: right;
     }
   }
   &__hire {
     font-family: $font--display;
-    grid-area: purpose;
     color: $color--mid;
+    grid-area: purpose;
   }
 
   &__hireability {
@@ -137,10 +135,10 @@
     }
   }
   &__location {
-    grid-area: location;
+    font-weight: 700;
     margin: 0;
     text-transform: uppercase;
-    font-weight: 700;
+    grid-area: location;
     @include screen(md) {
       text-align: right;
       align-self: end;
@@ -149,47 +147,50 @@
 
   &__accent-pic-container {
     display: none;
+
     @include screen(md) {
-      grid-column: span 1;
       display: block;
+      grid-column: span 1;
     }
     @include screen(lg) {
-      grid-column: span 2;
-      margin-top: -16%;
-      z-index: -1;
       position: relative;
-      min-height: 50vh;
+      z-index: -1;
       z-index: 1;
       overflow: hidden;
+      min-height: 50vh;
+      margin-top: -16%;
       margin-bottom: -2rem;
+      grid-column: span 2;
       &:before,
       &:after {
-        content: "";
-        background-image: url("~assets/img/sky.jpg");
-        background-repeat: no-repeat;
         position: absolute;
-        bottom: 0;
-        left: 0;
-        mix-blend-mode: multiply;
-        background-size: cover;
         z-index: 2;
+        top: 50%;
+        left: 0;
         display: block;
         width: 100%;
         height: 100%;
+        content: "";
+        background-image: url("~assets/img/sky.jpg");
+        background-repeat: no-repeat;
+        background-position: 0 100%;
+        background-size: 100%;
+        mix-blend-mode: multiply;
       }
       &:before {
-        transform: translateX(calc(var(--translateX) / 2));
-        filter: sepia(1) hue-rotate(-76deg);
+        transform: translateY(-50%) translateX(calc(var(--translateX) / 2));
+        filter: brightness(110%) sepia(1) hue-rotate(-76deg);
       }
       &:after {
-        transform: translateX(calc(var(--translateX) / -2));
-        filter: sepia(1) hue-rotate(130deg);
+        transform: translateY(-50%) translateX(calc(var(--translateX) / -2));
+        filter: brightness(110%) sepia(1) hue-rotate(130deg);
       }
       img {
-        width: 100%;
-        bottom: 0;
-        object-fit: cover;
+        // object-fit: cover;
         position: absolute;
+        bottom: 0;
+        width: auto;
+        max-width: 100%;
       }
     }
   }
