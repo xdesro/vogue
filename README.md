@@ -4,7 +4,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0c642719-192c-477e-9f05-f1ef8ed9d5f8/deploy-status)](https://app.netlify.com/sites/jolly-heyrovsky-35ce11/deploys)
 
-Wow, just a truly tremendous portfolio/resume/personal site for Denver-based creative developer Henry Desroches. Inspired by editorial fashion print layouts. Really something. [Looking for a resume](https://github.com/xdesro/resume)?
+Wow, just a truly tremendous portfolio/resume/personal site for Denver-based creative developer and UX engineer Henry Desroches. Inspired by editorial fashion print layouts. Really something. [Looking for a resume](https://github.com/xdesro/resume)?
 
 ## 📝 Colophon
 
@@ -33,3 +33,7 @@ $ npm run ✨ # nuxt
 ```bash
 $ npm run 📦 # nuxt generate
 ```
+
+## 🗣 Attribution
+
+Thanks to all the fantastic feedback and advice from Tatiana Mac, Scott Kellum, Brijan Powell, Tregg Frank, Seah Chickering-Burchesky, and Rayna Kunzman. Also special thanks to the **Know Your Worth** crew.
