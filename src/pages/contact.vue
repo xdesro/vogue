@@ -11,7 +11,7 @@
             <div class="contact-list__description" v-html="$md.render(link.fields.description)" />
           </a>
         </li>
-        <li class="contact-list__item">
+        <li class="contact__list-item">
           <ul class="additional-links-list">
             <li
               class="additional-links-list__item"

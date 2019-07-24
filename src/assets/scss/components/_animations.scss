@@ -152,7 +152,6 @@
     opacity: 0;
   }
 }
-
 .about {
   $this: &;
   &-enter-active,
@@ -203,8 +202,7 @@
     .header,
     #{$this}__content,
     #{$this}__list-item,
-    #{$this}__accent-img,
-    .additional-links-list {
+    #{$this}__accent-img {
       transition: opacity 0.8s;
     }
     #{$this}__accent-img {
@@ -227,8 +225,7 @@
     #{$this}__accent-img,
     #{$this}__content,
     #{$this}__list-item,
-    #{$this}__accent-img,
-    .additional-links-list {
+    #{$this}__accent-img {
       opacity: 0;
     }
   }
