@@ -1,5 +1,6 @@
 .about {
   @include container;
+  padding-bottom: 4rem;
   @include screen(sm) {
     display: grid;
     grid-template-areas:

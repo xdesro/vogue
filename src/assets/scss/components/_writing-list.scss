@@ -2,6 +2,7 @@
   $this: &;
   display: grid;
   grid-gap: 2rem;
+  padding-bottom: 4rem;
   @include screen(md) {
     margin: 0 1rem;
     padding-top: 2rem;

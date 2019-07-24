@@ -13,6 +13,7 @@ body {
 .app {
   background-color: $color--contrast;
   --translateX: 0vw;
+  min-height: 100vh;
   @include screen(md) {
     display: grid;
     grid-auto-flow: column;

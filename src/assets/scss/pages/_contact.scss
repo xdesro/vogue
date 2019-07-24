@@ -1,6 +1,8 @@
 .layout {
   &--contact {
     .main {
+      padding-bottom: 4rem;
+
       @include screen(md) {
         padding-top: 2rem;
       }
