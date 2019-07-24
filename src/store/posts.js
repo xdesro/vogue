@@ -18,6 +18,10 @@ export const actions = {
       order: "-fields.publishDate"
     });
     if (response.items.length > 0) {
+      response.items.forEach(item => {
+        item.fields.slug = `writing/${item.fields.slug}`;
+        console.log(item.fields.slug);
+      });
       commit("setPosts", response.items);
     }
   }

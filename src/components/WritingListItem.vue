@@ -2,12 +2,12 @@
   <li class="writing-list__item">
     <nuxt-link
       class="writing-list__link writing-list__link--external"
-      :to="`writing/${post.fields.slug}`"
+      :to="post.fields.slug"
     >view the post—</nuxt-link>
     <p class="writing-list__date">{{postDate}}</p>
     <div class="writing-list__image-container">
       <img
-        :src="`https://${post.fields.heroImage.fields.file.url}?w=500&fm=webp`"
+        :src="`https:${post.fields.heroImage.fields.file.url}?w=500`"
         :alt="post.fields.heroImage.fields.description"
         class="writing-list__image"
       />

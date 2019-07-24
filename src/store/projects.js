@@ -18,6 +18,9 @@ export const actions = {
       order: "-fields.date"
     });
     if (response.items.length > 0) {
+      response.items.forEach(item => {
+        item.fields.slug = `work/${item.fields.slug}`;
+      });
       commit("setProjects", response.items);
     }
   }
