@@ -1,6 +1,6 @@
 <template>
   <div class="container index">
-    <img class="index__logo" src="~/assets/img/icon-logo.svg" />
+    <img class="index__logo" src="~/assets/img/icon-logo.svg" alt role="presentation" />
     <header class="index__header">
       <h1 class="index__name">
         Henry
