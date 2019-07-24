@@ -44,6 +44,18 @@ h2 {
   margin-bottom: var(--line-height);
   margin-left: calc(var(--h2-size) / -26);
   letter-spacing: -0.03em;
+  position: relative;
+  .post__text & {
+    &:after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-image: linear-gradient(to right, $color--mid, transparent);
+    }
+  }
 }
 h3 {
   font-size: var(--h3-size);

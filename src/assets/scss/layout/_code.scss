@@ -1,10 +1,27 @@
-/*
-Name: Duotone Dark
-Author: Simurai, adapted from DuoTone themes for Atom (http://simurai.com/projects/2016/01/01/duotone-themes)
-Conversion: Bram de Haan (http://atelierbram.github.io/Base2Tone-prism/output/prism/prism-base2tone-evening-dark.css)
-Generated with Base16 Builder (https://github.com/base16-builder/base16-builder)
-*/
+.codepen {
+  position: relative;
+  background: $color--neutral;
+  background-image: repeating-linear-gradient(
+    45deg,
+    $color--mid,
+    transparent 1px,
+    transparent 1rem,
+    $color--mid 1rem
+  );
 
+  &:before {
+    font-size: 1.3rem;
+    font-weight: 700;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    margin-top: 10px;
+    padding: 2rem;
+    content: "🚧 There should be a CodePen embed here... 🤔";
+    color: $color--contrast;
+    opacity: 0.9;
+  }
+}
 pre {
   filter: grayscale(1);
   margin-block-end: 1rem;

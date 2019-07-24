@@ -33,7 +33,8 @@ export default {
           itemprop: "description",
           content: this.currentPost.fields.excerpt
         }
-      ]
+      ],
+      script: [{ src: "https://static.codepen.io/assets/embed/ei.js" }]
     };
   },
   async fetch({ store, params }) {
