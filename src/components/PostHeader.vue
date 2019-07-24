@@ -7,7 +7,11 @@
       <h1 class="post__title">{{ post.fields.title }}</h1>
       <p class="post__category" v-if="category">{{ category }}</p>
     </div>
-    <img class="post__hero-image" :src="post.fields.heroImage.fields.file.url" alt />
+    <img
+      class="post__hero-image"
+      :src="post.fields.heroImage.fields.file.url"
+      :alt="post.fields.heroImage.fields.description"
+    />
   </header>
 </template>
 

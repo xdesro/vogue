@@ -1,6 +1,9 @@
 .layout {
   &--contact {
     .main {
+      @include screen(md) {
+        padding-top: 2rem;
+      }
       @include screen(lg) {
         display: grid;
         grid-template-columns: 3.7fr 4.7fr;

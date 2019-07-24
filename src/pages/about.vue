@@ -5,7 +5,7 @@
       <figure class="main__img about__profile-pic">
         <img src="~/assets/img/spooky-profile-pic.png" alt="Henry Desroches lookin' spooky." />
       </figure>
-      <img class="about__logo" src="~/assets/img/icon-logo.svg" alt />
+      <img class="about__logo" src="~/assets/img/icon-logo.svg" alt role="presentation" />
       <h2 class="about__subtitle">
         Hey there, I'm
         <br />

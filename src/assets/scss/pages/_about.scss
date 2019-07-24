@@ -8,6 +8,9 @@
     grid-template-columns: 1.3fr 1fr;
     grid-column-gap: 1rem;
   }
+  @include screen(md) {
+    padding-top: 2rem;
+  }
   @include screen(lg) {
     grid-template-areas: unset;
     grid-template-columns: repeat(3, 1fr);
@@ -57,6 +60,7 @@
     text-transform: uppercase;
     line-height: 0.9em;
     align-self: end;
+    margin-top: 0;
     @include screen(lg) {
       grid-column: 1 / span 3;
       grid-row: 1;

@@ -4,6 +4,7 @@
   grid-gap: 2rem;
   @include screen(md) {
     margin: 0 1rem;
+    padding-top: 2rem;
   }
   @include screen(lg) {
     margin-top: 7.5rem;
