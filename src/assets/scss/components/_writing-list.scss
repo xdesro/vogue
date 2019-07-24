@@ -46,12 +46,10 @@
     grid-column: 1;
     overflow: hidden;
     grid-row: 1 / span 2;
-
+    position: relative;
     @include screen(lg) {
       grid-row: unset;
       grid-column: unset;
-      position: relative;
-
       &:after {
         content: "";
         position: absolute;
@@ -108,7 +106,6 @@
   }
   &__tag {
     display: inline-block;
-    // margin-left: 0.5rem;
     &:not(:last-child):after {
       content: "—";
       margin: 0 0.2rem;
