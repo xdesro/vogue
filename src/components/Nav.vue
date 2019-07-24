@@ -2,14 +2,10 @@
   <nav class="nav">
     <ul class="nav__list">
       <li class="nav__list-item">
-        <nuxt-link class="nav__link nav__link--no-decoration" to="/">
-          <span class="nav__link-text">/</span>
+        <nuxt-link class="nav__link nav__link--no-decoration" to="/" aria-label="home page">
           <IconLogo class="nav__link-icon" />
         </nuxt-link>
       </li>
-      <!-- <li class="nav__list-item" v-for="(route, index) in routes" :key="index">
-        <nuxt-link class="nav__link" :to="route.path">{{route.name}}</nuxt-link>
-      </li>-->
       <li class="nav__list-item">
         <nuxt-link class="nav__link" to="/work">Work</nuxt-link>
       </li>
