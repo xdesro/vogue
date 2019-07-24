@@ -22,7 +22,7 @@
     height: 100%;
     margin: 0 auto;
     padding: 2rem;
-    color: $color--contrast;
+    color: $color--contrast-overlay;
     grid-column-gap: 1rem;
     grid-template-areas: "link" "date" "category" "title";
     @include screen(lg) {

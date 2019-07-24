@@ -12,10 +12,6 @@ $breakpoints: (
 );
 
 :root {
-  --color--neutral: hsl(0, 0%, 1%);
-  --color--mid: hsl(0, 0%, 41%);
-  --color--contrast: hsl(0, 0%, 95%);
-
   --font-size: 18px;
   --line-height: calc(var(--font-size) * 1.5);
   --baseline: calc(var(--line-height) / 2);
@@ -25,9 +21,29 @@ $breakpoints: (
   --h3-size: 1.4rem;
   --h4-size: 1.1rem;
 }
+html {
+  --color--neutral: hsl(0, 0%, 1%);
+  --color--mid: hsl(0, 0%, 41%);
+  --color--contrast: hsl(0, 0%, 95%);
+
+  --color--neutral-overlay: hsl(0, 0%, 1%);
+  --color--mid-overlay: hsl(0, 0%, 41%);
+  --color--contrast-overlay: hsl(0, 0%, 95%);
+  &[dark] {
+    --color--neutral: hsl(0, 0%, 95%);
+    --color--mid: hsl(0, 0%, 60%);
+    --color--contrast: hsl(0, 0%, 1%);
+
+    --filter-invert: invert(1);
+  }
+}
 $color--neutral: var(--color--neutral);
 $color--mid: var(--color--mid);
 $color--contrast: var(--color--contrast);
+
+$color--neutral-overlay: var(--color--neutral-overlay);
+$color--mid-overlay: var(--color--mid-overlay);
+$color--contrast-overlay: var(--color--contrast-overlay);
 
 $nav-size: 3.3rem;
 
