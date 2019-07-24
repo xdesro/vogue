@@ -1,10 +1,10 @@
 $main-icon-size: 1.3rem;
 $grid-column-gap: 1.3rem;
-$grid-row-gap: 1.5rem;
+$grid-row-gap: 1rem;
 .contact-list {
   margin-top: 3.5rem;
   display: grid;
-  grid-row-gap: 1.5rem;
+  grid-row-gap: $grid-row-gap;
   max-width: 24rem;
   @include screen(sm) {
     grid-template-columns: 1fr 1fr;
