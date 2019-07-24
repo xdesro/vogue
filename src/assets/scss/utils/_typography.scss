@@ -87,7 +87,11 @@ blockquote {
     margin: 0;
   }
 }
-
+ol {
+  &.toc {
+    list-style-type: upper-roman;
+  }
+}
 .text {
   &--display {
     font-family: $font--display;
