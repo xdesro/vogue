@@ -9,7 +9,7 @@
     </div>
     <img
       class="post__hero-image"
-      :src="`https://${post.fields.heroImage.fields.file.url}?w=1500&h=750&fm=jpg&fl=progressive`"
+      :src="`https://${post.fields.heroImage.fields.file.url}?w=1500&h=750&fm=webp`"
       :alt="post.fields.heroImage.fields.description"
     />
   </header>

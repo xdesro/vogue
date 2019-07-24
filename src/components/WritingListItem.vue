@@ -7,7 +7,7 @@
     <p class="writing-list__date">{{postDate}}</p>
     <div class="writing-list__image-container">
       <img
-        :src="`https://${post.fields.heroImage.fields.file.url}?w=500&fm=jpg&fl=progressive`"
+        :src="`https://${post.fields.heroImage.fields.file.url}?w=500&fm=webp`"
         :alt="post.fields.heroImage.fields.description"
         class="writing-list__image"
       />
