@@ -25,7 +25,6 @@
         @include border(right);
       }
       &:nth-of-type(-n + 2) {
-        // @include border(top);
         @include screen(lg) {
           border-top: 0;
         }

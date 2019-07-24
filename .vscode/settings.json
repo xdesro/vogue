@@ -1,4 +1,5 @@
 {
   "editor.formatOnSave": true,
-  "vetur.validation.template": false
+  "vetur.validation.template": false,
+  "stylelint.enable": true
 }

@@ -22,16 +22,7 @@
     opacity: 0.9;
   }
 }
-pre {
-  filter: grayscale(1);
-  margin-block-end: 1rem;
-}
-code {
-  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono",
-    "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
-    "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L",
-    "Courier New", Courier, monospace;
-}
+
 pre,
 code[class*="language-"] {
   font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono",
@@ -56,7 +47,20 @@ code[class*="language-"] {
   direction: ltr;
 }
 
+code {
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono",
+    "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
+    "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L",
+    "Courier New", Courier, monospace;
+  &.language-css,
+  &.language-scss {
+    color: #ffcc99;
+  }
+}
+
 pre {
+  filter: grayscale(1);
+  margin-block-end: 1rem;
   font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono",
     "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
     "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L",
@@ -85,8 +89,12 @@ pre {
     text-shadow: none;
   }
 }
-
 code[class*="language-"] {
+  &::selection,
+  ::selection {
+    background: #6a51e6;
+    text-shadow: none;
+  }
   &::-moz-selection,
   ::-moz-selection {
     background: #6a51e6;
@@ -95,14 +103,6 @@ code[class*="language-"] {
 }
 
 pre[class*="language-"] {
-  &::selection,
-  ::selection {
-    background: #6a51e6;
-    text-shadow: none;
-  }
-}
-
-code[class*="language-"] {
   &::selection,
   ::selection {
     background: #6a51e6;
@@ -142,36 +142,12 @@ code[class*="language-"] {
   &.atrule-id {
     color: #eeebff;
   }
-}
-
-code.language-javascript,
-.token.attr-name {
-  color: #c4b9fe;
-}
-
-code {
-  &.language-css,
-  &.language-scss {
-    color: #ffcc99;
-  }
-}
-
-.token {
   &.boolean,
   &.string,
   &.entity,
   &.url {
     color: #ffcc99;
   }
-}
-
-.language-css .token.string,
-.language-scss .token.string,
-.style .token.string {
-  color: #ffcc99;
-}
-
-.token {
   &.attr-value,
   &.keyword,
   &.control,
@@ -204,6 +180,17 @@ code {
   &.entity {
     cursor: help;
   }
+}
+
+code.language-javascript,
+.token.attr-name {
+  color: #c4b9fe;
+}
+
+.language-css .token.string,
+.language-scss .token.string,
+.style .token.string {
+  color: #ffcc99;
 }
 
 pre > code.highlight {

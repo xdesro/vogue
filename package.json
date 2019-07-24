@@ -43,7 +43,10 @@
     "eslint": "^6.0.1",
     "eslint-plugin-vue": "^5.2.3",
     "node-sass": "^4.12.0",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-recommended-scss": "^3.3.0",
+    "stylelint-scss": "^3.9.2"
   },
   "headMeta": {
     "title": "Henry Desroches | Creative Developer & UX Engineer",

@@ -8,73 +8,6 @@
     opacity: 0;
   }
 }
-
-.project {
-  &-enter-active,
-  &-leave-active {
-    transition: opacity 0.5s $easing-slow;
-    .post {
-      &__header {
-        transition: clip-path 0.5s $easing-slow;
-      }
-      &__return-link,
-      &__section,
-      &__date {
-        transition: clip-path 0.3s $easing-slow;
-      }
-      &__return-link {
-        transition-delay: 0.7s;
-      }
-      &__section {
-        transition-delay: 0.8s;
-      }
-      &__date {
-        transition-delay: 0.9s;
-      }
-      &__title {
-        transition: clip-path 0.5s $easing-slow;
-        transition-delay: 0.5s;
-      }
-      &__text {
-        * {
-          transition: all 0.7s $ease-out-circ;
-        }
-        @for $i from 1 through 20 {
-          :nth-child(#{$i}) {
-            transition-delay: #{1 + ($i / 10)}s;
-          }
-        }
-        // transition-delay: 1.1s;
-      }
-    }
-  }
-  &-enter {
-    .post {
-      &__header {
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-      }
-      &__return-link,
-      &__section,
-      &__date {
-        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-      }
-      &__title {
-        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-      }
-      &__text {
-        * {
-          transform-origin: bottom center;
-          transform: translateY(2rem) scale(0.95);
-          opacity: 0;
-        }
-      }
-    }
-  }
-  &-leave-to {
-    opacity: 0;
-  }
-}
-
 .post {
   &-enter-active,
   &-leave-active {
@@ -140,6 +73,71 @@
       &__tag {
         transform: translateX(-2rem);
         opacity: 0;
+      }
+      &__text {
+        * {
+          transform-origin: bottom center;
+          transform: translateY(2rem) scale(0.95);
+          opacity: 0;
+        }
+      }
+    }
+  }
+  &-leave-to {
+    opacity: 0;
+  }
+}
+.project {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity 0.5s $easing-slow;
+    .post {
+      &__header {
+        transition: clip-path 0.5s $easing-slow;
+      }
+      &__return-link,
+      &__section,
+      &__date {
+        transition: clip-path 0.3s $easing-slow;
+      }
+      &__return-link {
+        transition-delay: 0.7s;
+      }
+      &__section {
+        transition-delay: 0.8s;
+      }
+      &__date {
+        transition-delay: 0.9s;
+      }
+      &__title {
+        transition: clip-path 0.5s $easing-slow;
+        transition-delay: 0.5s;
+      }
+      &__text {
+        * {
+          transition: all 0.7s $ease-out-circ;
+        }
+        @for $i from 1 through 20 {
+          :nth-child(#{$i}) {
+            transition-delay: #{1 + ($i / 10)}s;
+          }
+        }
+        // transition-delay: 1.1s;
+      }
+    }
+  }
+  &-enter {
+    .post {
+      &__header {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      }
+      &__return-link,
+      &__section,
+      &__date {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+      }
+      &__title {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
       }
       &__text {
         * {
