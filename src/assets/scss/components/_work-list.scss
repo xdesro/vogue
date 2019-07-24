@@ -17,6 +17,7 @@
     @include border(bottom);
     padding-top: 4rem;
     padding-bottom: 4rem;
+    position: relative;
     @include screen(md) {
       padding-top: 2rem;
       padding-bottom: 2rem;
@@ -94,10 +95,18 @@
     }
   }
   &__link {
+    color: transparent;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     font-family: $font--display;
     @include screen(md) {
       text-align: right;
       display: block;
+      color: $color--neutral;
+      position: relative;
     }
     @include screen(lg) {
       text-align: left;

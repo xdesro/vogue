@@ -169,10 +169,17 @@
     #{$this}__logo {
       transition: opacity 0.8s;
     }
-    @for $i from 1 through 7 {
-      :nth-child(#{$i}) {
-        transition-delay: #{$i / 5}s;
-      }
+    #{$this}__subtitle {
+      transition-delay: 0.2s;
+    }
+    #{$this}__content {
+      transition-delay: 0.3s;
+    }
+    #{$this}__logo {
+      transition-delay: 0.4s;
+    }
+    #{$this}__profile-pic {
+      transition-delay: 0.5s;
     }
   }
   &-enter {
@@ -196,16 +203,23 @@
   &-leave-active {
     transition: opacity 0.5s $easing-slow;
     .header,
-    #{$this}__accent-img,
     #{$this}__content,
     #{$this}__list-item,
     #{$this}__accent-img,
     .additional-links-list {
       transition: opacity 0.8s;
     }
-    @for $i from 1 through 9 {
-      :nth-child(#{$i}) {
-        transition-delay: #{$i / 5}s;
+    #{$this}__accent-img {
+      transition-delay: 0.2s;
+    }
+    #{$this}__content {
+      transition-delay: 0.3s;
+    }
+    #{$this}__list-item {
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+          transition-delay: #{$i / 10 + 0.4}s;
+        }
       }
     }
   }
