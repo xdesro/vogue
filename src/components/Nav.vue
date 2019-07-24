@@ -32,27 +32,14 @@ export default {
   components: {
     IconLogo
   },
-  data() {
-    return {
-      darkMode: false
-    };
-  },
   computed: {
-    routes() {
-      const routes = this.$router.options.routes.filter(
-        route => route.path != `/`
-      );
-      return routes;
+    darkMode() {
+      return this.$store.state.darkMode;
     }
   },
   methods: {
     toggleDarkMode() {
-      if (this.darkMode) {
-        document.querySelector("html").removeAttribute("dark");
-      } else {
-        document.querySelector("html").setAttribute("dark", "");
-      }
-      this.darkMode = !this.darkMode;
+      this.$store.commit("TOGGLE_DARK_MODE");
     }
   }
 };

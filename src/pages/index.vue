@@ -58,7 +58,7 @@ export default {
     handleMouseMove(e) {
       this.deltaX =
         ((e.clientX - window.innerWidth / 2) / window.innerWidth) * 2;
-      TweenLite.to(this, 1, {
+      TweenLite.to(this, 0.5, {
         easedDeltaX: this.deltaX
       });
     },

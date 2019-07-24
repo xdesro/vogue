@@ -17,6 +17,20 @@ export default {
       easedDeltaY: 0
     };
   },
+  computed: {
+    darkMode() {
+      return this.$store.state.darkMode;
+    }
+  },
+  watch: {
+    darkMode() {
+      if (this.darkMode) {
+        document.querySelector("html").setAttribute("dark", "");
+      } else {
+        document.querySelector("html").removeAttribute("dark");
+      }
+    }
+  },
   beforeDestroy() {
     document.removeEventListener("mousemove", this.handleMouseMove);
   },
