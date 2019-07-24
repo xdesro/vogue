@@ -1,48 +1,4 @@
-@import url("https://rsms.me/inter/inter.css");
-
-@font-face {
-  font-family: "GT Super";
-  font-weight: 700;
-  font-style: italic;
-  src: url("~assets/fonts/gt-super/gt-super-display-trial-bold-italic-webfont.woff2")
-      format("woff2"),
-    url("~assets/fonts/gt-super/gt-super-display-trial-bold-italic-webfont.woff")
-      format("woff");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "GT Super";
-  font-weight: 700;
-  font-style: normal;
-  src: url("~assets/fonts/gt-super/gt-super-display-trial-bold-webfont.woff2")
-      format("woff2"),
-    url("~assets/fonts/gt-super/gt-super-display-trial-bold-webfont.woff")
-      format("woff");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "GT Super";
-  font-weight: 300;
-  font-style: italic;
-  src: url("~assets/fonts/gt-super/gt-super-display-trial-light-italic-webfont.woff2")
-      format("woff2"),
-    url("~assets/fonts/gt-super/gt-super-display-trial-light-italic-webfont.woff")
-      format("woff");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "GT Super";
-  font-weight: 300;
-  font-style: normal;
-  src: url("~assets/fonts/gt-super/gt-super-display-trial-light-webfont.woff2")
-      format("woff2"),
-    url("~assets/fonts/gt-super/gt-super-display-trial-light-webfont.woff")
-      format("woff");
-  font-display: swap;
-}
+// @import url("https://rsms.me/inter/inter.css");
 
 html {
   font-family: $font--sans;
