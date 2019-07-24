@@ -46,6 +46,7 @@
     grid-column: 1;
     overflow: hidden;
     grid-row: 1 / span 2;
+
     @include screen(lg) {
       grid-row: unset;
       grid-column: unset;
@@ -68,6 +69,9 @@
     height: 100%;
     max-width: unset;
     width: auto;
+    top: 0%;
+    left: 50%;
+    position: absolute;
     transition: all 0.3s $easing-slow;
     transform: translateX(-50%) scale(1);
   }
