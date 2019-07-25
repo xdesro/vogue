@@ -25,17 +25,39 @@ export default {
     },
     isLoading() {
       return this.$store.state.project.isLoading;
+    },
+    meta() {
+      return {
+        title: `Henry Desroches | ${this.currentProject.fields.title}`,
+        description: this.currentProject.fields.description
+      };
     }
   },
   head() {
     return {
-      title: `Henry Desroches | ${this.currentProject.fields.title}`,
+      title: this.meta.title,
       meta: [
         {
           hid: "description",
           name: "description",
           itemprop: "description",
           content: this.currentProject.fields.description
+        },
+        {
+          hid: "twitter:title",
+          name: "twitter:title",
+          content: this.meta.title
+        },
+        {
+          hid: "twitter:description",
+          name: "twitter:description",
+          content: this.meta.description
+        },
+        { hid: "og:title", name: "og:title", content: this.meta.title },
+        {
+          hid: "og:description",
+          name: "og:description",
+          content: this.meta.description
         }
       ]
     };

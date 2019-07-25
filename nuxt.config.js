@@ -37,15 +37,27 @@ export default {
       { itemprop: "name", content: pkg.headMeta.title },
       { itemprop: "image", content: pkg.headMeta.imageUrl },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: pkg.headMeta.title },
-      { name: "twitter:description", content: pkg.headMeta.description },
+      {
+        hid: "twitter:title",
+        name: "twitter:title",
+        content: pkg.headMeta.title
+      },
+      {
+        hid: "twitter:description",
+        name: "twitter:description",
+        content: pkg.headMeta.description
+      },
       { name: "twitter:site", content: pkg.headMeta.twitter },
       { name: "twitter:creator", content: pkg.headMeta.twitter },
       { name: "twitter:image:src", content: pkg.headMeta.imageUrl },
-      { name: "og:title", content: pkg.headMeta.title },
-      { name: "og:description", content: pkg.headMeta.description },
+      { hid: "og:title", name: "og:title", content: pkg.headMeta.title },
+      {
+        hid: "og:description",
+        name: "og:description",
+        content: pkg.headMeta.description
+      },
       { name: "og:image", content: pkg.headMeta.imageUrl },
-      { name: "og:url", content: pkg.headMeta.siteUrl },
+      { hid: "og:url", name: "og:url", content: pkg.headMeta.siteUrl },
       { name: "og:site_name", content: pkg.headMeta.title },
       { name: "og:locale", content: "en_US" },
       { name: "og:type", content: "website" }
@@ -77,7 +89,6 @@ export default {
       }
     ]
   },
-
   generate: {
     routes: () => {
       const client = contentful.createClient({

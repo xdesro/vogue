@@ -21,17 +21,39 @@ export default {
     },
     isLoading() {
       return this.$store.state.post.isLoading;
+    },
+    meta() {
+      return {
+        title: `Henry Desroches | ${this.currentPost.fields.title}`,
+        description: this.currentPost.fields.excerpt
+      };
     }
   },
   head() {
     return {
-      title: `Henry Desroches | ${this.currentPost.fields.title}`,
+      title: this.meta.title,
       meta: [
         {
           hid: "description",
           name: "description",
           itemprop: "description",
-          content: this.currentPost.fields.excerpt
+          content: this.meta.description
+        },
+        {
+          hid: "twitter:title",
+          name: "twitter:title",
+          content: this.meta.title
+        },
+        {
+          hid: "twitter:description",
+          name: "twitter:description",
+          content: this.meta.description
+        },
+        { hid: "og:title", name: "og:title", content: this.meta.title },
+        {
+          hid: "og:description",
+          name: "og:description",
+          content: this.meta.description
         }
       ],
       script: [{ src: "https://static.codepen.io/assets/embed/ei.js" }]
