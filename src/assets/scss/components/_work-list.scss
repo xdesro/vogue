@@ -1,3 +1,13 @@
+.layout {
+  &--work {
+    @include screen(lg) {
+      .main {
+        overflow-x: scroll;
+      }
+    }
+  }
+}
+
 .work-list {
   display: grid;
   @include screen(md) {
@@ -5,7 +15,7 @@
   }
   @include screen(lg) {
     transform-origin: 0 0;
-
+    @include border(left);
     grid-auto-columns: 20rem;
     justify-content: start;
     height: 100%;
