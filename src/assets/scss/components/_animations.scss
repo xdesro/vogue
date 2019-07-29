@@ -1,7 +1,7 @@
 .page {
   &-enter-active,
   &-leave-active {
-    transition: opacity 0.5s $easing-slow;
+    transition: opacity 0.5s $ease-out-editorial;
   }
   &-enter,
   &-leave-to {
@@ -11,15 +11,15 @@
 .post {
   &-enter-active,
   &-leave-active {
-    transition: opacity 2s $easing-slow;
+    transition: opacity 2s $ease-out-editorial;
     .post {
       &__header {
-        transition: clip-path 0.5s $easing-slow;
+        transition: clip-path 0.5s $ease-out-editorial;
       }
       &__return-link,
       &__section,
       &__date {
-        transition: clip-path 0.3s $easing-slow;
+        transition: clip-path 0.3s $ease-out-editorial;
       }
       &__return-link {
         transition-delay: 0.7s;
@@ -31,11 +31,11 @@
         transition-delay: 0.9s;
       }
       &__title {
-        transition: clip-path 0.5s $easing-slow;
+        transition: clip-path 0.5s $ease-out-editorial;
         transition-delay: 0.5s;
       }
       &__tag {
-        transition: all 0.5s $easing-slow;
+        transition: all 0.5s $ease-out-editorial;
         @for $i from 1 through 6 {
           &:nth-child(#{$i}) {
             transition-delay: #{1 + ($i / 10)}s;
@@ -90,15 +90,15 @@
 .project {
   &-enter-active,
   &-leave-active {
-    transition: opacity 0.5s $easing-slow;
+    transition: opacity 0.5s $ease-out-editorial;
     .post {
       &__header {
-        transition: clip-path 0.5s $easing-slow;
+        transition: clip-path 0.5s $ease-out-editorial;
       }
       &__return-link,
       &__section,
       &__date {
-        transition: clip-path 0.3s $easing-slow;
+        transition: clip-path 0.3s $ease-out-editorial;
       }
       &__return-link {
         transition-delay: 0.7s;
@@ -110,7 +110,7 @@
         transition-delay: 0.9s;
       }
       &__title {
-        transition: clip-path 0.5s $easing-slow;
+        transition: clip-path 0.5s $ease-out-editorial;
         transition-delay: 0.5s;
       }
       &__text {
@@ -156,7 +156,7 @@
   $this: &;
   &-enter-active,
   &-leave-active {
-    transition: opacity 1s $easing-slow;
+    transition: opacity 1s $ease-out-editorial;
 
     .header,
     #{$this}__subtitle,
@@ -198,7 +198,7 @@
   $this: &;
   &-enter-active,
   &-leave-active {
-    transition: opacity 0.5s $easing-slow;
+    transition: opacity 0.5s $ease-out-editorial;
     .header,
     #{$this}__content,
     #{$this}__list-item,
@@ -236,10 +236,10 @@
 @mixin list-page-mobile {
   &-enter-active,
   &-leave-active {
-    transition: opacity 0.5s $easing-slow;
+    transition: opacity 0.5s $ease-out-editorial;
     [class$="-list__item"],
     .header {
-      transition: opacity 0.5s $easing-slow;
+      transition: opacity 0.5s $ease-out-editorial;
       @for $i from 1 through 20 {
         &:nth-child(#{$i}) {
           transition-delay: #{$i / 10}s;
@@ -267,16 +267,16 @@
   @include screen(lg) {
     &-enter-active,
     &-leave-active {
-      transition: opacity 2s $easing-slow;
+      transition: opacity 2s $ease-out-editorial;
       .header {
-        transition: opacity 0.5s $easing-slow;
+        transition: opacity 0.5s $ease-out-editorial;
       }
       .work-list {
-        transition: all 0.5s $easing-slow;
+        transition: all 0.5s $ease-out-editorial;
         &__item {
-          transition: all 0.5s $easing-slow;
+          transition: all 0.5s $ease-out-editorial;
           > * {
-            transition: all 0.5s $easing-slow;
+            transition: all 0.5s $ease-out-editorial;
           }
           @for $i from 1 through 6 {
             &:nth-child(#{$i}) {

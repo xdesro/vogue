@@ -47,8 +47,8 @@ $color--contrast-overlay: var(--color--contrast-overlay);
 
 $nav-size: 3.3rem;
 
-$easing-slow: cubic-bezier(0.645, 0.045, 0.355, 1);
+$ease-out-editorial: cubic-bezier(0.645, 0.045, 0.355, 1);
 $ease-out-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
 
 $clip-path-wide-open: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-$clip-path-extended: polygon(0 -7%, 100% -7%, 100% 100%, 0 100%);
+$clip-path-extended: polygon(0 -7%, 100% -7%, 100% 110%, 0 110%);

@@ -59,7 +59,7 @@
         left: 0;
         right: 0;
         height: 0.5rem;
-        transition: transform 0.2s $easing-slow;
+        transition: transform 0.2s $ease-out-editorial;
         transform: translateY(0.5rem);
       }
     }
@@ -71,7 +71,7 @@
     top: 0%;
     left: 50%;
     position: absolute;
-    transition: all 0.3s $easing-slow;
+    transition: all 0.3s $ease-out-editorial;
     transform: translateX(-50%) scale(1);
   }
   &__content {
