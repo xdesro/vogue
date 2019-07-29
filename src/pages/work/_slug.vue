@@ -59,7 +59,8 @@ export default {
           name: "og:description",
           content: this.meta.description
         }
-      ]
+      ],
+      script: [{ src: "https://static.codepen.io/assets/embed/ei.js" }]
     };
   },
   async fetch({ store, params }) {
