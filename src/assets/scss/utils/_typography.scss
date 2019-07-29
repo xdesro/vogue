@@ -120,13 +120,33 @@ ol {
   }
 }
 .header-anchor {
-  font-size: 1rem;
+  font-size: 0.7em;
   display: inline-block;
+  margin-left: -2ch;
+  margin-right: 1ch;
   transform: translateY(-0.5rem);
   text-decoration: none;
   color: $color--mid;
+  &:before {
+    content: "§";
+  }
   &:hover {
-    text-decoration: underline;
     color: $color--neutral;
+  }
+}
+.editors-note {
+  color: $color--mid;
+  position: relative;
+  padding-top: 1.6em;
+  padding-left: 1rem;
+  display: block;
+  border-left: 4px solid $color--mid;
+  &:before {
+    content: "editor's note";
+    font-size: 0.8em;
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+    font-family: $font--display;
   }
 }
