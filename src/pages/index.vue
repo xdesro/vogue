@@ -25,7 +25,10 @@
       <p class="index__location">denver, colorado</p>
     </main>
     <div class="index__accent-pic-container">
-      <img class="index__accent-pic" src="~/assets/img/sky.webp" alt role="presentation" />
+      <picture class="index__accent-pic" alt role="presentation">
+        <source srcset="~/assets/img/sky.webp" type="image/webp" />
+        <source srcset="~/assets/img/sky.jpg" type="image/jpg" />
+      </picture>
     </div>
   </div>
 </template>

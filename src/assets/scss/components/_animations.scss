@@ -90,7 +90,7 @@
 .project {
   &-enter-active,
   &-leave-active {
-    transition: opacity 0.5s $ease-out-editorial;
+    transition: opacity 1s $ease-out-editorial;
     .post {
       &__header {
         transition: clip-path 0.5s $ease-out-editorial;

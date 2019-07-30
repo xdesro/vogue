@@ -7,9 +7,20 @@
       <h1 class="post__title">{{ post.fields.title }}</h1>
       <p class="post__category" v-if="category">{{ category }}</p>
     </div>
+
+    <picture class="post__hero-image">
+      <source
+        :srcset="`https://${post.fields.heroImage.fields.file.url}?w=1500&h=750&fm=webp`"
+        type="image/webp"
+      />
+      <source
+        :srcset="`https://${post.fields.heroImage.fields.file.url}?w=1500&h=750&fm=jpg`"
+        type="image/jpg"
+      />
+    </picture>
     <img
       class="post__hero-image"
-      :src="`https://${post.fields.heroImage.fields.file.url}?w=1500&h=750&fm=webp`"
+      :src="`https://${post.fields.heroImage.fields.file.url}?w=1500&h=750&fm=jpg`"
       :alt="post.fields.heroImage.fields.description"
     />
   </header>
