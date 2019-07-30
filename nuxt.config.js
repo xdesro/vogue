@@ -4,6 +4,9 @@ import pkg from "./package";
 require("dotenv").config();
 const contentful = require("contentful");
 
+import MarkdownIt from "markdown-it";
+const md = new MarkdownIt();
+
 export default {
   srcDir: "src",
   env: {
@@ -120,11 +123,53 @@ export default {
     "@nuxtjs/markdownit",
     "@nuxtjs/dotenv",
     "@nuxtjs/moment",
-    "@bazzite/nuxt-optimized-images"
+    "@nuxtjs/feed"
   ],
   optimizedImages: {
     optimizeImages: true
   },
+  feed: [
+    {
+      path: "rss.xml",
+      type: "rss2",
+      cacheTime: 1000 * 60 * 15,
+      async create(feed) {
+        feed.options = {
+          title: "Henry Desroches' Blog",
+          id: "https://henry.codes/",
+          link: "https://henry.codes/rss.xml",
+          description:
+            "This is where all my rad and adorable blog posties go to be RSS'd.",
+          language: "en"
+        };
+        feed.addContributor({
+          name: "Henry Desroches",
+          email: "yo@henry.codes",
+          link: "https://henry.codes"
+        });
+        const client = contentful.createClient({
+          space: process.env.CTF_SPACE_ID,
+          accessToken: process.env.CTF_CD_ACCESS_TOKEN
+        });
+        const posts = await client.getEntries({
+          content_type: "blogPost",
+          order: "-fields.publishDate"
+        });
+        posts.items.forEach(post => {
+          feed.addItem({
+            title: post.fields.title,
+            id: post.fields.slug,
+            url: `https://henry.codes/writing/${post.fields.slug}`,
+            date: post.sys.firstPublishedAt,
+            description: post.fields.excerpt,
+            content: md.render(post.fields.body),
+            image: post.fields.heroImage.fields.url
+          });
+        });
+      }
+    }
+  ],
+
   markdownit: {
     injected: true,
     preset: "default",

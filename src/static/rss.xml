@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Henry Desroches&apos; Blog</title>
+        <link>https://henry.codes/feed.xml</link>
+        <description>This is where all my rad and adorable blog posties go to be RSS&apos;d.</description>
+        <lastBuildDate>Tue, 30 Jul 2019 13:31:56 GMT</lastBuildDate>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <generator>https://github.com/nuxt-community/feed-module</generator>
+        <item>
+            <title><![CDATA[How To Make an Animated Interactive Vue.js Slider]]></title>
+            <description><![CDATA[My guide, start to finish, floor to ceiling, on coding, styling, and animating a slider element with Vue.js.]]></description>
+            <content:encoded><![CDATA[<p><strong>Table of Contents</strong></p>
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#interactivity">Interactivity With Vue.js</a></li>
+<li><a href="#animation">Animating With Vue.js &lt;transition&gt; and &lt;transition-group&gt;</a></li>
+<li><a href="#conclusion">Conclusion</a>
+{.toc}</li>
+</ol>
+<h2><a href="#introduction"></a>{.header-anchor #introduction} Introduction</h2>
+<p>So, I was looking for a fun example of UI interactivity to prototype on Codepen, and I stumbled upon <a href="https://dribbble.com/shots/6566320-Kalli-Hero">this really cool shot</a> that <a href="http://alexsanderbarhon.dribbble.com/">Alexsander Barhon</a> shared.</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1147877/dribbble-shot_1MB.gif" alt=""></p>
+<p>It's a simple enough animation, with a really nice loading effect and staggered timeline that make it feel super fluid. I've been really into <a href="https://vuejs.org/">Vue.js</a> lately, and this seemed like a perfect opportunity to code out a little app. Live your life, but I'm gonna use SCSS for style here.</p>
+<h3>Tl;dr</h3>
+<p>If you wanna skip the tutorial and get the source, scroll to the bottom of the post or just go check out the <a href="https://codepen.io/xdesro/pen/dEwMOq">finished pen</a>. This post is gonna go pretty in-depth on everything it took to get this running, including the foundational CSS, etc. If you're just looking for the <a href="#interactivity">Vue Interactivity</a> or <a href="#animation">Vue transitions section</a>, that's cool too.</p>
+<h2><a href="#getting-started"></a>{.header-anchor #getting-started}Getting Started</h2>
+<p>When I'm building components like this, I always try to get markup and style in place before trying to futz with JavaScript. That way, I can focus on making things semantic and DRY without adding an additional layer of abstraction.</p>
+<h3>Basic HTML Structure</h3>
+<p>There's a bunch of different ways you could break this app down, but based on the way it animates in the Dribbble shot, I see it in three major components, and then a few sub-pieces:</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1147877/component-breakdown.png" alt=""></p>
+<p>The reason I keep the top navigation separate from the slider or sidebar is because it all animates in together and seems to generally serve the same purpose. There's definitely an argument to be made that the &quot;kalli&quot; logo is part of the slider and the &quot;about&quot; section is part of the sidebar, but for the sake of this demo, I'm gonna keep them separate.</p>
+<p>Let's code it out:</p>
+<pre><code class="language-html">&lt;div class=&quot;viewport&quot;&gt;
+  &lt;nav class=&quot;nav&quot;&gt;
+    &lt;div class=&quot;nav__brand&quot;&gt;
+      &lt;!-- Logo goes here. --&gt;
+    &lt;/div&gt;
+    &lt;ul class=&quot;nav__list&quot;&gt;
+      &lt;!-- Nav items go here. --&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+  &lt;main class=&quot;main&quot;&gt;
+    &lt;div class=&quot;main__slider&quot;&gt;
+      &lt;!-- Slides will go here --&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;main__headline&quot;&gt;
+      &lt;!-- Headline here --&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;main__nav&quot;&gt;
+      &lt;!-- Play video &amp; social links will go here. --&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+  &lt;aside class=&quot;aside&quot;&gt;
+    &lt;div class=&quot;aside__nav&quot;&gt;
+      &lt;!-- Our buttons to navigate the slides will go in here. --&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;aside__slider&quot;&gt;
+      &lt;!-- Slider numero dos. No prob. --&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;progress-indicator&quot;&gt;
+      &lt;!-- This is like that 01———03 thing in the bottom right. --&gt;
+    &lt;/div&gt;
+  &lt;/aside&gt;
+&lt;/div&gt;
+</code></pre>
+<p>So far so good. I'm using BEM-<em>ish</em> classes for everything, because I like how easy it is to organize in your SCSS without increasing specificity. <em>(We typically want to avoid selectors like <code>.nav .list</code> or whatever, and sometimes Sass' nesting feature can make that an easy trap to fall into. <code>.nav__list</code> is just as clear and much easier to override/much less specific.)</em></p>
+<p>You'll also notice I'm assigning seemingly-duplicative classes like <code>.nav</code> to the <code>&lt;nav&gt;</code> element or <code>.aside</code> to the <code>&lt;aside&gt;</code>. I don't usually use tag name selectors for structural elements because it makes the CSS more dependent on the HTML structure.</p>
+<p><strong>Don't worry about style just yet.</strong> If we make sure our HTML is meaningful and well-structured without style, it'll be that much easier to write up the CSS.</p>
+<h4>Primary Nav</h4>
+<p>The navigation at the top has two distinct sections — the logo and the right-aligned nav items.</p>
+<pre><code class="language-html">&lt;nav class=&quot;nav&quot;&gt;
+  &lt;div class=&quot;nav__brand&quot;&gt;
+    &lt;p&gt;Logo&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;ul class=&quot;nav__list&quot;&gt;
+    &lt;li class=&quot;nav__list-item&quot;&gt;About&lt;/li&gt;
+    &lt;li class=&quot;nav__list-item&quot;&gt;More&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+<h4>Main Section &amp; Slider</h4>
+<p>I want to keep the slider slides and headline separate, because they animate in different ways, but close enough that they're clearly related.</p>
+<pre><code class="language-html">&lt;main class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main__slider&quot;&gt;
+    &lt;img class=&quot;main__slide-image&quot; src=&quot;slide1.jpg&quot; /&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;main__headline&quot;&gt;
+    &lt;span class=&quot;main__headline-span&quot;&gt;Simplicity is the ultimate sophistication.&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;main__nav&quot;&gt;
+    &lt;p&gt;Play Video&lt;/p&gt;
+    &lt;ul class=&quot;social-links&quot;&gt;
+      &lt;li class=&quot;social-links__item&quot;&gt;
+        &lt;a href=&quot;https://facebook.com&quot;&gt;Fb&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;social-links__item&quot;&gt;
+        &lt;a href=&quot;https://twitter.com/&quot;&gt;Tw&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;social-links__item&quot;&gt;
+        &lt;a href=&quot;https://www.linkedin.com/&quot;&gt;In&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/main&gt;
+</code></pre>
+<h4>Aside &amp; Secondary Slider</h4>
+<p>I know we need two buttons that navigate forward and backward in the slider, a secondary container for the aside slider that we'll mark up in a similar way to the first slider, and a progress indicator. I think I'm gonna use pseudo-elements for the counter on the progress indicator, so I'll pass it the total number of slides via a <code>data-slides-count</code> attribute.</p>
+<pre><code class="language-html">&lt;aside class=&quot;aside&quot;&gt;
+  &lt;div class=&quot;aside__nav&quot;&gt;
+    &lt;button class=&quot;aside__button&quot;&gt;←&lt;/button&gt;
+    &lt;button class=&quot;aside__button&quot;&gt;→&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;aside__slider&quot;&gt;
+    &lt;img class=&quot;aside__slide-image&quot; src=&quot;slide2.jpg&quot; /&gt;
+  &lt;/div&gt;
+  &lt;ul class=&quot;progress-indicator&quot; data-slides-count=&quot;03&quot;&gt;
+    &lt;li class=&quot;progress-indicator__bar&quot;&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/aside&gt;
+</code></pre>
+<p>And that's the markup done. I really love coding these puppies in layers like this because now that I know that my HTML is sound, I don't have to worry about it again for a while.</p>
+<h3>Basic Style</h3>
+<p>Let's get Sassy with it. In my initial iteration of this idea, I used CSS variables and other weird stuff, so if you're interested in that but have to support older browsers, it might be worth looking into a polyfill, or better yet, a <em><a href="https://jhildenbiddle.github.io/css-vars-ponyfill/#/">ponyfill</a>. 🦄</em> This version of the tutorial doesn't include any of that crazy bonkers stuff.</p>
+<h4>&quot;Responsive&quot; CSS</h4>
+<p>I elected to use a pattern I lean on a lot for CodePens to make things &quot;responsive&quot;, where I set a font size for the app using viewport units and then measure everything based on that root font size using <code>rem</code> units. It looks a little something like this <em>(note the <code>#{}</code> syntax for interpolating SCSS variables):</em></p>
+<pre><code class="language-scss">$app-width: 95vmin;
+html {
+  font-size: calc(#{$app-width} / 100);
+}
+.viewport {
+  width: $app-width;
+  height: calc(#{$app-width} * (9/16));
+}
+</code></pre>
+<p>This block does a few things:</p>
+<ol>
+<li>I've decided I want my app to be as large as possible without ever touching the edge of the screen, so I'll use <code>95vmin</code> to make sure it is always 95% of the width or the height of the screen (whichever is smaller).</li>
+<li>In the <code>html</code> selector, I set the font size to be 1/100th of the width of the app — that way I know that <code>1rem</code> will always be 1% of the width of the app. (This obviously isn't required, I just like to have a very consistent and scalable unit to rely on when I'm making pens.)</li>
+<li>I measured the sides of the app in the video on Dribbble, and found that the app's aspect ratio was 16/9. Thus, I've set the <code>.viewport</code> (which is the class I'll add to my app wrapper) width to <code>$app-width</code> and then set its height to <code>$app-width * (9/16)</code>, to ensure it is always the correct aspect ratio.</li>
+</ol>
+<p>Let's keep trucking.</p>
+<h4>Layout Style</h4>
+<p>We're gonna default to using CSS Grid for most of our layout problems, with some absolute positioning.</p>
+<pre><code class="language-scss">body {
+  display: grid;
+  place-items: center;
+}
+.viewport {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 30rem;
+  // width, height...
+}
+</code></pre>
+<p>That'll make the <code>&lt;aside&gt;</code> section 30% of the width of the app and the main slider will take up the rest of the available space. Let's do the nav next.</p>
+<pre><code class="language-scss">.nav {
+  padding: 5rem;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  &amp;__list {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    width: 20rem;
+    padding: 0; // Unset default ul padding. You could use a CSS reset too.
+  }
+}
+</code></pre>
+<p>So here we've decided the nav itself will be a grid, but by giving it <code>position: absolute;</code> we're taking it out of the parent grid. <em>(Z-index just makes sure it's always the top-most element in the z-index stack.)</em> Then we use the ampersand selector to style the right-aligned nav as grid as well. Let's do the <code>&lt;main&gt;</code> section and its children.</p>
+<pre><code class="language-scss">.main {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  grid-template-areas: &quot;headline&quot; &quot;nav&quot;;
+  align-items: end;
+  &amp;__slider {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 70rem; (T
+    height: 100%;
+  }
+  &amp;__headline {
+    padding: 5rem;
+    grid-area: headline
+  }
+  &amp;__nav {
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-area: nav;
+    width: 30rem;
+    padding: 3rem 5rem; // I'm using 3rem vertical instead of 5rem all around cause it just looks better 👀
+  }
+}
+.social-links {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0.4rem;
+  align-items: center;
+}
+</code></pre>
+<p>Movin' right along. Let's layout the <code>&lt;aside&gt;</code> element.</p>
+<pre><code class="language-scss">.aside {
+  position: relative;
+  display: grid;
+  padding: 5rem; // That DANG 5rem padding again....
+  $button-size: 10rem;
+  &amp;__slider {
+    position: relative;
+    height: 25rem;
+    margin-top: 10rem;
+  }
+  &amp;__button {
+    width: $button-size;
+    height: $button-size;
+  }
+  &amp;__nav {
+    position: absolute;
+    bottom: 0;
+    left: -#{$button-size}
+  }
+}
+</code></pre>
+<p>Same padding as the top nav, etc. here <em>(if I was a clever person perhaps I'd make it a Sass variable like I did with the button sizing but I am</em> <strong>not</strong> <em>so here we</em> <strong>go</strong>, <em>baby).</em></p>
+<p>Looking pretty slick so far. This looks about how we initially broke down the Dribbble screenshot.</p>
+<p>&lt;p class=&quot;codepen&quot; data-height=&quot;400&quot; data-theme-id=&quot;37307&quot; data-default-tab=&quot;result&quot; data-user=&quot;xdesro&quot; data-slug-hash=&quot;YbBogX&quot; style=&quot;height: 400px;&quot; data-pen-title=&quot;01 - Vue UI Slider [Layout &amp;amp; Debug]&quot;&gt;
+&lt;/p&gt;</p>
+<p>Next we'll add some more visual style to the app.</p>
+<h4>Visual Spice</h4>
+<p>So the first thing I'm gonna mention is that I don't actually know what font is in use here off-hand, so I'll be using instead this really nice sans-serif font called <a href="https://rsms.me/inter/">Inter</a>. Let's go ahead and include it in our style sheet.</p>
+<pre><code class="language-scss">@import url('https://rsms.me/inter/inter.css');
+html {
+  font-size: calc(#{$app-width} / 100);
+  font-family: &quot;Inter&quot;, sans-serif;
+  @supports (font-variation-settings: normal) {
+    font-family: &quot;Inter var&quot;, sans-serif;
+  }
+}
+</code></pre>
+<p>Let's style the pen a little bit so it's not just a bunch of white rectangles. We'll start with some variables and general app stuff.</p>
+<pre><code class="language-scss">$color--background: hsl(300, 3%, 15%); // Note the $block--modifier syntax. This is just personal preference. Just be consistent!
+$color--primary: hsl(0, 0%, 100%); // White color for most of the app.
+$color--secondary: hsl(0, 0%, 90%); // Off-white for the progress indicator
+$color--neutral: hsl(0, 0%, 1%); // Nearly-black color for text.
+
+body {
+  background-color: $color--background;
+}
+.viewport {
+  background-color: $color--primary;
+  box-shadow: 0 1rem 2rem hsla(0, 0%, 0%, 0.2); 
+}
+</code></pre>
+<p>Next we'll do some placeholder images in this puppy and style up the slider.</p>
+<p>In the HTML, we can use <a href="http://source.unsplash.com">source.unsplash.com</a> to get a random image that <em>generally</em> fits the size we want.</p>
+<pre><code class="language-html">&lt;div class=&quot;main__slider&quot;&gt;
+  &lt;img class=&quot;main__slide-image&quot;
+       src=&quot;https://source.unsplash.com/random/1350x1080&quot; /&gt;
+&lt;/div&gt;
+&lt;!-- ... --&gt;
+&lt;div class=&quot;aside__slider&quot;&gt;
+  &lt;img class=&quot;aside__slide-image&quot;
+       src=&quot;https://source.unsplash.com/random/1350x1080&quot; /&gt;
+&lt;/div&gt;
+</code></pre>
+<p>In the SCSS, we'll use the same code for the images twice, so let's make it a <code>@mixin</code>. We'll include that for both slide images and use <code>overflow:hidden</code> for the wrapping slider elements.</p>
+<pre><code class="language-scss">@mixin slide-image {
+  position: absolute;
+  height: 100%;
+  object-fit: cover;
+}
+.main {
+  // ...
+  &amp;__slider {
+    //...
+    overflow: hidden;
+  }
+  &amp;__slide-image {
+    @include slide-image;
+  }
+}
+.aside {
+  //...
+  &amp;__slider {
+    //...
+    overflow: hidden;
+  }
+  &amp;__slide-image {
+    @include slide-image;
+  }
+}
+</code></pre>
+<p>I think the last two kinda strange parts of this are the social links and the progress indicator. Let's kick those off.</p>
+<h4>Progress Indicator</h4>
+<p>In CSS grid, you can actually use pseudo elements as grid-level elements, and that works out great for this example, where the social links are divided by two dashes. We already set the social links up as a grid, but now lets place the pseudo-elements in that grid:</p>
+<pre><code class="language-scss">.social-links {
+  // ...
+  &amp;:before,
+  &amp;:after {
+    content: &quot;&quot;;
+    display: block;
+    width: 1rem;
+    height: 0.1rem;
+    background: $color--primary;
+  }
+  &amp;:before {
+    grid-column: 2;
+  }
+  &amp;:after {
+    grid-column: 4;
+  }
+}
+</code></pre>
+<p>That looks about right to me!</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1147877/social-links.png" alt=""></p>
+<p>Next let's do the progress indicator. We'll use pseudo elements for the numbers at the start and end, and use <code>&lt;li&gt;</code> elements in between to show which slide is currently active.</p>
+<pre><code class="language-scss">.progress-indicator {
+  // ...
+  &amp;:before,
+  &amp;:after {
+    color: $color--neutral;
+  }
+  &amp;:before {
+    content: &quot;01&quot;;
+  }
+  &amp;:after {
+    content: attr(data-slides-count);
+  }
+  &amp;__bar {
+    width: 1.5rem;
+    height: 0.2rem;
+    background: $color--secondary;
+    &amp;--active {
+      background: $color--neutral;
+    }
+  }
+}
+</code></pre>
+<p>Remember when we used a data-attribute to set the slides count? Here's where it comes in handy. We can make that dynamic in the Vue step but for now we just did it manually.</p>
+<pre><code class="language-html">&lt;ul class=&quot;progress-indicator&quot; data-slides-count=&quot;03&quot;&gt;
+</code></pre>
+<p>Real nice:</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1147877/progress-indicator.png" alt=""></p>
+<p>I'll breeze through the rest of the styles we'll be adding. It's mostly simple visual stuff like setting colors or font sizes — no more weird grid hackery. After all that, our slider's about ready to become interactive!</p>
+<p>&lt;p class=&quot;codepen&quot; data-height=&quot;400&quot; data-theme-id=&quot;37307&quot; data-default-tab=&quot;result&quot; data-user=&quot;xdesro&quot; data-slug-hash=&quot;YbBogX&quot; style=&quot;height: 400px;&quot; data-pen-title=&quot;02 - Vue UI Slider [Visual Style &amp; Debug]&quot;&gt;
+&lt;/p&gt;</p>
+<h2><a href="#interactivity"></a>{.header-anchor #interactivity} Interactivity With Vue.js</h2>
+<p>The first thing we'll do is get Vue included and turn our &quot;app&quot; into an App™.</p>
+<p>In CodePen, under the Javascript settings tab, you can add Vue as an external resource:</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1147877/vue-resource.png" alt=""></p>
+<p>Once we've got Vue included, let's add an ID to the markup of the app and initialize a Vue instance.</p>
+<pre><code class="language-html">&lt;div class=&quot;viewport&quot; id=&quot;app&quot;&gt;
+</code></pre>
+<pre><code class="language-js">const app = new Vue({
+  el: &quot;#app&quot;
+})
+</code></pre>
+<h3>Adding Slides</h3>
+<p>In our Vue instance, let's add some data for slides and a currently-active slide index, and then populate that data in the template markup.</p>
+<pre><code class="language-js">const app = new Vue({
+  el: &quot;#app&quot;,
+  data() {
+    return {
+      currentActiveSlide: 0,
+      slides: [
+        {
+          headline: 'Lorem ipsum dolor sit amet',
+          img: 'https://source.unsplash.com/random/1350x1080'
+        },
+        {
+          headline: 'Consectetur adipiscing elit, sed do.',
+          img: 'https://source.unsplash.com/random/1350x1081'
+        },
+        {
+          headline: 'Eiusmod tempor incididunt ut labore.',
+          img: 'https://source.unsplash.com/random/1350x1082'
+        },
+      ]
+    }
+  }
+})
+</code></pre>
+<pre><code class="language-html">&lt;div class=&quot;main__slider&quot;&gt;
+  &lt;img v-for=&quot;(slide, index) of slides&quot; :key=&quot;index&quot; v-if=&quot;index === currentActiveSlide&quot; class=&quot;main__slide-image&quot; :src=&quot;slide.img&quot; /&gt;
+&lt;/div&gt;
+&lt;div class=&quot;main__headline&quot;&gt;
+  &lt;span v-for=&quot;(slide, index) of slides&quot; :key=&quot;index&quot; v-if=&quot;index === currentActiveSlide&quot; class=&quot;main__headline-span&quot;&gt;{{ slide.headline }}&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<p>You'll notice we didn't do anything for the slider in the <code>&lt;aside&gt;</code> section. That's because I want the aside slider to always show the slide directly after the currently active one, or show the first slide if we're at the end of the slides. I can do this with a Vue computed value we'll call <code>nextActiveSlide</code>.</p>
+<pre><code class="language-js">const app = new Vue({
+  // ...
+  computed: {
+    nextActiveSlide() {
+      return this.currentActiveSlide + 1 &gt;= this.slides.length ? 0 : this.currentActiveSlide + 1;
+    }
+  }
+});
+</code></pre>
+<p>And once we've got that we can do this in the template:</p>
+<pre><code class="language-html">&lt;div class=&quot;aside__slider&quot;&gt;
+  &lt;img v-for=&quot;(slide, index) of slides&quot; :key=&quot;index&quot; v-if=&quot;index === nextActiveSlide&quot; class=&quot;aside__slide-image&quot;  :src=&quot;slide.img&quot; /&gt;
+&lt;/div&gt; 
+</code></pre>
+<p>Last thing to do is the progress indicator. We can do this all in the template, by creating as many progress bars as there are slides, and then conditionally adding a class if it should be active.</p>
+<pre><code class="language-html">&lt;ul class=&quot;progress-indicator&quot;
+    :data-slides-count=&quot;'0' + slides.length&quot;&gt;
+  &lt;li v-for=&quot;(slide,index) of slides&quot;
+      :key=&quot;index&quot;
+      :class=&quot;index === currentActiveSlide ? 'progress-indicator__bar  progress-indicator__bar--active' : 'progress-indicator__bar'&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<h3>Navigating Between Slides</h3>
+<p>The actual slide navigation is pretty simple, thanks to Vue – it'll listen to the <code>currentActiveSlide</code> value and change everything we need based on that. We'll add a method to handle slide changes. I've elected to be kinda wordy with this method for the sake of readability, but you could be much more concise!</p>
+<pre><code class="language-js">const app = new Vue({
+  // ...
+  methods: {
+    // We'll pass the function either 1 or -1 to indicate which direction we'the slides will go
+    handleSlideChange(val) {
+      let direction;
+      const calculatedNextSlide = this.currentActiveSlide + val;
+      if (val &gt; 0) {
+        direction = &quot;next&quot;;
+      } else {
+        direction = &quot;previous&quot;;
+      }
+      if (direction === &quot;next&quot; &amp;&amp; calculatedNextSlide &lt; this.slides.length) {
+        this.currentActiveSlide += val;
+      } else if (direction === &quot;next&quot;) {
+        this.currentActiveSlide = 0;
+      } else if (direction === &quot;previous&quot; &amp;&amp; calculatedNextSlide &lt; 0) {
+        this.currentActiveSlide = this.slides.length - 1;
+      } else {
+        this.currentActiveSlide += val;
+      }
+    }
+  }
+});
+</code></pre>
+<p>Then in our markup we'll update those buttons in the <code>&lt;aside&gt;</code> section so when clicked, they call that <code>handleSlideChange()</code> method.</p>
+<pre><code class="language-html">&lt;div class=&quot;aside__nav&quot;&gt;
+  &lt;button class=&quot;aside__button&quot;
+          @click=&quot;handleSlideChange(-1)&quot;&gt;←&lt;/button&gt;
+  &lt;button class=&quot;aside__button&quot;
+          @click=&quot;handleSlideChange(1)&quot;&gt;→&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p>And just like that, we're all hooked up to data, slidin' around, and ready to animate.</p>
+<p>&lt;p class=&quot;codepen&quot; data-height=&quot;400&quot; data-theme-id=&quot;37307&quot; data-default-tab=&quot;result&quot; data-user=&quot;xdesro&quot; data-slug-hash=&quot;EzMMvE&quot; style=&quot;height: 400px;&quot; data-pen-title=&quot;03 - Vue UI Slider [Data With Vue]&quot;&gt;
+&lt;/p&gt;</p>
+<h2><a href="#animation"></a>{.header-anchor #animation} Animating With Vue.js &lt;transition&gt; and &lt;transition-group&gt;</h2>
+<p>In Vue, you can use the <code>&lt;transition&gt;</code> component to trigger animations in CSS or fire JavaScript methods on state changes. We'll be handling all of our transitions with CSS this time around, but you can check <a href="https://vuejs.org/v2/guide/transitions.html">the exceptional Vue docs</a> for more potential uses. The general flow is that</p>
+<p>Let's start by transitioning the headline when you change slides with <code>&lt;transition-group&gt;</code>, which is best for list transitions.</p>
+<h3>Transitioning the Headline</h3>
+<p>The first step is to convert the <code>.main__headline</code> div into a <code>&lt;transition-group&gt;</code>:</p>
+<pre><code class="language-html">&lt;transition-group tag=&quot;div&quot; class=&quot;main__headline&quot; name=&quot;main__headline-span&quot; mode=&quot;out-in&quot;&gt;
+  &lt;span v-for=&quot;(slide, index) of slides&quot; :key=&quot;index&quot; v-if=&quot;index === currentActiveSlide&quot; class=&quot;main__headline-span&quot;&gt;{{ slide.headline }}&lt;/span&gt;
+&lt;/transition-group&gt;
+</code></pre>
+<p>There are a few things going on here:</p>
+<ul>
+<li>
+<p>We replaced the <code>&lt;div&gt;</code> element with a <code>&lt;transition-group tag=&quot;div&quot;&gt;</code> element. The group will render as a <code>&lt;div&gt;</code>.</p>
+</li>
+<li>
+<p>We gave that transition group a name of <code>main__headline-span</code> — what this means is that when a transition is occurring, it'll apply the transition classes to its children with this prefix. For example:</p>
+<ul>
+<li><code>.main__headline-span-enter-active</code></li>
+<li><code>.main__headline-span-leave-to</code></li>
+</ul>
+<p><em>(This will come in handy when we're writing our transition code in SCSS.)</em></p>
+</li>
+<li>
+<p>We set the mode to &quot;out-in&quot; — this basically means the element that we're transitioning out will be completely transitioned out before we start transitioning in the new element.</p>
+</li>
+</ul>
+<p>Now we can write the CSS to make some magic happen.</p>
+<pre><code class="language-scss">// ...
+.main {
+  // ...
+  &amp;__headline-span {
+    position: absolute; // This is just to make sure there's no jumping around as we transition elements out and in.
+    width: 60rem; // We have to add this because we're absolutely positioning the headline-span
+    &amp;-enter,
+    &amp;-leave-to { // This is an easy way for us to keep the animation code with the component code. This selector outputs `.main__headline-span-enter, .main__headline-span-leave-to {}`
+      transform: translateY(1em);
+      opacity: 0;
+    }
+    &amp;-enter-active,
+    &amp;-leave-active {
+      transition: all 300ms;
+    }
+    &amp;-enter-active {
+      transition-delay: 700ms; // This makes the new headline take just a moment to come in.
+    }
+  }
+}
+</code></pre>
+<h3>Transitioning The Slides Using <code>clip-path</code></h3>
+<p>Let's use <code>&lt;transition-group&gt;</code> again to prepare the main and aside sliders to be animated.</p>
+<pre><code class="language-html">&lt;!-- ... --&gt;
+&lt;transition-group tag=&quot;div&quot; class=&quot;main__slider&quot; name=&quot;main__slide-image&quot; mode=&quot;out-in&quot;&gt;
+  &lt;img v-for=&quot;(slide, index) of slides&quot; :key=&quot;index&quot; v-if=&quot;index === currentActiveSlide&quot; class=&quot;main__slide-image&quot;
+    :src=&quot;slide.img&quot; /&gt;
+&lt;/transition-group&gt;
+</code></pre>
+<p>Same as the previous example, we replace the slider wrapper <code>&lt;div&gt;</code> with a <code>&lt;transition-group&gt;</code> that gets the class of its children as a <code>name</code> attribute. That's all it takes. Let's write some more CSS.</p>
+<p>I'd like to use the CSS <code>clip-path</code> property to transition the slides — I think it'll be the most visually-satisfying way to achieve that wipe that happens in the Dribbble shot. We're going to transition a <code>clip-path: polygon()</code> value. When a slide is active, the <code>clip-path</code> won't clip any of the image:</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1147877/clip-path.png" alt=""></p>
+<p>Since we want to wipe from left-to-right, we need two different clip paths:</p>
+<ul>
+<li>Clipped to the left side (&quot;enter&quot; state): <code>polygon(0 0, 0 0, 0 100%, 0 100%)</code></li>
+<li>Clipped to the right side (&quot;leave-to&quot; state): <code>polygon(100% 0, 100% 100%, 100% 100%, 100% 0)</code></li>
+</ul>
+<p>Let's implement that in our SCSS. We're reusing this animation for both sliders, so we'll make it a mixin. <em>(I also want a subtle zoom effect on the image.)</em></p>
+<pre><code class="language-scss">@mixin clip-path-wipe {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); // Specify the &quot;slide visible&quot; state
+  &amp;-enter {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    transform: scale(1.3);
+  }
+  &amp;-leave-to {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    transform: scale(1.3);
+  }
+  &amp;-enter-active {
+    transition: all 700ms;
+    transition-delay: 500ms;
+  }
+  &amp;-leave-active {
+    transition: all 700ms;
+  }
+}
+</code></pre>
+<p>Now let's hook into this in the <code>&lt;main&gt;</code> slider.</p>
+<pre><code class="language-scss">.main {
+  // ...
+  &amp;__slider {
+    // ...
+    background-color: $color--neutral; // This makes it so the slider background isn't just white.
+    width: 70rem; 
+    overflow: hidden; // Make sure the image doesn't overflow when it scales up
+  }
+  &amp;__slide-image {
+    // ...
+    @include clip-path-wipe;
+  }
+}
+</code></pre>
+<p>And again in the <code>&lt;aside&gt;</code> slider:</p>
+<pre><code class="language-scss">.aside {
+  // ...
+  &amp;__slider {
+    background-color: $color--neutral;
+  }
+  &amp;__slide-image {
+    // ...
+    @include clip-path-wipe;
+    &amp;-leave-active {
+      transition-delay: 200ms; // Offset this animation slightly from the main slider
+    }
+    &amp;-enter-active {
+      transition-delay: 600ms; // See above
+    }
+  }
+}
+</code></pre>
+<p>&lt;p class=&quot;codepen&quot; data-height=&quot;400&quot; data-theme-id=&quot;37307&quot; data-default-tab=&quot;result&quot; data-user=&quot;xdesro&quot; data-slug-hash=&quot;joREmZ&quot; style=&quot;height: 400px;&quot; data-pen-title=&quot;04 - Vue UI Slider [Animation with Vue]&quot;&gt;
+&lt;/p&gt;</p>
+<h2><a href="#conclusion"></a>{.header-anchor #conclusion} Conclusion</h2>
+<p>And just like that, we're all ready to rumble. If you wanted to, there are a couple of enhancements you could include:</p>
+<ul>
+<li>Write some CSS to transition the progress indicator a little more smoothly.</li>
+<li>Add a boolean <code>loaded</code> state to the Vue <code>data()</code>, and transition in the navigation and slider depending on whether <code>loaded === true</code> or not.</li>
+<li>Use <a href="https://jariz.github.io/vibrant.js/">Vibrant.js</a> or similar to set the background of the slider to an accent color of the slider image!</li>
+</ul>
+<p>If you end up giving this a shot or customizing it in any way, let me know on Twitter <a href="https://i.ncredibly.online">@xdesro</a>! I'd love to see it. Thanks for reading. As promised, <a href="https://codepen.io/xdesro/pen/dEwMOq">here's the finished pen</a>.</p>
+<p>&lt;p class=&quot;codepen&quot; data-height=&quot;400&quot; data-theme-id=&quot;37307&quot; data-default-tab=&quot;result&quot; data-user=&quot;xdesro&quot; data-slug-hash=&quot;dEwMOq&quot; style=&quot;height: 400px;&quot; data-pen-title=&quot;Vue Slider UI Interaction&quot;&gt;
+&lt;/p&gt;</p>
+<p><em>P.S. This is my first tutorial-style blog post — please let me know if you have any feedback or found any problems with the post! Thanks for reading.</em></p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Uses]]></title>
+            <description><![CDATA[A detailed list of all the software and hardware I use to get through my daily life. Inspired by Wes Bos' [/uses](https://wesbos.com/uses/).]]></description>
+            <content:encoded><![CDATA[<p>This is a non-exhaustive list of the tools I use in my day-to-day operation for design, development, and life as a human. If I'm missing something, <a href="mailto:yo@henry.codes?subject=Request%20To%20Add%20To%20Uses%3A">let me know</a>!</p>
+<h2>Hardware</h2>
+<ul>
+<li><strong>Main Computer</strong> - 2017 MacBook Pro, 15&quot; Retina, 2.8GHz Intel Core i7 &quot;Kaby Lake&quot;, 16GB RAM, Radeon Pro 555.</li>
+<li><strong>Backup Computer</strong> - 2015 MacBook Pro, 15&quot; Retina, 2.2GHz Intel Core i7, 16GB RAM, Intel Iris Pro.</li>
+<li><strong>Additional Monitor</strong> - 27&quot; Apple Thunderbolt Display</li>
+<li><strong>Webcam</strong> - Logitech C920 Pro HD</li>
+<li><strong>Microphone</strong> - Blue Microphones <a href="https://www.bluedesigns.com/products/yeti/">Yeti Blackout</a>. Got it for streaming, use it for everything. Just sounds really good, and it's super versatile.</li>
+<li><strong>Keys</strong> - <a href="https://drop.com/buy/new-poker-ii-mechanical-keyboard">60% Vortex Poker II</a> (<em>the USB-C version</em>), Cherry MX Brown (lookin' at Kailh Box Jade) switches, Tai-Hao Sunshine PBT Doubleshot Keycaps</li>
+<li><strong>Tracking</strong> - Apple Magic Trackpad in Space Grey</li>
+<li><strong>Phone</strong> - Google Pixel 2 (Holding out for the px4).</li>
+<li><strong>Headphones</strong> - <a href="https://gradolabs.com/headphones/prestige-series/item/1-sr80e">Grado SR80e Prestige Series</a>. Super affordable, <em>amazing</em> sound-stage.</li>
+<li><strong>Luggage</strong> - <a href="https://www.chromeindustries.com/product/niko-pack-backpack/BG-153.html">Chrome Niko Pack</a> laptop &amp; camera bag. It's like bulletproof, effectively waterproof, and looks really tech-wear-y and rad.</li>
+</ul>
+<h2>Software</h2>
+<ul>
+<li><strong>IDE</strong>: VS Code, of course.
+<ul>
+<li><em>Theme</em>: <a href="http://citylights.xyz/">City Lights</a>, <a href="https://www.nordtheme.com/ports/visual-studio-code">Nord</a>, or <a href="https://horizontheme.com/">Horizon Light</a> (<em>I know, *GASP*, a light theme</em>) depending on the day (and the time of day).</li>
+<li><em>Font</em>: SF Mono with a Fira Code fallback.</li>
+<li><em>Must-Have Extensions</em>: GitLens, Prettier, &amp; Vetur.</li>
+</ul>
+</li>
+<li><strong>Terminal</strong>: I like <a href="https://hyper.is/">Hyper.js</a> — recently switched from iTerm almost solely based on the visual customization and JSON-based (instead of GUI) config.
+<ul>
+<li><em>Theme</em>: Nord, again.</li>
+<li><em>Shell</em>: ZSH — it's like bash, but...way, way better and more human-usable.</li>
+<li><em>Prompt</em>: Used to be a die-hard oh-my-zsh user, but it's more than I need by a lot. Now I just use <a href="https://denysdovhan.com/spaceship-prompt/">Spaceship</a>.</li>
+</ul>
+</li>
+<li><strong>Notes/Content</strong> - <a href="https://www.notion.so/">Notion</a>. Notion holds my life together.</li>
+<li><strong>Messaging</strong> - I use <a href="https://telegram.org/">Telegram</a> to message most folx! I can get rich content messaging like iMessage, and use it on all platforms, can send many types of data, and you can delete message history for both parties. Feel free to <a href="https://telegram.me/xdesro">add me</a>.</li>
+<li><strong>UI/Prototype Design</strong> - <a href="https://www.framer.com/">Framer X</a> forever! I recently made the switch from Sketch and have not looked back. The code extensibility makes it a must-have for devsigners 🦄. Figma is also good.</li>
+<li><strong>3D Design</strong> - Gotta be Cinema 4D. I initially got hooked on it via Devon Ko's <em>amazing</em> <a href="https://www.3dfordesigners.com/">3D For Designers</a> course and now I can't stop making weird stuff with it.</li>
+<li><strong>Memes &amp; One-Off Imagery</strong> - Photoshop 😬</li>
+<li><strong>Vector Art &amp; Iconography</strong> - Usually Illustrator, but recently Framer X and Hundred Rabbits' <a href="https://100r.co/pages/dotgrid.html">Dotgrid</a> are actually doing an amazing job (and looking good doing it).</li>
+<li><strong>Music</strong> - Spotify for everything. I have like <a href="https://open.spotify.com/user/1239993406?si=4pX6EAL6T5G6SgD5WSf_4g">a billion playlists</a> that are specially curated for different moods, and Spotify actually does a really good job of suggesting music I'll like.</li>
+<li><strong>VPN</strong> - It's 2019, please, please, please use a VPN. I prefer <a href="https://nordvpn.com/">Nord</a> <em>(lmao)</em> but any one that you pay for is probably decent.</li>
+<li><strong>Productivity</strong>:
+<ul>
+<li><a href="https://www.alfredapp.com/">Alfred</a> is a replacement for your Spotlight on Mac OS X that supercharges it. It's well worth paying for a license.</li>
+<li>LastPass for login management. 1Password is also good, but.</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Bad UX In Everyday Life: Kitchen Nightmares]]></title>
+            <description><![CDATA[It’s come to my attention lately that my kitchen is absolutely riddled with poor experiences. Most of the appliances and apparatus one uses on a day-to-day basis in the kitchen were invented or last revolutionized in the early part of the 20th century, and many of them have seen very little innovation, if any, since that time. I'd like to file a complaint.]]></description>
+            <content:encoded><![CDATA[<p>This article was originally posted on the <a href="http://www.universalmind.com/blog/bad-ux-in-everyday-life-part-1-the-kitchen/">Universal Mind blog</a> in June 2016.{.editors-note}</p>
+<p>It’s come to my attention lately that my kitchen is absolutely riddled with poor experiences. Most of the appliances and apparatus one uses on a day-to-day basis in the kitchen were invented or last revolutionized in the early part of the 20th century, and many of them have seen very little innovation, if any, since that time. In this UX- and CX-obsessed age, it seems totally unacceptable that we demand constant iteration and improvement of processes in our web applications, in our vehicles, and elsewhere, but settle for lackluster routines in the kitchen.</p>
+<p>In the following exposition, I will outline some of the major experience flaws in a couple places in the standard kitchen.</p>
+<h3>The Toaster</h3>
+<p>The conventional pop-up toaster you typically see in John Doe’s kitchen was invented in 1919 by Charles Strite, and looks about the same as it did when he initially received the patent for the device, save for a few standard additions like the toast-level knob and sometimes the bagel setting. This run-of-the-mill toaster is plagued with several major detriments, chiefly inconsistent functionality. I cycled through four toasters of varying major brands and continued to get bread that was grossly mistreated by the heating element, often leaving half unchanged while rendering the other half a tragically-charred wasteland.</p>
+<p>Through extensive research and great personal cost, I managed to find a unit with a consistent heating element, but this effort should have been managed by the toaster manufacturers in question. With little exception, all new, modern vehicles drive smoothly off the dealership lot, without random changes in speed or wheels that only work a fraction of the time — by the same token, all toasters should do their job without pause or error. Basic functionality shouldn’t be a luxury or difficult-to-find affordance.</p>
+<p>Toasters typically let users select a level of toast in an iconographically-vague or otherwise unclear manner, such as a numbered scale. At no point does a user decide they want “3” toast — the lack of clarity here forces one to employ guess-and-check methods and dejectedly munch their way through under-crusty or over-crispy slices. Some variants have attempted to combat this with hieroglyphics indicating differing degrees of toastiness, but the user’s perception of a certain amount of crosshatching on a rudimentary picture doesn’t necessarily coincide with their ideal char level on their bread.</p>
+<p>Not lastly of the toaster’s UX sins stems from its traditionally opaque walls. A lot of the schism encountered when trying to nail down an ideal toast level could be countered if you could just see how dark the darn bread was getting. Breville’s “Lift &amp; Look”™ solution (which allows the user to check the toast level without canceling the heating cycle) is a step in the right direction, but could be improved. Morphy Richards’ glass-walled design is the closest to completely solving this problem, but while everyone deserves a seamless toast experience, not everyone can afford to spend $200+ on a toaster.</p>
+<h3>Rice, Flour, and Sugar Packaging (Oh My)</h3>
+<p>This is one that confounded me long before I had even heard the term “UX” — flour, most culinary sugars, and rice are usually found in stores in tightly-packed paper or plastic bags. This packaging makes it difficult if not impossible to reseal or contain them once opened, without third-party storage jars/boxes/bags. There are very few other food items that ship with this necessity. Crackers come in boxes, butter comes in a wrapper or a box — it seems almost a bizarre oversight that the powdery or granular food items would be assigned to the type of packaging that would be most logistically difficult for it to be retrieved from. The tight packaging is designed with shipping convenience in mind, not the consumer; the amount of flour exploding over unsuspecting users’ countertops at any given moment is unforgivable.</p>
+<h3>Disclaimer</h3>
+<p>This is a list of poor user experiences I’ve had in my culinary ventures — many of these could arguably be attributed to “user error” or “expecting too much of a toaster”, but I believe that in 2016, I shouldn’t have to hunt excessively or pay premiums for a toaster that works, nor should I have to buy specialized containers for some food products, when most others leave the shelf of the grocery store in a package they’re fine occupying indefinitely. I’d love to hear your input — feel free to dispute my thoughts or (much more likely) to agree vehemently with me <a href="mailto:yo@henry.codes">via email</a>.</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Agile For The Rest of Us]]></title>
+            <description><![CDATA[For the folks at home or those who might be new to the industry, what *is* agile development? Where did it come from? Who let it in? Should we feed it?]]></description>
+            <content:encoded><![CDATA[<p>This article was originally written for the <a href="https://www.fusionbox.com/blog/detail/agile-for-the-rest-of-us/540/">Fusionbox blog</a> in January 2015.{.editors-note}</p>
+<p>The Fusionbox process takes many pages from the Great Big Book of Agile Methodology to streamline and modernize the production of web content, etcetera, but for the folks at home, what <em>is</em> agile development? Where did it come from? Who let it in? Should we feed it?</p>
+<h2>Waterfall</h2>
+<p>Software development used to be treated the same as the development of any other product. Guidelines would be set, features would be decided upon, and a timeline would be locked in place. This is because in the worlds of manufacturing and construction, after-the-fact changes to any design or aspect of a project are prohibitively costly, if not impossible, so it only makes sense when planning to “pick it and stick with it”. When software development was in its infancy, no formal alternative methodologies had been invented, so the manufacturing model was just adapted to fit the software industry. The idea is that requirements are established, and production ensues.</p>
+<p>This became known as the Waterfall Method, which until recently tended to be the standard for software dev. In its purest form, Waterfall designated this list of steps:</p>
+<ol>
+<li>Product requirements specification</li>
+<li>Design</li>
+<li>Programming</li>
+<li>Testing and debugging</li>
+<li>Delivery of product</li>
+<li>Maintenance</li>
+</ol>
+<p>With these steps, it’s fairly easy to budget and set timetables, because it is already known on Day 1 of design what the finished product will be when on Day X when it is delivered. Also, if a developer can’t be involved in the project for one reason or another, the concrete plan makes it easy for another programmer to hop right into his or her spot.</p>
+<p><strong>Here’s the problem:</strong></p>
+<p>The Waterfall method is typically incredibly rigid and inflexible. Altering the project design at any stage in the project is nearly impossible. What happens when down the road, someone decides they want some extra functionality for their website? Waterfall says no. When an apartment building is planned, no one decides they want an extra floor or balcony at some point during the middle — but when designing a website, it’s not uncommon in any capacity for requested changes to arise. “Let’s add an eCommerce section to our site”, “can we put the navigation bar on the side, rather than the top?”, “how do we add mobile functionality to our page?” Those suggestions and queries are very difficult to respond to in Waterfall.</p>
+<p>And what about debugging? The testing stage of Waterfall method is deferred until especially late in the project. To put this in perspective, remember that apartment building we were talking about earlier? Construction contractors won’t test if the building will stand on its own while they’re still pouring the foundations. Which works quite well for the apartment building. So much planning has gone into that high-rise since the start that the contractor pretty much knows without a doubt that his product is structurally sound. However, software programs or websites are not high-rises. It’s so often impossible to predict how the many MANY different pieces of a site will interact with each other, and this leads to problems in the debugging phase. All of the design steps and all of the programming steps will finally end up in the lap of a QA tester who has a week or sometimes as little as a day to solve every little problem and glitch in the product to deliver it on time.</p>
+<p>At the end of those months and months of painstaking planning and prediction, the “finished” product is buggy and might not meet all the needs it is supposed to fill because the requirements may have changed at some point during the process.</p>
+<h2>Agile</h2>
+<p>So by now it’s easy to see that building a website is a different task entirely from building an apartment tower. Why would the same development process be applied to both? Pioneers like E. A. Edmonds, Tom Gilb, and Dan Gielen all concurrently started publishing or applying different ideas about adaptive software development in the early- to mid-seventies, but it wasn’t till the mid-nineties that those methodologies started seeing widespread use. Initially, there were many different forms — Rational Unified Process, Scrum, Dynamic Systems Development Method, etc. — but these were for the most part collated under the term Agile Development after the “Agile Manifesto” was published in 2001. (For more information on the Manifesto, see here — it’s a quick read.)</p>
+<p>Agile focuses on team-based, adaptive development. Rather than setting all the requirements and solutions at the beginning of the process and not obliging any sort of change, requirements are allowed to vary and solutions evolve in real-time based on those changes. The Agile approach, in essence, works like this:</p>
+<p>The process is iterative — rather than the Waterfall style of an ordered list, it is based on the cyclical use of repeated steps. The requirements for a software product are gathered and organized by the team or by a team leader into “sprints” — short bursts of development activity resulting in large leaps forward in production. Frequently, the minimum requirements for an operable product are put into the first few sprints, which means rapid delivery of useful software is standard.</p>
+<p>The best analogy we’ve found to describe Agile sprints is this: With Waterfall method, first built are the wheels, and then the chassis, and then the engine, and eventually those leather seat covers are tossed on and that new “fresh-off-the-lot” smell is pumped in, and there is FINALLY a car that can be driven away. With Agile, rather than taking all that time to build a whole car (which we’ve established may or may not work as well as it should), the first “sprint” builds a skateboard. It’s not the aerodynamic supercar that is the end goal, but it’ll get someone down the street from their mom’s house to the grocery store, and it’ll be produced and deliverable in a fraction of the time.</p>
+<p>Through further sprints, which are usually a few days or a week long, the skateboard is built out more and more. Maybe a bicycle, second, and then halfway through go-cart stage, someone might decide they actually wanted a Mazerati, not a Ferrari.  With Agile, that’s not a problem. One of the primary principles of Agile development is to welcome changing requirements, even late in development. With each sprint, or iteration, working software is delivered — visible proof of progress to put a client or customer’s mind at ease.</p>
+<p>“Well, that’s awesome, it’s so intuitive and fluid, why would anyone NOT use Agile?!” Agile isn’t a be-all, end-all solution to development. Agile is very flexible, but that means it operates without the structure of Waterfall method, and that CAN have some drawbacks. Agile projects are harder to predict — changing requirements also means changing budgets and timelines, and that’s not how most business works. Waterfall was so widely accepted because it makes sense outside the world of web development, but Agile is not the same. While it is more intuitive to design and development teams, it is truly a leap of faith for different departments in their organization, or for clients in an agency context. The price paid for more efficient and functional software is sometimes an extension on deadlines and budgets.</p>
+<h2>So What?</h2>
+<p>Ultimately, neither methodology is “better” across the board. Waterfall is sometimes better for static projects, where the requirements are not expected to change at all, or for situations where a client can’t commit to a lot of communication, or the deadline or budget is adamant and inflexible.  Here at Fusionbox, we love how collaborative and personal Agile development is. We think face-to-face conversation is the best form of communication, and we love giving the continuous attention to technical excellence and good design that is essential to the Agile process..</p>
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>
