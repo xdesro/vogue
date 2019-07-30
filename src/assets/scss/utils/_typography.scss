@@ -117,13 +117,16 @@ ol {
   }
 }
 .header-anchor {
-  font-size: 0.7em;
+  font-size: 0.5em;
   display: inline-block;
   margin-left: -2ch;
   margin-right: 1ch;
   transform: translateY(-0.5rem);
   text-decoration: none;
   color: $color--mid;
+  @include screen(lg) {
+    font-size: 0.7em;
+  }
   &:before {
     content: "§";
   }
