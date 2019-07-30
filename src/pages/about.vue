@@ -1,7 +1,7 @@
 <template>
   <div class="layout layout--about">
     <PageHeader title="About" />
-    <main class="main about">
+    <main class="main about" id="main" role="main">
       <figure class="main__img about__profile-pic">
         <img src="~/assets/img/spooky-profile-pic.png" alt="Henry Desroches lookin' spooky." />
       </figure>

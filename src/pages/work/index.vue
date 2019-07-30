@@ -1,7 +1,7 @@
 <template>
   <div class="layout layout--work">
     <PageHeader title="Work" />
-    <main class="main">
+    <main class="main" id="main" role="main">
       <ul class="work-list">
         <WorkListItem
           v-for="(project, index) in projects"

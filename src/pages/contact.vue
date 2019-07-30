@@ -1,7 +1,7 @@
 <template>
   <div class="layout layout--contact">
     <PageHeader title="Contact" />
-    <main class="main main--container">
+    <main class="main main--container" id="main" role="main">
       <div class="contact__content text--display text--large" v-html="$md.render(contactText)"></div>
       <ul class="contact__list contact-list">
         <li class="contact__list-item" v-for="(link, index) in primarySocialLinks" :key="index">

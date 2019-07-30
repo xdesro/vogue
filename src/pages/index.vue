@@ -13,7 +13,7 @@
         <span class="index__header--wrap">Developer</span>
       </p>
     </header>
-    <main class="index__content">
+    <main class="index__content" id="main" role="main">
       <div class="index__hire">
         <p class="index__purpose">interaction & animation & accessibility</p>
         <p class="index__hireability">

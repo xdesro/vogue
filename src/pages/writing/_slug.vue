@@ -1,7 +1,7 @@
 <template>
   <div class="layout layout--post">
     <PostHeader :post="currentPost" section="writing" />
-    <main class="main post__content">
+    <main class="main post__content" id="main" role="main">
       <ul class="post__tags">
         <li v-for="(tag, index) in currentPost.fields.tags" :key="index" class="post__tag">{{tag}}</li>
       </ul>

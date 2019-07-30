@@ -1,7 +1,7 @@
 <template>
   <div class="layout layout--post">
     <PostHeader :post="currentProject" section="work" />
-    <main class="main post__content">
+    <main class="main post__content" id="main" role="main">
       <ul class="post__tags">
         <li
           class="post__tag"

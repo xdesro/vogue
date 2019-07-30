@@ -1,7 +1,7 @@
 <template>
   <div class="layout layout--writing">
     <PageHeader title="Writing" />
-    <main class="main">
+    <main class="main" id="main" role="main">
       <ul class="writing-list">
         <WritingListItem v-for="(post, index) in posts" :key="index" :post="post" />
       </ul>

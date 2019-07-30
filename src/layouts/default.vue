@@ -1,5 +1,6 @@
 <template>
   <div class="app">
+    <a href="#main" class="skip-link">Skip to main content</a>
     <Nav />
     <nuxt />
   </div>
