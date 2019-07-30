@@ -125,13 +125,12 @@
     }
   }
   &__hire {
-    font-family: $font--display;
     color: $color--mid;
+    font-family: $font--display;
+    font-style: italic;
     grid-area: purpose;
   }
-
   &__hireability {
-    font-style: italic;
     @include screen(md) {
       margin: 0;
     }

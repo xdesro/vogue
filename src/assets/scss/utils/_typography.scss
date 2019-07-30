@@ -112,11 +112,8 @@ ol {
   &--large {
     font-size: 1.7rem;
   }
-  &--emphasis {
-    font-weight: 700;
-  }
-  &--italic {
-    font-style: italic;
+  &--mid {
+    color: $color--mid;
   }
 }
 .header-anchor {
