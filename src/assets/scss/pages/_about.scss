@@ -82,4 +82,35 @@
       grid-column: 1;
     }
   }
+  &__recognition {
+    margin-top: 1rem;
+    z-index: 1;
+    &-title {
+      // font-family: $font--display;
+      // font-weight: 200;
+      // text-transform: uppercase;
+    }
+    @include screen(lg) {
+      grid-column: 3;
+      grid-row: 2;
+    }
+  }
+}
+.recognition-list {
+  color: $color--mid;
+  list-style-type: square;
+  padding-left: 1em;
+  &__item {
+    &::marker {
+      color: $color--neutral;
+    }
+  }
+  &__link {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  strong {
+    font-family: $font--display;
+    color: $color--neutral;
+  }
 }

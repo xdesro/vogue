@@ -19,6 +19,27 @@
           <nuxt-link to="/contact">Let’s chat!</nuxt-link>
         </p>
       </div>
+      <div class="about__recognition">
+        <h3 class="about__recognition-title">Recognition</h3>
+        <ul class="recognition-list">
+          <li class="recognition-list__item">
+            <a
+              class="recognition-list__link"
+              href="https://www.awwwards.com/sites/creative-developer-portfolio"
+            >
+              <strong>Awwwards</strong> Honorable Mention
+            </a>
+          </li>
+          <li class="recognition-list__item">
+            <a
+              class="recognition-list__link"
+              href="https://www.cssdesignawards.com/sites/creative-developer-portfolio/35579"
+            >
+              <strong>CSS Design Awards</strong> Special Kudos
+            </a>
+          </li>
+        </ul>
+      </div>
     </main>
   </div>
 </template>
