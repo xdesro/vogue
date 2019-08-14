@@ -33,6 +33,14 @@
           <li class="recognition-list__item">
             <a
               class="recognition-list__link"
+              href="https://www.awwwards.com/sites/creative-developer-portfolio"
+            >
+              <strong>Awwwards</strong> Mobile Excellence
+            </a>
+          </li>
+          <li class="recognition-list__item">
+            <a
+              class="recognition-list__link"
               href="https://www.cssdesignawards.com/sites/creative-developer-portfolio/35579"
             >
               <strong>CSS Design Awards</strong> Special Kudos
