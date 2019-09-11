@@ -7,13 +7,13 @@
       </figure>
       <img class="about__logo" src="~/assets/img/icon-logo.svg" alt role="presentation" />
       <h2 class="about__subtitle">
-        Hey there, I'm
+        Hey there, I’m
         <br />
         <span class="about__subtitle--light">{{person.name}}.</span>
       </h2>
       <div class="about__content" v-html="$md.render(person.shortBio)">
         <p>I’m a creative developer currently based in Denver, Colorado. I’m really into CSS, animation, developer experience, and deleting code.</p>
-        <p>I love bending the rules of CSS, making generative art, and WebGL. I have a lot of experience with style code at scale, JS-agnostic design systems, and static site generators. In my non-code time, I foster greyhounds, tweet too much, and ride bikes.</p>
+        <p>I love bending the rules of CSS, making gen    erative art, and WebGL. I have a lot of experience with style code at scale, JS-agnostic design systems, and static site generators. In my non-code time, I foster greyhounds, tweet too much, and ride bikes.</p>
         <p>I’m looking for a new role working on design systems, creative and innovative web projects, or building design & development tooling.</p>
         <p>
           <nuxt-link to="/contact">Let’s chat!</nuxt-link>
