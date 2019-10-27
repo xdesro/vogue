@@ -131,6 +131,9 @@
     grid-area: purpose;
   }
   &__hireability {
+    &--unavailable {
+      text-decoration: line-through;
+    }
     @include screen(md) {
       margin: 0;
     }

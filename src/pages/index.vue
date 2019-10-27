@@ -16,8 +16,10 @@
     <main class="index__content" id="main" role="main">
       <div class="index__hire">
         <p class="index__purpose">interaction & animation & accessibility</p>
-        <p class="index__hireability">
-          <nuxt-link to="/contact">available for full-time hire</nuxt-link>
+        <p class="index__hireability index__hireability--unavailable">
+          <!-- <nuxt-link to="/contact"> -->
+          available for full-time hire
+          <!-- </nuxt-link> -->
         </p>
       </div>
       <p class="index__date">Fall 2019</p>

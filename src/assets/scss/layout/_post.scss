@@ -136,6 +136,16 @@
   &__text {
     line-height: 1.2;
     display: grid;
+    ol,
+    ul {
+      line-height: 2;
+      margin-bottom: 1rem;
+      padding-left: 1.3em;
+      list-style-position: outside;
+      ul {
+        margin-bottom: 0;
+      }
+    }
     ol {
       list-style-type: upper-roman;
       ::marker {
@@ -144,17 +154,6 @@
     }
     ul {
       list-style-type: square;
-    }
-    ol,
-    ul {
-      line-height: 2;
-      margin-bottom: 1rem;
-      padding-left: 1.3em;
-      list-style: initial;
-      list-style-position: outside;
-      ul {
-        margin-bottom: 0;
-      }
     }
   }
 }
