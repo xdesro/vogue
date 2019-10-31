@@ -25,7 +25,10 @@ export default {
     meta() {
       return {
         title: `Henry Desroches | ${this.currentPost.fields.title}`,
-        description: this.currentPost.fields.excerpt
+        description: this.currentPost.fields.excerpt,
+        image: this.currentPost.fields.socialSharingImage
+          ? this.currentPost.fields.socialSharingImage.fields.file.url
+          : false
       };
     }
   },
@@ -54,6 +57,22 @@ export default {
           hid: "og:description",
           name: "og:description",
           content: this.meta.description
+        },
+        {
+          name: "twitter:card",
+          content: this.meta.image ? "summary_large_image" : "summary"
+        },
+        {
+          property: "og:image",
+          content: this.meta.image
+            ? `http:${this.meta.image}`
+            : "https://henry.codes/open-graph.jpg"
+        },
+        {
+          name: "twitter:image:src",
+          content: this.meta.image
+            ? `http:${this.meta.image}`
+            : "https://henry.codes/open-graph.jpg"
         }
       ],
       script: [{ src: "https://static.codepen.io/assets/embed/ei.js" }]
