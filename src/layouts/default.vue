@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import { TweenLite } from "gsap";
+import { gsap } from "gsap";
 import Nav from "~/components/Nav";
 export default {
   components: {
@@ -38,14 +38,14 @@ export default {
   mounted() {
     document.addEventListener("mousemove", this.handleMouseMove);
     this.$nextTick(() => {
-      TweenLite.ticker.addEventListener("tick", this.updateAnimation);
+      gsap.ticker.add(this.updateAnimation);
     });
   },
   methods: {
     handleMouseMove(e) {
       this.deltaY =
         ((e.clientY - window.innerHeight / 2) / window.innerHeight) * 2;
-      TweenLite.to(this, 1, {
+      gsap.to(this, 1, {
         easedDeltaY: this.deltaY
       });
     },

@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { TweenLite } from "gsap";
+import { gsap } from "gsap";
 
 // import SpotifyWidget from "~/components/SpotifyWidget";
 
@@ -56,14 +56,14 @@ export default {
   mounted() {
     document.addEventListener("mousemove", this.handleMouseMove);
     this.$nextTick(() => {
-      TweenLite.ticker.addEventListener("tick", this.updateAnimation);
+      gsap.ticker.add(this.updateAnimation);
     });
   },
   methods: {
     handleMouseMove(e) {
       this.deltaX =
         ((e.clientX - window.innerWidth / 2) / window.innerWidth) * 2;
-      TweenLite.to(this, 0.5, {
+      gsap.to(this, 0.5, {
         easedDeltaX: this.deltaX
       });
     },
