@@ -136,6 +136,7 @@
   &__text {
     line-height: 1.2;
     display: grid;
+    max-width: 60ch;
     ol,
     ul {
       line-height: 2;
