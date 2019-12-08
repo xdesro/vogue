@@ -137,6 +137,15 @@
     line-height: 1.2;
     display: grid;
     max-width: 60ch;
+    ol {
+      list-style-type: upper-roman;
+      ::marker {
+        font-family: $font--display;
+      }
+    }
+    ul {
+      list-style-type: square;
+    }
     ol,
     ul {
       line-height: 2;
@@ -146,15 +155,6 @@
       ul {
         margin-bottom: 0;
       }
-    }
-    ol {
-      list-style-type: upper-roman;
-      ::marker {
-        font-family: $font--display;
-      }
-    }
-    ul {
-      list-style-type: square;
     }
   }
 }
