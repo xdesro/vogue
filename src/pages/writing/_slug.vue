@@ -3,7 +3,7 @@
     <PostHeader :post="currentPost" section="writing" />
     <main class="main post__content" id="main" role="main">
       <ul class="post__tags">
-        <li v-for="(tag, index) in currentPost.fields.tags" :key="index" class="post__tag">{{tag}}</li>
+        <li v-for="(tag, index) in currentPost.fields.tags" :key="index" class="post__tag">{{ tag }}</li>
       </ul>
       <div class="post__text" v-html="$md.render(currentPost.fields.body)"></div>
     </main>
@@ -64,15 +64,11 @@ export default {
         },
         {
           property: "og:image",
-          content: this.meta.image
-            ? `http:${this.meta.image}`
-            : "https://henry.codes/open-graph.jpg"
+          content: this.meta.image ? `http:${this.meta.image}` : "https://henry.codes/open-graph.jpg"
         },
         {
           name: "twitter:image:src",
-          content: this.meta.image
-            ? `http:${this.meta.image}`
-            : "https://henry.codes/open-graph.jpg"
+          content: this.meta.image ? `http:${this.meta.image}` : "https://henry.codes/open-graph.jpg"
         }
       ],
       script: [{ src: "https://static.codepen.io/assets/embed/ei.js" }]

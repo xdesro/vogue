@@ -1,7 +1,7 @@
 <template>
   <header class="post__header">
     <div class="post__header-inner">
-      <nuxt-link :to="`/${ section }`" class="post__return-link">« Return to list</nuxt-link>
+      <nuxt-link :to="`/${section}`" class="post__return-link">« Return to list</nuxt-link>
       <h2 class="post__section">{{ section }}</h2>
       <p class="post__date">{{ postDate }}</p>
       <h1 class="post__title">{{ post.fields.title }}</h1>
@@ -9,14 +9,8 @@
     </div>
 
     <picture class="post__hero-image">
-      <source
-        :srcset="`https://${post.fields.heroImage.fields.file.url}?w=1500&h=750&fm=webp`"
-        type="image/webp"
-      />
-      <source
-        :srcset="`https://${post.fields.heroImage.fields.file.url}?w=1500&h=750&fm=jpg`"
-        type="image/jpg"
-      />
+      <source :srcset="`https://${post.fields.heroImage.fields.file.url}?w=1500&h=750&fm=webp`" type="image/webp" />
+      <source :srcset="`https://${post.fields.heroImage.fields.file.url}?w=1500&h=750&fm=jpg`" type="image/jpg" />
     </picture>
     <img
       class="post__hero-image"
@@ -27,18 +21,18 @@
 </template>
 
 <script>
-import moment from "moment";
-
 export default {
   props: ["post", "section"],
   computed: {
     category() {
-      if (this.post.fields.category)
-        return this.post.fields.category.fields.title;
+      if (this.post.fields.category) return this.post.fields.category.fields.title;
       return null;
     },
     postDate() {
-      return moment(this.post.fields.publishDate).format("MMMM YYYY");
+      return new Date(this.post.fields.publishDate).toLocaleDateString("en-US", {
+        month: "long",
+        year: "numeric"
+      });
     }
   }
 };

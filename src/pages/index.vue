@@ -61,8 +61,7 @@ export default {
   },
   methods: {
     handleMouseMove(e) {
-      this.deltaX =
-        ((e.clientX - window.innerWidth / 2) / window.innerWidth) * 2;
+      this.deltaX = ((e.clientX - window.innerWidth / 2) / window.innerWidth) * 2;
       gsap.to(this, 0.5, {
         easedDeltaX: this.deltaX
       });
