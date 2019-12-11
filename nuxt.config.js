@@ -116,12 +116,7 @@ export default {
       });
     }
   },
-  modules: [
-    "@nuxtjs/markdownit",
-    "@nuxtjs/dotenv",
-    "@nuxtjs/moment",
-    "@bazzite/nuxt-optimized-images"
-  ],
+  modules: ["@nuxtjs/markdownit", "@nuxtjs/dotenv", "@bazzite/nuxt-optimized-images"],
   optimizedImages: {
     optimizeImages: true
   },
@@ -139,10 +134,7 @@ export default {
       const Prism = require("prismjs");
       require("prismjs/components/prism-scss");
       /* eslint-enable no-undef */
-      return Prism.highlight(
-        code,
-        Prism.languages[lang] || Prism.languages.markup
-      );
+      return Prism.highlight(code, Prism.languages[lang] || Prism.languages.markup);
     }
   },
   build: {

@@ -43,8 +43,7 @@ export default {
   },
   methods: {
     handleMouseMove(e) {
-      this.deltaY =
-        ((e.clientY - window.innerHeight / 2) / window.innerHeight) * 2;
+      this.deltaY = ((e.clientY - window.innerHeight / 2) / window.innerHeight) * 2;
       gsap.to(this, 1, {
         easedDeltaY: this.deltaY
       });
@@ -55,4 +54,3 @@ export default {
   }
 };
 </script>
-

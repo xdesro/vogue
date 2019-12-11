@@ -29,11 +29,9 @@
   "dependencies": {
     "@bazzite/nuxt-optimized-images": "^0.2.1",
     "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/moment": "^1.4.0",
     "contentful": "^7.10.0",
     "gsap": "3.0.1",
     "markdown-it-attrs": "^2.4.1",
-    "moment": "^2.24.0",
     "nuxt": "^2.10.2",
     "prismjs": "^1.17.1",
     "spotify-web-api-js": "^1.2.0"
