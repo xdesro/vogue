@@ -27,24 +27,24 @@
   },
   "homepage": "https://github.com/xdesro/vogue#readme",
   "dependencies": {
-    "@bazzite/nuxt-optimized-images": "^0.2.1",
+    "@bazzite/nuxt-optimized-images": "^0.2.2",
     "@nuxtjs/dotenv": "^1.4.1",
-    "contentful": "^7.10.0",
+    "contentful": "^7.11.3",
     "gsap": "3.0.1",
     "markdown-it-attrs": "^2.4.1",
-    "nuxt": "^2.10.2",
+    "nuxt": "^2.11.0",
     "prismjs": "^1.17.1",
     "spotify-web-api-js": "^1.2.0"
   },
   "devDependencies": {
     "@nuxtjs/markdownit": "^1.2.7",
-    "eslint": "^6.6.0",
+    "eslint": "^6.8.0",
     "eslint-plugin-vue": "^5.2.3",
     "node-sass": "^4.13.0",
     "sass-loader": "^7.3.1",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended-scss": "^3.3.0",
-    "stylelint-scss": "^3.12.1"
+    "stylelint-scss": "^3.13.0"
   },
   "headMeta": {
     "title": "Henry Desroches | Creative Developer & UX Engineer",
