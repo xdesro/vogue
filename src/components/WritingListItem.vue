@@ -31,7 +31,9 @@ export default {
       return null;
     },
     postDate() {
-      return new Date(this.post.fields.publishDate).toLocaleDateString("en-US", { month: "short", year: "2-digit" });
+      const month = new Date(this.post.fields.publishDate).toLocaleDateString("en-US", { month: "short" });
+      const year = new Date(this.post.fields.publishDate).toLocaleDateString("en-US", { year: "2-digit" });
+      return `${month} ‘${year}`;
     }
   }
 };
