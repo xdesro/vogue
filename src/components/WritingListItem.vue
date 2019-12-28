@@ -1,6 +1,6 @@
 <template>
   <li class="writing-list__item">
-    <nuxt-link class="writing-list__link writing-list__link--external" :to="post.fields.slug">
+    <nuxt-link class="writing-list__link" :to="`/${post.fields.slug}`">
       view the post—
     </nuxt-link>
     <p class="writing-list__date">{{ postDate }}</p>
