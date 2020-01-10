@@ -29,14 +29,15 @@
   "dependencies": {
     "@bazzite/nuxt-optimized-images": "^0.2.2",
     "@nuxtjs/dotenv": "^1.4.1",
-    "contentful": "^7.11.3",
+    "@nuxtjs/feed": "^1.1.0",
+    "contentful": "^7.13.0",
     "gsap": "3.0.1",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
     "jimp": "^0.9.3",
     "markdown-it-attrs": "^2.4.1",
     "nuxt": "^2.11.0",
-    "prismjs": "^1.17.1",
+    "prismjs": "^1.18.0",
     "responsive-loader": "^1.2.0",
     "spotify-web-api-js": "^1.2.0"
   },
