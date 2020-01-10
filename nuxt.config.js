@@ -4,6 +4,11 @@ import pkg from "./package";
 require("dotenv").config();
 const contentful = require("contentful");
 
+const client = contentful.createClient({
+  space: process.env.CTF_SPACE_ID,
+  accessToken: process.env.CTF_CD_ACCESS_TOKEN
+});
+
 export default {
   srcDir: "src",
   env: {
@@ -91,10 +96,6 @@ export default {
   },
   generate: {
     routes: () => {
-      const client = contentful.createClient({
-        space: process.env.CTF_SPACE_ID,
-        accessToken: process.env.CTF_CD_ACCESS_TOKEN
-      });
       return client.getEntries().then(response => {
         return response.items
           .filter(entry => {
@@ -116,7 +117,7 @@ export default {
       });
     }
   },
-  modules: ["@nuxtjs/markdownit", "@nuxtjs/dotenv", "@bazzite/nuxt-optimized-images"],
+  modules: ["@nuxtjs/markdownit", "@nuxtjs/dotenv", "@bazzite/nuxt-optimized-images", "@nuxtjs/feed"],
   optimizedImages: {
     optimizeImages: true
   },
@@ -137,6 +138,41 @@ export default {
       return Prism.highlight(code, Prism.languages[lang] || Prism.languages.markup);
     }
   },
+  feed: [
+    {
+      path: `/rss.xml`,
+      async create(feed) {
+        const md = require("markdown-it")();
+        feed.options = {
+          title: "Henry Desroches' Writing",
+          link: "https://henry.codes/rss.xml",
+          description: "Small bites and deep dives about UX engineering, and rants about socialism. 💛"
+        };
+        const posts = await client.getEntries().then(response => {
+          return response.items.filter(entry => entry.sys.contentType.sys.id === `blogPost`);
+        });
+
+        posts.forEach(post => {
+          console.log(post);
+          feed.addItem({
+            title: post.fields.title,
+            id: post.fields.slug,
+            link: `https://henry.codes/writing/${post.fields.slug}`,
+            description: post.fields.excerpt,
+            content: md.render(post.fields.body)
+          });
+        });
+
+        feed.addContributor({
+          name: "Henry Desroches",
+          email: "yo@henry.codes",
+          link: "https://henry.codes"
+        });
+      },
+      cacheTime: 1000 * 60 * 15,
+      type: "rss2"
+    }
+  ],
   build: {
     extend(config) {
       config.node = {

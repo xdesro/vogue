@@ -1,14 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
-        <title>Henry Desroches&apos; Blog</title>
-        <link>https://henry.codes/feed.xml</link>
-        <description>This is where all my rad and adorable blog posties go to be RSS&apos;d.</description>
-        <lastBuildDate>Tue, 30 Jul 2019 13:31:56 GMT</lastBuildDate>
+        <title>Henry Desroches&apos; Writing</title>
+        <link>https://henry.codes/rss.xml</link>
+        <description>Small bites and deep dives about UX engineering, and rants about socialism. 💛</description>
+        <lastBuildDate>Fri, 10 Jan 2020 16:43:40 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/nuxt-community/feed-module</generator>
         <item>
+            <title><![CDATA[How To Convert Variable TTF Font Files to WOFF2]]></title>
+            <link>https://henry.codes/writing/how-to-convert-variable-ttf-font-files-to-woff2</link>
+            <guid>https://henry.codes/writing/how-to-convert-variable-ttf-font-files-to-woff2</guid>
+            <description><![CDATA[I recently received a variable font file from a client to use on their website, but not in a webfont format, so I figured I'd hunt down a route to convert that TTF into a WOFF2 for use in @font-face declarations!]]></description>
+            <content:encoded><![CDATA[<p><strong>Table of Contents</strong></p>
+<ol>
+<li><a href="#impetus">Impetus</a></li>
+<li><a href="#installation">Installing the library</a></li>
+<li><a href="#compression">Converting the TTF</a>
+{.toc}</li>
+</ol>
+<h2><a href="#impetus"></a>{.header-anchor #impetus} Impetus</h2>
+<p>I've been working on a project lately that requires the loading of many, many webfonts. For the main UI font alone, we needed to download over 980&lt;abbr title=&quot;kilobytes&quot;&gt;kB&lt;/abbr&gt; of WOFF and WOFF2 files. As it happened, the client eventually developed a variable font version of the UI face, which was a much smaller 225kB file.</p>
+<p>However, when I received the variable font file, I realized it was a TTF, and not the WOFF2 that I would need to implement it in a <code>@font-face</code> declaration for web. In previous experience, converting variable TTF to WOFF via online tools like convert.io or FontSquirrel would often break the axes needed to interpolate between font variation settings.</p>
+<p>A cursory search yielded Google's <a href="https://github.com/google/woff2">woff2 library</a>, a tool for compressing TTF to WOFF2 — it worked perfectly. Here's how to do the thing.</p>
+<h2><a href="#installation"></a>{.header-anchor #installation} Installing the library</h2>
+<p>This is covered in <code>woff2</code>'s README file, but we'll go over each step here in a little more depth, so it's clear what's going on.</p>
+<h3><strong>Clone woff2 locally.</strong></h3>
+<p>Open a terminal and <code>cd</code> into whichever directory. This doesn't need to be installed in a specific place, just remember where you're putting it. For this tutorial, I'm going to clone it into my <code>~/Sites</code> directory.</p>
+<pre><code class="language-bash">cd ~/Sites
+git clone --recursive https://github.com/google/woff2.git
+cd woff2
+</code></pre>
+<p>Here, we entered the correct directory, cloned the repo recursively, and entered the cloned directory. <code>woff2</code> uses the Brotli compression library as a dependency, so you need the <code>--recursive</code> flag to clone everything inside this repo.</p>
+<h3><strong>Build woff2.</strong></h3>
+<p>Next, we'll run a command to build the library and its dependencies, which will create the scripts we'll need.</p>
+<p>In the <code>woff2</code> directory:</p>
+<pre><code class="language-bash">make clean all
+</code></pre>
+<p>If there were no errors, we should be good to go! (If there <em>were</em> errors, <a href="https://twitter.com/messages/compose?recipient_id=2509306208">send me a DM</a> and we'll debug through so it so I can update this blog post with troubleshooting steps.</p>
+<h2><a href="#compression"></a>{.header-anchor #compression} Converting the <code>.TTF</code></h2>
+<p>Now that we've created the binary scripts for compressing and decompressing TTF into WOFF, we can run them here. In this example, I've downloaded the variable TTF to my <code>~/Downloads</code> folder.</p>
+<p>In the <code>woff2</code> directory:</p>
+<pre><code class="language-bash">./woff2_compress ~/Downloads/variable-font.ttf
+</code></pre>
+<p>You'll get some output like this:</p>
+<pre><code>Processing /Users/henry/Downloads/variable-font.ttf =&gt; /Users/henry/Downloads/variable-font.woff2
+Compressed 216568 to 94577.
+</code></pre>
+<p>And voilà, we've got a variable WOFF2 file, ready for use on the web.</p>
+<p>Thanks for taking the time to read this. If you've got any questions or concerns, please <a href="https://twitter.com/messages/compose?recipient_id=2509306208">reach out and touch faith</a> and we'll work through it together! Have a great day.</p>
+<p><strong>Colophon</strong>
+Header image by <a href="https://unsplash.com/photos/LqRJ1Oc9zlw">William J Simpson</a> via Unsplash.</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[2019: Year in review]]></title>
+            <link>https://henry.codes/writing/2019-year-in-review</link>
+            <guid>https://henry.codes/writing/2019-year-in-review</guid>
+            <description><![CDATA[I let myself down a little bit this year with my goals, and I'd like to examine how and why that happened. I'm staying hopeful, estimating better, and executing better in 2020. ]]></description>
+            <content:encoded><![CDATA[<p><strong>Table of Contents</strong></p>
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#reflection">Reflection</a></li>
+<li><a href="#post-mortem">Post-Mortem</a></li>
+<li><a href="#goals-for-2020">Goals For 2020</a></li>
+<li><a href="#conclusion">Conclusion</a>
+{.toc}</li>
+</ol>
+<h2><a href="#introduction"></a>{.header-anchor #introduction} Introduction</h2>
+<p>This time last year, I Tweeted out some goals for the New Year.</p>
+<p>&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;🗣️ Speak about CSS at a conference or school&lt;br&gt;🎓 Take a class a month&lt;br&gt;📚 Read a book a month&lt;br&gt;✈️ Go back to SF, go back to Europe&lt;br&gt;💵 Save enough to buy a house&lt;br&gt;&lt;br&gt;Bring it tf on, 2019. &lt;a href=&quot;https://t.co/YnOTJRiG8e&quot;&gt;https://t.co/YnOTJRiG8e&lt;/a&gt;&lt;/p&gt;— ؜ (@xdesro) &lt;a href=&quot;https://twitter.com/xdesro/status/1079830658946555907?ref_src=twsrc%5Etfw&quot;&gt;December 31, 2018&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;</p>
+<p>I was determined and inspired by a strong career year, financial independence earned by selling my car, and the sense of indomitability and self-confidence that comes with healing after a breakup.</p>
+<p>I set some goals that I felt were extremely achievable (like reading a book a month), and some that were much loftier (going to Europe, save enough to buy a house).</p>
+<p>I missed the mark on nearly all of them.</p>
+<p>Now, in the last few days of the year, I’d like to reflect on how and why I failed to meet these goals, and how I plan to estimate and execute better in 2020.</p>
+<h3><a href="#tldr"></a>{.header-anchor #tldr} Tl;dr</h3>
+<p>I slipped super hard on meeting my goals for last year, mostly because I wasn’t good at focusing and using my time usefully. I’m setting goals for 2020 that I feel are meaningful to me, achievable, and that I can be proud of by the end of the year.</p>
+<h2><a href="#reflection"></a>{.header-anchor #reflection} Reflection</h2>
+<p>I didn’t actually fumble 100% of my goals, so I’ll kick this off with a positive.</p>
+<h3>🌉 Return to San Francisco ✅</h3>
+<p><em>Smashed it</em>.</p>
+<p>I spent a week or so in May in hotels in Japantown and the Financial District. My former employer sent me to attend the <a href="https://www.awwwards.com/conference-san-francisco-2019/">AwwwardsConf</a> in—yes, indeed—<s>sunny</s> foggy San Francisco.</p>
+<p>At the time, I was up to my knees in the development of a design system and design operations processes for the team. Since most of the AwwwardsConference talks were about design systems,it was a fairly straightforward value prop, and let me knock one goal off the list.</p>
+<p>The first half of my trip was for AwwwardsConf , where I had the pleasure and privilege of listening to talks by <a href="https://www.omayeli.com/">Omayeli Arenyeka</a>, <a href="https://www.alexcornell.com/">Alex Cornell</a>, <a href="https://guglieri.com/">Claudio Guglieri</a> and more. I made friends from Finland, DC and San Diego. I managed to get into an amazing workshop on machine learning led by <a href="https://www.pedromarques.io/">Pedro Marques</a> and <a href="https://twitter.com/jvb_nl?lang=en">Joël van Bodegraven</a>. I could name drop all day (<em>I won’t</em>) but it was a really fantastic trip for making friends and networking. I already can’t wait to go back (or at least make it to another AwwwardsConf).</p>
+<p><img src="//images.ctfassets.net/0ggmebtirnb6/4nMgTBot8IU8O63HChoD2p/0941aeae58bce74e8c2032fcb95569d3/2019-05-11_12.32.58_1.jpg" alt="Me holding boba with the iconic Transamerica tower shown in the background."></p>
+<h3>🗣️ Speaking at a conference/school ❌</h3>
+<p>If I’m being real, I just didn’t keep the fires stoked for this one.</p>
+<p>I sent a talk proposal on <a href="https://codepen.io/xdesro/pen/MzKZrE">making innovative CSS art using SVG filter primitives</a> to CSSConf Budapest, but didn’t make the lineup, and didn’t really try after that. Speaking is a big time and labor investment upfront, and motivating myself to prioritize such an effort with potentially no payoff was a big challenge.</p>
+<p>I’m bringing this goal back in 2020. I’ve met some new connections that can help me engineer better talk proposals, and because my urge to teach and share has persisted, I feel confident I can get this one across the line in 2020.</p>
+<h3>🎓 Take a class a month and  📚 Read a book a month ❌❌</h3>
+<p>Reading is super hard. I’m fully embarrassed to admit it, but I took the constant reading and analyzing cycle of academia for granted. It’s been a few years since I really invested in any long-form reading and I felt that in a big way. I was constantly distracted, usually by my phone, and often would realize I was just reading the words of the page individually instead of absorbing the information. It’s hard, and it’s hard to get better, and it’s hard to admit that I’m not really good at reading anymore.</p>
+<p>I will bring a desire to constantly learn and consume literature or other long-form reading into the new year, but I will leave the quantifiable “1 book a month”, “1 class a month” goal behind until reading feels more natural.</p>
+<h3>🛩 Go back to Europe ❌</h3>
+<p>I didn’t make it — I was mostly focused on saving for a house and eating out all the time. It wasn’t a huge priority and I don’t feel bad about slipping. Just didn’t shake out!</p>
+<p>I won’t add this one to the list again, mostly because it really just isn’t that meaningful to me that I make the trip, though if I did it’d be a free win: <a href="https://faculty.com/">The Faculty crew</a> and I are headed to Nottingham, UK (<em>that’s still technically Europe these days, right?</em>) in January 2020 for <a href="https://newadventuresconf.com/2020/">New Adventures conference</a>. I’d love to make some friends while I’m out there, so <a href="https://twitter.com/messages/2509306208-2509306208?recipient_id=2509306208">reach out</a> if I’ll see you there!</p>
+<h3>💵 Save enough to buy a house 🆗</h3>
+<p>This was either a win or not, depending on how you look at it.</p>
+<p>In 2019, I got fully debt-free, cancelled the majority of my credit cards, shook myself loose of any loans I picked up erroneously in my slightly-earlier-twenties. That was a huge success. I still saved enough to buy a house, but probably not a house in Denver, where I’d like to be buying.</p>
+<p>I’ve been hemorrhaging money renting here, year after year, and it only gets worse as the months pass and Denver becomes a more popular destination. I could look at buying somewhere more affordable, but when I set this goal, I had Denver in mind, so that’s why I’m not calling this a win just yet.</p>
+<h2><a href="#post-mortem"></a>{.header-anchor #post-mortem} Post-mortem</h2>
+<p>Overwhelmingly, I feel like 2019 was largely unfocused and middling. I have always felt compelled to do all kinds of things, but the aimless splashing around in learning Cinema4D, WebGL, Italian, whatever, hasn’t made me feel like more of a Renaissance person. I feel like I know a little about a lot, and unfortunately, that “little” tends to translate to “slightly-less-than-enough to be dangerous”.
+It’s not all bad. I definitely let myself down, but in doing so I’ve gained a more careful understanding of some tenets I need to be stronger — that’s <strong>focus</strong>, <strong>deliberation</strong>, and <strong>meaningful action</strong>.</p>
+<p><img src="//images.ctfassets.net/0ggmebtirnb6/ykP9uYd3U0EXbEQC2wyxv/73f138f7ad5db3f512a1cfb4655aef62/focus-deliberation-meaningful-action.png" alt="Focus, deliberation, meaningful action."></p>
+<p>Scrolling through Twitter without purpose, shitposting in nigh-silent groupchats, watching mediocre content on Netflix — I’m doing a lot of things for no reason, and with no benefit to my sense of self.</p>
+<p>Additionally, with goals like “save enough to buy a house”, it’s a little too wide-open and not specific enough to know whether I actually hit the mark or not, and leaving it up to a subjective <em>do-I-feel-like-I-did-it</em> means it becomes a matter of mood.</p>
+<p>I want to forgive myself for a slow and unintentional year and set useful, achievable yet challenging and quantifiable goals for 2020.</p>
+<h2><a href="#goals-for-2020"></a>{.header-anchor #goals-for-2020} Goals For 2020</h2>
+<p>Without further ado, here's the plan for doing 2020 focused, deliberately, and mindfully:</p>
+<ul>
+<li><strong>🗣️ Speak about creative web at a conference or school</strong></li>
+</ul>
+<p>Like I said, still on the list. I’ve got some ideas for talks but I will spend intentional time to craft at least two fully-fleshed-out proposals I can send off to as many CFPs as possible.</p>
+<ul>
+<li><strong>💵 Save $60,000 for a down payment on a home</strong></li>
+</ul>
+<p>“Save enough to buy a house” part two, electric boogaloo. This is a very strict success metric and I’ll either hit it or I won’t.</p>
+<ul>
+<li>🎓 <strong>Enroll in formal further education for computer science, mathematics, or creative computing.</strong></li>
+</ul>
+<p>When attempting to learn WebGL or invest more in creative technology, I find my lack of understanding of mathematical concepts as basic as geometry are a huge hindrance. I’ve tried to relearn these concepts (oh, if my high school self could see me now), but I feel that a formal re-education will be a lot more effective for my learning style, as well as providing professional development lift. Plus it’ll make my mom happy 😉.</p>
+<h3>An additional goal</h3>
+<p>This one isn't really quantifiable, it's just an ethical tenet I'd like to take on.</p>
+<ul>
+<li>🥀 <strong>Minimize use of &quot;gig economy&quot;, hyper-convenience, and subscription services.</strong></li>
+</ul>
+<p>Companies like Lyft, Uber, Doordash, Instacart, etc, have all proven themselves uninterested in serving their labor force ethically, and there’s a full clip of additional reasons these companies don’t deserve my (your) patronage. Instead of rideshare, I’ll be riding my bike a lot more. I can get virtually everywhere and everything I could need within an hour ride of my apartment. Taking Lyfts and Doordashing are the result of a lack of intention, motivation, or preparation.</p>
+<p>Second, Amazon is like…inarguably evil, so I’ll be doing my best to patronize local booksellers, craft stores, and so on, instead of defaulting to the path of least resistance.</p>
+<p>Lastly, streaming video and other subscription services burn a hole in my pocket and encourage me to waste my time. As much as possible, I will choose buy-to-own products and non-subscription alternatives.</p>
+<h2><a href="#conclusion"></a>{.header-anchor #conclusion} Conclusion</h2>
+<p>Thanks for taking the time to read. This was a slow year for me, but I still made some leaps and bounds and I’m eager to keep that momentum in 2020. I normally blog about creative web development, and share a lot of cool content <a href="https://twitter.com/xdesro">on my Twitter</a>. Say hi if you get the chance!</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Let’s Talk About Banning Political Ads On Twitter]]></title>
+            <link>https://henry.codes/writing/lets-talk-about-banning-political-ads-on-twitter</link>
+            <guid>https://henry.codes/writing/lets-talk-about-banning-political-ads-on-twitter</guid>
+            <description><![CDATA[Jack Dorsey recently banned all political advertising on Twitter — here's why that's actually a super dangerous and violent thing to do. ]]></description>
+            <content:encoded><![CDATA[<p>Before you get started, fair warning that this post has &quot;takes&quot;, some of which could be considered &quot;hot&quot;. This post is not about web development.{.editors-note}</p>
+<p>So, Twitter recently stopped allowing political advertising.</p>
+<p>&lt;blockquote class=&quot;twitter-tweet&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;We’ve made the decision to stop all political advertising on Twitter globally. We believe political message reach should be earned, not bought. Why? A few reasons…🧵&lt;/p&gt;— jack 🌍🌏🌎 (@jack) &lt;a href=&quot;https://twitter.com/jack/status/1189634360472829952?ref_src=twsrc%5Etfw&quot;&gt;October 30, 2019&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;</p>
+<p>This, at first glance, sounds like a good thing — no more big money candidates paying big money for big money reach, no more &quot;as president I promise to&quot; in your TL. For a moment, I actually felt relieved by this announcement, but upon further inspection, I lost that faith. Stopping &quot;all political advertising&quot; is Bad, Actually™, and here are a few reasons why:</p>
+<ul>
+<li>If the ban was explicitly imposed against <em>candidate ads</em> alone (it’s not, and I’ll talk about that in a second), there’s a possibility it could be a good thing, for the above reasons. However, <strong>the advertising budget for big money candidates still exists and will still be spent.</strong> Whether that’s on huge TV campaigns or billboards or subway signage, the advertising deluge will simply be redistributed, it won’t just go away. The big money messaging might even stay on Twitter, in the form of <a href="https://www.adweek.com/digital/as-2020-election-nears-twitter-bots-have-only-gotten-better-at-seeming-human/">fake accounts and bots</a>.</li>
+<li>Banning candidate ads is also bad for grassroots movements — plenty of small-budget candidates with really fantastic ideas have, in recent years, been enabled to run and build communities by affordable digital advertising on Twitter, <em>et al.</em> <strong>Grassroots candidates will no longer have access to the same reach</strong>, and by extension won’t be able to circulate their ideas.</li>
+</ul>
+<p>In short, candidates with lots of money, powered by corporate PACs, will continue to be very loud, and smaller-budget candidates will be forced to return to more traditional, outdated methods of community building.</p>
+<p>But there’s a more sinister side to this policy change, and that’s the really dangerous part of the whole thing: <strong>The ban doesn’t just prohibit candidate ads.</strong></p>
+<p>&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;We considered stopping only candidate ads, but issue ads present a way to circumvent. Additionally, it isn’t fair for everyone but candidates to buy ads for issues they want to push. So we're stopping these too.&lt;/p&gt;— jack 🌍🌏🌎 (@jack) &lt;a href=&quot;https://twitter.com/jack/status/1189634372334280704?ref_src=twsrc%5Etfw&quot;&gt;October 30, 2019&lt;/a&gt;&lt;/blockquote&gt;</p>
+<p><em>Here’s where this gets really dark.</em></p>
+<p>This implies that <strong>Twitter will now be deciding what defines a political issue.</strong> Based on Twitter’s stance on <a href="https://www.vanityfair.com/news/2019/01/jack-dorsey-twitter-nazis-are-here-to-stay">refusing to remove violent fascists from their platform</a>, one could infer that &quot;issues&quot; like climate change, women’s safe access to healthcare, and other civil liberties will no longer be acceptable to advertise about.</p>
+<p>Further, marginalized groups that face unequaled oppression (on Twitter and every moment of every day IRL) like people of color and queer folks, are no longer able to advertise for their own safety, advocacy, and community-building. <a href="https://www.hanawa.lt/">John Hanawalt</a> puts this exceptionally well:</p>
+<p>&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Fair question a few things: blanket policies can only approach fairness when all else is equal. But all else isn’t equal. &lt;br&gt;&lt;br&gt;These communities will continue to face political attacks offline, and Twitter is limiting their ability to advocate for themselves by limiting paid reach.&lt;/p&gt;— J ☠️ H N (@H4N4W4LT) &lt;a href=&quot;https://twitter.com/H4N4W4LT/status/1189712684075249664?ref_src=twsrc%5Etfw&quot;&gt;October 31, 2019&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;</p>
+<p>This is a classic pattern in &quot;political&quot; conversations — one side wants to take away the rights of a group of people, and litigate them out of validity and existence, and the other side just wants to exist, safely and equally. This is tagged as a partisan or political issue and the conversation gets elevated to mainstream discussion, instead of the correct outcome: The hate group is broken up and the marginalized community is granted the rights and protections they deserve as human beings.</p>
+<h2>TL;DR</h2>
+<p>It would be truly wonderful if good ol’ <strong>@jack</strong> was actually acting in good faith (or even <em>informed</em> faith) by banning political advertising. Unfortunately, this action on its own, without other motion to support and protect marginalized groups (literally just ban the fucking TERFs and the nazis), is a violent action, masked as virtue signalling and progessive policy. Quieting all voices, when the humans behind those voices don’t have equal access to their own rights, isn’t equitable, it’s oppressive.</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Uses]]></title>
+            <link>https://henry.codes/writing/uses</link>
+            <guid>https://henry.codes/writing/uses</guid>
+            <description><![CDATA[A detailed list of all the software and hardware I use to get through my daily life. Inspired by Wes Bos' [/uses](https://wesbos.com/uses/).]]></description>
+            <content:encoded><![CDATA[<p>This is a non-exhaustive list of the tools I use in my day-to-day operation for design, development, and life as a human. If I'm missing something, <a href="mailto:yo@henry.codes?subject=Request%20To%20Add%20To%20Uses%3A">let me know</a>!</p>
+<h2>Hardware</h2>
+<ul>
+<li><strong>Main Computer</strong> - 2017 MacBook Pro, 15&quot; Retina, 2.8GHz Intel Core i7 &quot;Kaby Lake&quot;, 16GB RAM, Radeon Pro 555.</li>
+<li><strong>Backup Computer</strong> - 2015 MacBook Pro, 15&quot; Retina, 2.2GHz Intel Core i7, 16GB RAM, Intel Iris Pro.</li>
+<li><strong>Additional Monitor</strong> - 27&quot; Apple Thunderbolt Display</li>
+<li><strong>Webcam</strong> - Logitech C920 Pro HD</li>
+<li><strong>Microphone</strong> - Blue Microphones <a href="https://www.bluedesigns.com/products/yeti/">Yeti Blackout</a>. Got it for streaming, use it for everything. Just sounds really good, and it's super versatile.</li>
+<li><strong>Keys</strong> - <a href="https://drop.com/buy/new-poker-ii-mechanical-keyboard">60% Vortex Poker II</a> (<em>the USB-C version</em>), Cherry MX Brown (lookin' at Kailh Box Jade) switches, Tai-Hao Sunshine PBT Doubleshot Keycaps</li>
+<li><strong>Tracking</strong> - Apple Magic Trackpad in Space Grey</li>
+<li><strong>Phone</strong> - Google Pixel 2 (Holding out for the px4).</li>
+<li><strong>Headphones</strong> - <a href="https://gradolabs.com/headphones/prestige-series/item/1-sr80e">Grado SR80e Prestige Series</a>. Super affordable, <em>amazing</em> sound-stage.</li>
+<li><strong>Luggage</strong> - <a href="https://www.chromeindustries.com/product/niko-pack-backpack/BG-153.html">Chrome Niko Pack</a> laptop &amp; camera bag. It's like bulletproof, effectively waterproof, and looks really tech-wear-y and rad.</li>
+</ul>
+<h2>Software</h2>
+<ul>
+<li><strong>IDE</strong>: VS Code, of course.
+<ul>
+<li><em>Theme</em>: <a href="http://citylights.xyz/">City Lights</a>, <a href="https://www.nordtheme.com/ports/visual-studio-code">Nord</a>, or <a href="https://horizontheme.com/">Horizon Light</a> (<em>I know, *GASP*, a light theme</em>) depending on the day (and the time of day).</li>
+<li><em>Font</em>: SF Mono with a Fira Code fallback.</li>
+<li><em>Must-Have Extensions</em>: GitLens, Prettier, &amp; Vetur.</li>
+</ul>
+</li>
+<li><strong>Terminal</strong>: I like <a href="https://hyper.is/">Hyper.js</a> — recently switched from iTerm almost solely based on the visual customization and JSON-based (instead of GUI) config.
+<ul>
+<li><em>Theme</em>: Nord, again.</li>
+<li><em>Shell</em>: ZSH — it's like bash, but...way, way better and more human-usable.</li>
+<li><em>Prompt</em>: Used to be a die-hard oh-my-zsh user, but it's more than I need by a lot. Now I just use <a href="https://denysdovhan.com/spaceship-prompt/">Spaceship</a>.</li>
+</ul>
+</li>
+<li><strong>Notes/Content</strong> - <a href="https://www.notion.so/">Notion</a>. Notion holds my life together.</li>
+<li><strong>Messaging</strong> - I use <a href="https://telegram.org/">Telegram</a> to message most folx! I can get rich content messaging like iMessage, and use it on all platforms, can send many types of data, and you can delete message history for both parties. Feel free to <a href="https://telegram.me/xdesro">add me</a>.</li>
+<li><strong>UI/Prototype Design</strong> - <s><a href="https://www.framer.com/">Framer X</a> forever! I recently made the switch from Sketch and have not looked back. The code extensibility makes it a must-have for devsigners 🦄. Figma is also good.</s> <em>I use Figma pretty much exclusively now. It just came down to like one frustrating day of fighting with Framer's layout tools.</em></li>
+<li><strong>3D Design</strong> - Gotta be Cinema 4D. I initially got hooked on it via Devon Ko's <em>amazing</em> <a href="https://www.3dfordesigners.com/">3D For Designers</a> course and now I can't stop making weird stuff with it.</li>
+<li><strong>Memes &amp; One-Off Imagery</strong> - Photoshop 😬</li>
+<li><strong>Vector Art &amp; Iconography</strong> - Usually Illustrator, but recently <s>Framer X</s> <em>Figma</em> and Hundred Rabbits' <a href="https://100r.co/pages/dotgrid.html">Dotgrid</a> are actually doing an amazing job (and looking good doing it).</li>
+<li><strong>Music</strong> - Spotify for everything. I have like <a href="https://open.spotify.com/user/1239993406?si=4pX6EAL6T5G6SgD5WSf_4g">a billion playlists</a> that are specially curated for different moods, and Spotify actually does a really good job of suggesting music I'll like.</li>
+<li><strong>VPN</strong> - It's 2019, please, please, please use a VPN. I prefer <a href="https://nordvpn.com/">Nord</a> <em>(lmao)</em> but any one that you pay for is probably decent.</li>
+<li><strong>Productivity</strong>:
+<ul>
+<li><a href="https://www.alfredapp.com/">Alfred</a> is a replacement for your Spotlight on Mac OS X that supercharges it. It's well worth paying for a license.</li>
+<li>LastPass for login management. 1Password is also good, but.</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Bad UX In Everyday Life: Kitchen Nightmares]]></title>
+            <link>https://henry.codes/writing/bad-ux-in-everyday-life-kitchen-nightmares</link>
+            <guid>https://henry.codes/writing/bad-ux-in-everyday-life-kitchen-nightmares</guid>
+            <description><![CDATA[It’s come to my attention lately that my kitchen is absolutely riddled with poor experiences. Most of the appliances and apparatus one uses on a day-to-day basis in the kitchen were invented or last revolutionized in the early part of the 20th century, and many of them have seen very little innovation, if any, since that time. I'd like to file a complaint.]]></description>
+            <content:encoded><![CDATA[<p>This article was originally posted on the <a href="http://www.universalmind.com/blog/bad-ux-in-everyday-life-part-1-the-kitchen/">Universal Mind blog</a> in June 2016.{.editors-note}</p>
+<p>It’s come to my attention lately that my kitchen is absolutely riddled with poor experiences. Most of the appliances and apparatus one uses on a day-to-day basis in the kitchen were invented or last revolutionized in the early part of the 20th century, and many of them have seen very little innovation, if any, since that time. In this UX- and CX-obsessed age, it seems totally unacceptable that we demand constant iteration and improvement of processes in our web applications, in our vehicles, and elsewhere, but settle for lackluster routines in the kitchen.</p>
+<p>In the following exposition, I will outline some of the major experience flaws in a couple places in the standard kitchen.</p>
+<h3>The Toaster</h3>
+<p>The conventional pop-up toaster you typically see in John Doe’s kitchen was invented in 1919 by Charles Strite, and looks about the same as it did when he initially received the patent for the device, save for a few standard additions like the toast-level knob and sometimes the bagel setting. This run-of-the-mill toaster is plagued with several major detriments, chiefly inconsistent functionality. I cycled through four toasters of varying major brands and continued to get bread that was grossly mistreated by the heating element, often leaving half unchanged while rendering the other half a tragically-charred wasteland.</p>
+<p>Through extensive research and great personal cost, I managed to find a unit with a consistent heating element, but this effort should have been managed by the toaster manufacturers in question. With little exception, all new, modern vehicles drive smoothly off the dealership lot, without random changes in speed or wheels that only work a fraction of the time — by the same token, all toasters should do their job without pause or error. Basic functionality shouldn’t be a luxury or difficult-to-find affordance.</p>
+<p>Toasters typically let users select a level of toast in an iconographically-vague or otherwise unclear manner, such as a numbered scale. At no point does a user decide they want “3” toast — the lack of clarity here forces one to employ guess-and-check methods and dejectedly munch their way through under-crusty or over-crispy slices. Some variants have attempted to combat this with hieroglyphics indicating differing degrees of toastiness, but the user’s perception of a certain amount of crosshatching on a rudimentary picture doesn’t necessarily coincide with their ideal char level on their bread.</p>
+<p>Not lastly of the toaster’s UX sins stems from its traditionally opaque walls. A lot of the schism encountered when trying to nail down an ideal toast level could be countered if you could just see how dark the darn bread was getting. Breville’s “Lift &amp; Look”™ solution (which allows the user to check the toast level without canceling the heating cycle) is a step in the right direction, but could be improved. Morphy Richards’ glass-walled design is the closest to completely solving this problem, but while everyone deserves a seamless toast experience, not everyone can afford to spend $200+ on a toaster.</p>
+<h3>Rice, Flour, and Sugar Packaging (Oh My)</h3>
+<p>This is one that confounded me long before I had even heard the term “UX” — flour, most culinary sugars, and rice are usually found in stores in tightly-packed paper or plastic bags. This packaging makes it difficult if not impossible to reseal or contain them once opened, without third-party storage jars/boxes/bags. There are very few other food items that ship with this necessity. Crackers come in boxes, butter comes in a wrapper or a box — it seems almost a bizarre oversight that the powdery or granular food items would be assigned to the type of packaging that would be most logistically difficult for it to be retrieved from. The tight packaging is designed with shipping convenience in mind, not the consumer; the amount of flour exploding over unsuspecting users’ countertops at any given moment is unforgivable.</p>
+<h3>Disclaimer</h3>
+<p>This is a list of poor user experiences I’ve had in my culinary ventures — many of these could arguably be attributed to “user error” or “expecting too much of a toaster”, but I believe that in 2016, I shouldn’t have to hunt excessively or pay premiums for a toaster that works, nor should I have to buy specialized containers for some food products, when most others leave the shelf of the grocery store in a package they’re fine occupying indefinitely. I’d love to hear your input — feel free to dispute my thoughts or (much more likely) to agree vehemently with me <a href="mailto:yo@henry.codes">via email</a>.</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Agile For The Rest of Us]]></title>
+            <link>https://henry.codes/writing/agile-for-the-rest-of-us</link>
+            <guid>https://henry.codes/writing/agile-for-the-rest-of-us</guid>
+            <description><![CDATA[For the folks at home or those who might be new to the industry, what *is* agile development? Where did it come from? Who let it in? Should we feed it?]]></description>
+            <content:encoded><![CDATA[<p>This article was originally written for the <a href="https://www.fusionbox.com/blog/detail/agile-for-the-rest-of-us/540/">Fusionbox blog</a> in January 2015.{.editors-note}</p>
+<p>The Fusionbox process takes many pages from the Great Big Book of Agile Methodology to streamline and modernize the production of web content, etcetera, but for the folks at home, what <em>is</em> agile development? Where did it come from? Who let it in? Should we feed it?</p>
+<h2>Waterfall</h2>
+<p>Software development used to be treated the same as the development of any other product. Guidelines would be set, features would be decided upon, and a timeline would be locked in place. This is because in the worlds of manufacturing and construction, after-the-fact changes to any design or aspect of a project are prohibitively costly, if not impossible, so it only makes sense when planning to “pick it and stick with it”. When software development was in its infancy, no formal alternative methodologies had been invented, so the manufacturing model was just adapted to fit the software industry. The idea is that requirements are established, and production ensues.</p>
+<p>This became known as the Waterfall Method, which until recently tended to be the standard for software dev. In its purest form, Waterfall designated this list of steps:</p>
+<ol>
+<li>Product requirements specification</li>
+<li>Design</li>
+<li>Programming</li>
+<li>Testing and debugging</li>
+<li>Delivery of product</li>
+<li>Maintenance</li>
+</ol>
+<p>With these steps, it’s fairly easy to budget and set timetables, because it is already known on Day 1 of design what the finished product will be when on Day X when it is delivered. Also, if a developer can’t be involved in the project for one reason or another, the concrete plan makes it easy for another programmer to hop right into his or her spot.</p>
+<p><strong>Here’s the problem:</strong></p>
+<p>The Waterfall method is typically incredibly rigid and inflexible. Altering the project design at any stage in the project is nearly impossible. What happens when down the road, someone decides they want some extra functionality for their website? Waterfall says no. When an apartment building is planned, no one decides they want an extra floor or balcony at some point during the middle — but when designing a website, it’s not uncommon in any capacity for requested changes to arise. “Let’s add an eCommerce section to our site”, “can we put the navigation bar on the side, rather than the top?”, “how do we add mobile functionality to our page?” Those suggestions and queries are very difficult to respond to in Waterfall.</p>
+<p>And what about debugging? The testing stage of Waterfall method is deferred until especially late in the project. To put this in perspective, remember that apartment building we were talking about earlier? Construction contractors won’t test if the building will stand on its own while they’re still pouring the foundations. Which works quite well for the apartment building. So much planning has gone into that high-rise since the start that the contractor pretty much knows without a doubt that his product is structurally sound. However, software programs or websites are not high-rises. It’s so often impossible to predict how the many MANY different pieces of a site will interact with each other, and this leads to problems in the debugging phase. All of the design steps and all of the programming steps will finally end up in the lap of a QA tester who has a week or sometimes as little as a day to solve every little problem and glitch in the product to deliver it on time.</p>
+<p>At the end of those months and months of painstaking planning and prediction, the “finished” product is buggy and might not meet all the needs it is supposed to fill because the requirements may have changed at some point during the process.</p>
+<h2>Agile</h2>
+<p>So by now it’s easy to see that building a website is a different task entirely from building an apartment tower. Why would the same development process be applied to both? Pioneers like E. A. Edmonds, Tom Gilb, and Dan Gielen all concurrently started publishing or applying different ideas about adaptive software development in the early- to mid-seventies, but it wasn’t till the mid-nineties that those methodologies started seeing widespread use. Initially, there were many different forms — Rational Unified Process, Scrum, Dynamic Systems Development Method, etc. — but these were for the most part collated under the term Agile Development after the “Agile Manifesto” was published in 2001. (For more information on the Manifesto, see here — it’s a quick read.)</p>
+<p>Agile focuses on team-based, adaptive development. Rather than setting all the requirements and solutions at the beginning of the process and not obliging any sort of change, requirements are allowed to vary and solutions evolve in real-time based on those changes. The Agile approach, in essence, works like this:</p>
+<p>The process is iterative — rather than the Waterfall style of an ordered list, it is based on the cyclical use of repeated steps. The requirements for a software product are gathered and organized by the team or by a team leader into “sprints” — short bursts of development activity resulting in large leaps forward in production. Frequently, the minimum requirements for an operable product are put into the first few sprints, which means rapid delivery of useful software is standard.</p>
+<p>The best analogy we’ve found to describe Agile sprints is this: With Waterfall method, first built are the wheels, and then the chassis, and then the engine, and eventually those leather seat covers are tossed on and that new “fresh-off-the-lot” smell is pumped in, and there is FINALLY a car that can be driven away. With Agile, rather than taking all that time to build a whole car (which we’ve established may or may not work as well as it should), the first “sprint” builds a skateboard. It’s not the aerodynamic supercar that is the end goal, but it’ll get someone down the street from their mom’s house to the grocery store, and it’ll be produced and deliverable in a fraction of the time.</p>
+<p>Through further sprints, which are usually a few days or a week long, the skateboard is built out more and more. Maybe a bicycle, second, and then halfway through go-cart stage, someone might decide they actually wanted a Mazerati, not a Ferrari.  With Agile, that’s not a problem. One of the primary principles of Agile development is to welcome changing requirements, even late in development. With each sprint, or iteration, working software is delivered — visible proof of progress to put a client or customer’s mind at ease.</p>
+<p>“Well, that’s awesome, it’s so intuitive and fluid, why would anyone NOT use Agile?!” Agile isn’t a be-all, end-all solution to development. Agile is very flexible, but that means it operates without the structure of Waterfall method, and that CAN have some drawbacks. Agile projects are harder to predict — changing requirements also means changing budgets and timelines, and that’s not how most business works. Waterfall was so widely accepted because it makes sense outside the world of web development, but Agile is not the same. While it is more intuitive to design and development teams, it is truly a leap of faith for different departments in their organization, or for clients in an agency context. The price paid for more efficient and functional software is sometimes an extension on deadlines and budgets.</p>
+<h2>So What?</h2>
+<p>Ultimately, neither methodology is “better” across the board. Waterfall is sometimes better for static projects, where the requirements are not expected to change at all, or for situations where a client can’t commit to a lot of communication, or the deadline or budget is adamant and inflexible.  Here at Fusionbox, we love how collaborative and personal Agile development is. We think face-to-face conversation is the best form of communication, and we love giving the continuous attention to technical excellence and good design that is essential to the Agile process..</p>
+]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[How To Make an Animated Interactive Vue.js Slider]]></title>
+            <link>https://henry.codes/writing/how-to-make-an-animated-interactive-vue-js-slider</link>
+            <guid>https://henry.codes/writing/how-to-make-an-animated-interactive-vue-js-slider</guid>
             <description><![CDATA[My guide, start to finish, floor to ceiling, on coding, styling, and animating a slider element with Vue.js.]]></description>
             <content:encoded><![CDATA[<p><strong>Table of Contents</strong></p>
 <ol>
@@ -587,105 +843,6 @@ body {
 <p>&lt;p class=&quot;codepen&quot; data-height=&quot;400&quot; data-theme-id=&quot;37307&quot; data-default-tab=&quot;result&quot; data-user=&quot;xdesro&quot; data-slug-hash=&quot;dEwMOq&quot; style=&quot;height: 400px;&quot; data-pen-title=&quot;Vue Slider UI Interaction&quot;&gt;
 &lt;/p&gt;</p>
 <p><em>P.S. This is my first tutorial-style blog post — please let me know if you have any feedback or found any problems with the post! Thanks for reading.</em></p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Uses]]></title>
-            <description><![CDATA[A detailed list of all the software and hardware I use to get through my daily life. Inspired by Wes Bos' [/uses](https://wesbos.com/uses/).]]></description>
-            <content:encoded><![CDATA[<p>This is a non-exhaustive list of the tools I use in my day-to-day operation for design, development, and life as a human. If I'm missing something, <a href="mailto:yo@henry.codes?subject=Request%20To%20Add%20To%20Uses%3A">let me know</a>!</p>
-<h2>Hardware</h2>
-<ul>
-<li><strong>Main Computer</strong> - 2017 MacBook Pro, 15&quot; Retina, 2.8GHz Intel Core i7 &quot;Kaby Lake&quot;, 16GB RAM, Radeon Pro 555.</li>
-<li><strong>Backup Computer</strong> - 2015 MacBook Pro, 15&quot; Retina, 2.2GHz Intel Core i7, 16GB RAM, Intel Iris Pro.</li>
-<li><strong>Additional Monitor</strong> - 27&quot; Apple Thunderbolt Display</li>
-<li><strong>Webcam</strong> - Logitech C920 Pro HD</li>
-<li><strong>Microphone</strong> - Blue Microphones <a href="https://www.bluedesigns.com/products/yeti/">Yeti Blackout</a>. Got it for streaming, use it for everything. Just sounds really good, and it's super versatile.</li>
-<li><strong>Keys</strong> - <a href="https://drop.com/buy/new-poker-ii-mechanical-keyboard">60% Vortex Poker II</a> (<em>the USB-C version</em>), Cherry MX Brown (lookin' at Kailh Box Jade) switches, Tai-Hao Sunshine PBT Doubleshot Keycaps</li>
-<li><strong>Tracking</strong> - Apple Magic Trackpad in Space Grey</li>
-<li><strong>Phone</strong> - Google Pixel 2 (Holding out for the px4).</li>
-<li><strong>Headphones</strong> - <a href="https://gradolabs.com/headphones/prestige-series/item/1-sr80e">Grado SR80e Prestige Series</a>. Super affordable, <em>amazing</em> sound-stage.</li>
-<li><strong>Luggage</strong> - <a href="https://www.chromeindustries.com/product/niko-pack-backpack/BG-153.html">Chrome Niko Pack</a> laptop &amp; camera bag. It's like bulletproof, effectively waterproof, and looks really tech-wear-y and rad.</li>
-</ul>
-<h2>Software</h2>
-<ul>
-<li><strong>IDE</strong>: VS Code, of course.
-<ul>
-<li><em>Theme</em>: <a href="http://citylights.xyz/">City Lights</a>, <a href="https://www.nordtheme.com/ports/visual-studio-code">Nord</a>, or <a href="https://horizontheme.com/">Horizon Light</a> (<em>I know, *GASP*, a light theme</em>) depending on the day (and the time of day).</li>
-<li><em>Font</em>: SF Mono with a Fira Code fallback.</li>
-<li><em>Must-Have Extensions</em>: GitLens, Prettier, &amp; Vetur.</li>
-</ul>
-</li>
-<li><strong>Terminal</strong>: I like <a href="https://hyper.is/">Hyper.js</a> — recently switched from iTerm almost solely based on the visual customization and JSON-based (instead of GUI) config.
-<ul>
-<li><em>Theme</em>: Nord, again.</li>
-<li><em>Shell</em>: ZSH — it's like bash, but...way, way better and more human-usable.</li>
-<li><em>Prompt</em>: Used to be a die-hard oh-my-zsh user, but it's more than I need by a lot. Now I just use <a href="https://denysdovhan.com/spaceship-prompt/">Spaceship</a>.</li>
-</ul>
-</li>
-<li><strong>Notes/Content</strong> - <a href="https://www.notion.so/">Notion</a>. Notion holds my life together.</li>
-<li><strong>Messaging</strong> - I use <a href="https://telegram.org/">Telegram</a> to message most folx! I can get rich content messaging like iMessage, and use it on all platforms, can send many types of data, and you can delete message history for both parties. Feel free to <a href="https://telegram.me/xdesro">add me</a>.</li>
-<li><strong>UI/Prototype Design</strong> - <a href="https://www.framer.com/">Framer X</a> forever! I recently made the switch from Sketch and have not looked back. The code extensibility makes it a must-have for devsigners 🦄. Figma is also good.</li>
-<li><strong>3D Design</strong> - Gotta be Cinema 4D. I initially got hooked on it via Devon Ko's <em>amazing</em> <a href="https://www.3dfordesigners.com/">3D For Designers</a> course and now I can't stop making weird stuff with it.</li>
-<li><strong>Memes &amp; One-Off Imagery</strong> - Photoshop 😬</li>
-<li><strong>Vector Art &amp; Iconography</strong> - Usually Illustrator, but recently Framer X and Hundred Rabbits' <a href="https://100r.co/pages/dotgrid.html">Dotgrid</a> are actually doing an amazing job (and looking good doing it).</li>
-<li><strong>Music</strong> - Spotify for everything. I have like <a href="https://open.spotify.com/user/1239993406?si=4pX6EAL6T5G6SgD5WSf_4g">a billion playlists</a> that are specially curated for different moods, and Spotify actually does a really good job of suggesting music I'll like.</li>
-<li><strong>VPN</strong> - It's 2019, please, please, please use a VPN. I prefer <a href="https://nordvpn.com/">Nord</a> <em>(lmao)</em> but any one that you pay for is probably decent.</li>
-<li><strong>Productivity</strong>:
-<ul>
-<li><a href="https://www.alfredapp.com/">Alfred</a> is a replacement for your Spotlight on Mac OS X that supercharges it. It's well worth paying for a license.</li>
-<li>LastPass for login management. 1Password is also good, but.</li>
-</ul>
-</li>
-</ul>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Bad UX In Everyday Life: Kitchen Nightmares]]></title>
-            <description><![CDATA[It’s come to my attention lately that my kitchen is absolutely riddled with poor experiences. Most of the appliances and apparatus one uses on a day-to-day basis in the kitchen were invented or last revolutionized in the early part of the 20th century, and many of them have seen very little innovation, if any, since that time. I'd like to file a complaint.]]></description>
-            <content:encoded><![CDATA[<p>This article was originally posted on the <a href="http://www.universalmind.com/blog/bad-ux-in-everyday-life-part-1-the-kitchen/">Universal Mind blog</a> in June 2016.{.editors-note}</p>
-<p>It’s come to my attention lately that my kitchen is absolutely riddled with poor experiences. Most of the appliances and apparatus one uses on a day-to-day basis in the kitchen were invented or last revolutionized in the early part of the 20th century, and many of them have seen very little innovation, if any, since that time. In this UX- and CX-obsessed age, it seems totally unacceptable that we demand constant iteration and improvement of processes in our web applications, in our vehicles, and elsewhere, but settle for lackluster routines in the kitchen.</p>
-<p>In the following exposition, I will outline some of the major experience flaws in a couple places in the standard kitchen.</p>
-<h3>The Toaster</h3>
-<p>The conventional pop-up toaster you typically see in John Doe’s kitchen was invented in 1919 by Charles Strite, and looks about the same as it did when he initially received the patent for the device, save for a few standard additions like the toast-level knob and sometimes the bagel setting. This run-of-the-mill toaster is plagued with several major detriments, chiefly inconsistent functionality. I cycled through four toasters of varying major brands and continued to get bread that was grossly mistreated by the heating element, often leaving half unchanged while rendering the other half a tragically-charred wasteland.</p>
-<p>Through extensive research and great personal cost, I managed to find a unit with a consistent heating element, but this effort should have been managed by the toaster manufacturers in question. With little exception, all new, modern vehicles drive smoothly off the dealership lot, without random changes in speed or wheels that only work a fraction of the time — by the same token, all toasters should do their job without pause or error. Basic functionality shouldn’t be a luxury or difficult-to-find affordance.</p>
-<p>Toasters typically let users select a level of toast in an iconographically-vague or otherwise unclear manner, such as a numbered scale. At no point does a user decide they want “3” toast — the lack of clarity here forces one to employ guess-and-check methods and dejectedly munch their way through under-crusty or over-crispy slices. Some variants have attempted to combat this with hieroglyphics indicating differing degrees of toastiness, but the user’s perception of a certain amount of crosshatching on a rudimentary picture doesn’t necessarily coincide with their ideal char level on their bread.</p>
-<p>Not lastly of the toaster’s UX sins stems from its traditionally opaque walls. A lot of the schism encountered when trying to nail down an ideal toast level could be countered if you could just see how dark the darn bread was getting. Breville’s “Lift &amp; Look”™ solution (which allows the user to check the toast level without canceling the heating cycle) is a step in the right direction, but could be improved. Morphy Richards’ glass-walled design is the closest to completely solving this problem, but while everyone deserves a seamless toast experience, not everyone can afford to spend $200+ on a toaster.</p>
-<h3>Rice, Flour, and Sugar Packaging (Oh My)</h3>
-<p>This is one that confounded me long before I had even heard the term “UX” — flour, most culinary sugars, and rice are usually found in stores in tightly-packed paper or plastic bags. This packaging makes it difficult if not impossible to reseal or contain them once opened, without third-party storage jars/boxes/bags. There are very few other food items that ship with this necessity. Crackers come in boxes, butter comes in a wrapper or a box — it seems almost a bizarre oversight that the powdery or granular food items would be assigned to the type of packaging that would be most logistically difficult for it to be retrieved from. The tight packaging is designed with shipping convenience in mind, not the consumer; the amount of flour exploding over unsuspecting users’ countertops at any given moment is unforgivable.</p>
-<h3>Disclaimer</h3>
-<p>This is a list of poor user experiences I’ve had in my culinary ventures — many of these could arguably be attributed to “user error” or “expecting too much of a toaster”, but I believe that in 2016, I shouldn’t have to hunt excessively or pay premiums for a toaster that works, nor should I have to buy specialized containers for some food products, when most others leave the shelf of the grocery store in a package they’re fine occupying indefinitely. I’d love to hear your input — feel free to dispute my thoughts or (much more likely) to agree vehemently with me <a href="mailto:yo@henry.codes">via email</a>.</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Agile For The Rest of Us]]></title>
-            <description><![CDATA[For the folks at home or those who might be new to the industry, what *is* agile development? Where did it come from? Who let it in? Should we feed it?]]></description>
-            <content:encoded><![CDATA[<p>This article was originally written for the <a href="https://www.fusionbox.com/blog/detail/agile-for-the-rest-of-us/540/">Fusionbox blog</a> in January 2015.{.editors-note}</p>
-<p>The Fusionbox process takes many pages from the Great Big Book of Agile Methodology to streamline and modernize the production of web content, etcetera, but for the folks at home, what <em>is</em> agile development? Where did it come from? Who let it in? Should we feed it?</p>
-<h2>Waterfall</h2>
-<p>Software development used to be treated the same as the development of any other product. Guidelines would be set, features would be decided upon, and a timeline would be locked in place. This is because in the worlds of manufacturing and construction, after-the-fact changes to any design or aspect of a project are prohibitively costly, if not impossible, so it only makes sense when planning to “pick it and stick with it”. When software development was in its infancy, no formal alternative methodologies had been invented, so the manufacturing model was just adapted to fit the software industry. The idea is that requirements are established, and production ensues.</p>
-<p>This became known as the Waterfall Method, which until recently tended to be the standard for software dev. In its purest form, Waterfall designated this list of steps:</p>
-<ol>
-<li>Product requirements specification</li>
-<li>Design</li>
-<li>Programming</li>
-<li>Testing and debugging</li>
-<li>Delivery of product</li>
-<li>Maintenance</li>
-</ol>
-<p>With these steps, it’s fairly easy to budget and set timetables, because it is already known on Day 1 of design what the finished product will be when on Day X when it is delivered. Also, if a developer can’t be involved in the project for one reason or another, the concrete plan makes it easy for another programmer to hop right into his or her spot.</p>
-<p><strong>Here’s the problem:</strong></p>
-<p>The Waterfall method is typically incredibly rigid and inflexible. Altering the project design at any stage in the project is nearly impossible. What happens when down the road, someone decides they want some extra functionality for their website? Waterfall says no. When an apartment building is planned, no one decides they want an extra floor or balcony at some point during the middle — but when designing a website, it’s not uncommon in any capacity for requested changes to arise. “Let’s add an eCommerce section to our site”, “can we put the navigation bar on the side, rather than the top?”, “how do we add mobile functionality to our page?” Those suggestions and queries are very difficult to respond to in Waterfall.</p>
-<p>And what about debugging? The testing stage of Waterfall method is deferred until especially late in the project. To put this in perspective, remember that apartment building we were talking about earlier? Construction contractors won’t test if the building will stand on its own while they’re still pouring the foundations. Which works quite well for the apartment building. So much planning has gone into that high-rise since the start that the contractor pretty much knows without a doubt that his product is structurally sound. However, software programs or websites are not high-rises. It’s so often impossible to predict how the many MANY different pieces of a site will interact with each other, and this leads to problems in the debugging phase. All of the design steps and all of the programming steps will finally end up in the lap of a QA tester who has a week or sometimes as little as a day to solve every little problem and glitch in the product to deliver it on time.</p>
-<p>At the end of those months and months of painstaking planning and prediction, the “finished” product is buggy and might not meet all the needs it is supposed to fill because the requirements may have changed at some point during the process.</p>
-<h2>Agile</h2>
-<p>So by now it’s easy to see that building a website is a different task entirely from building an apartment tower. Why would the same development process be applied to both? Pioneers like E. A. Edmonds, Tom Gilb, and Dan Gielen all concurrently started publishing or applying different ideas about adaptive software development in the early- to mid-seventies, but it wasn’t till the mid-nineties that those methodologies started seeing widespread use. Initially, there were many different forms — Rational Unified Process, Scrum, Dynamic Systems Development Method, etc. — but these were for the most part collated under the term Agile Development after the “Agile Manifesto” was published in 2001. (For more information on the Manifesto, see here — it’s a quick read.)</p>
-<p>Agile focuses on team-based, adaptive development. Rather than setting all the requirements and solutions at the beginning of the process and not obliging any sort of change, requirements are allowed to vary and solutions evolve in real-time based on those changes. The Agile approach, in essence, works like this:</p>
-<p>The process is iterative — rather than the Waterfall style of an ordered list, it is based on the cyclical use of repeated steps. The requirements for a software product are gathered and organized by the team or by a team leader into “sprints” — short bursts of development activity resulting in large leaps forward in production. Frequently, the minimum requirements for an operable product are put into the first few sprints, which means rapid delivery of useful software is standard.</p>
-<p>The best analogy we’ve found to describe Agile sprints is this: With Waterfall method, first built are the wheels, and then the chassis, and then the engine, and eventually those leather seat covers are tossed on and that new “fresh-off-the-lot” smell is pumped in, and there is FINALLY a car that can be driven away. With Agile, rather than taking all that time to build a whole car (which we’ve established may or may not work as well as it should), the first “sprint” builds a skateboard. It’s not the aerodynamic supercar that is the end goal, but it’ll get someone down the street from their mom’s house to the grocery store, and it’ll be produced and deliverable in a fraction of the time.</p>
-<p>Through further sprints, which are usually a few days or a week long, the skateboard is built out more and more. Maybe a bicycle, second, and then halfway through go-cart stage, someone might decide they actually wanted a Mazerati, not a Ferrari.  With Agile, that’s not a problem. One of the primary principles of Agile development is to welcome changing requirements, even late in development. With each sprint, or iteration, working software is delivered — visible proof of progress to put a client or customer’s mind at ease.</p>
-<p>“Well, that’s awesome, it’s so intuitive and fluid, why would anyone NOT use Agile?!” Agile isn’t a be-all, end-all solution to development. Agile is very flexible, but that means it operates without the structure of Waterfall method, and that CAN have some drawbacks. Agile projects are harder to predict — changing requirements also means changing budgets and timelines, and that’s not how most business works. Waterfall was so widely accepted because it makes sense outside the world of web development, but Agile is not the same. While it is more intuitive to design and development teams, it is truly a leap of faith for different departments in their organization, or for clients in an agency context. The price paid for more efficient and functional software is sometimes an extension on deadlines and budgets.</p>
-<h2>So What?</h2>
-<p>Ultimately, neither methodology is “better” across the board. Waterfall is sometimes better for static projects, where the requirements are not expected to change at all, or for situations where a client can’t commit to a lot of communication, or the deadline or budget is adamant and inflexible.  Here at Fusionbox, we love how collaborative and personal Agile development is. We think face-to-face conversation is the best form of communication, and we love giving the continuous attention to technical excellence and good design that is essential to the Agile process..</p>
 ]]></content:encoded>
         </item>
     </channel>
