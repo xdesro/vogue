@@ -153,7 +153,6 @@ export default {
         });
 
         posts.forEach(post => {
-          console.log(post);
           feed.addItem({
             title: post.fields.title,
             id: post.fields.slug,
