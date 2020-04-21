@@ -29,11 +29,12 @@ export default {
       return null;
     },
     postDate() {
-      return new Date(this.post.fields.publishDate).toLocaleDateString("en-US", {
+      const date = this.post.fields.date || this.post.fields.publishDate;
+      return new Date(date).toLocaleDateString("en-US", {
         month: "long",
-        year: "numeric"
+        year: "numeric",
       });
-    }
-  }
+    },
+  },
 };
 </script>

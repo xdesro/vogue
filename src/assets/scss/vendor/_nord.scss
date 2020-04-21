@@ -1,0 +1,168 @@
+/* Generated with http://k88hudson.github.io/syntax-highlighting-theme-generator/www */
+
+/*********************************************************
+* General
+*/
+
+pre[class*="language-"],
+code[class*="language-"] {
+  color: #d8dee9;
+  font-size: 1em;
+  text-shadow: none;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre[class*="language-"]::selection,
+code[class*="language-"]::selection,
+pre[class*="language-"]::mozselection,
+code[class*="language-"]::mozselection {
+  text-shadow: none;
+  background: none;
+}
+
+@media print {
+  pre[class*="language-"],
+  code[class*="language-"] {
+    text-shadow: none;
+  }
+}
+
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  background: #2e3440;
+}
+
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  color: #d8dee9;
+  background: #2e3440;
+}
+
+/*********************************************************
+  * Tokens
+  */
+
+.namespace {
+  opacity: 0.7;
+}
+
+.token {
+  &.comment,
+  &.prolog,
+  &.doctype,
+  &.cdata {
+    color: #606e87;
+  }
+
+  &.punctuation {
+    color: #81a1c1;
+  }
+
+  &.property,
+  &.tag,
+  &.boolean,
+  &.number,
+  &.constant,
+  &.symbol,
+  &.deleted {
+    color: #b48ead;
+  }
+
+  &.selector,
+  &.attr-name,
+  &.string,
+  &.char,
+  &.builtin,
+  &.inserted {
+    color: #a2bf8c;
+  }
+
+  &.operator,
+  &.entity,
+  &.url {
+    color: #80a2c1;
+    background: none;
+  }
+}
+
+.language-css .token.string,
+.style .token.string {
+  color: #80a2c1;
+  background: none;
+}
+
+.token {
+  &.atrule,
+  &.attr-value,
+  &.keyword {
+    color: #81a1c1;
+  }
+
+  &.function {
+    color: #8fbcbc;
+  }
+
+  &.regex,
+  &.important,
+  &.variable {
+    color: #ee9900;
+  }
+
+  &.important,
+  &.bold {
+    font-weight: bold;
+  }
+
+  &.italic {
+    font-style: italic;
+  }
+
+  &.entity {
+    cursor: help;
+  }
+}
+
+/*********************************************************
+  * Line highlighting
+  */
+
+pre {
+  &[data-line] {
+    position: relative;
+  }
+
+  &[class*="language-"] > code[class*="language-"] {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: #3b4251;
+  box-shadow: inset 5px 0 0 #d8dee9;
+  z-index: 0;
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
