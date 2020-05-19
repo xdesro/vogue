@@ -27,20 +27,16 @@
 </template>
 
 <script>
-import IconLogo from "~/components/icons/IconLogo";
 export default {
-  components: {
-    IconLogo
-  },
   computed: {
     darkMode() {
       return this.$store.state.darkMode;
-    }
+    },
   },
   methods: {
     toggleDarkMode() {
       this.$store.commit("TOGGLE_DARK_MODE");
-    }
-  }
+    },
+  },
 };
 </script>

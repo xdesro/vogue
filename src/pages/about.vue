@@ -9,16 +9,16 @@
       <h2 class="about__subtitle">
         Hey there, I’m
         <br />
-        <span class="about__subtitle--light">{{person.name}}.</span>
+        <span class="about__subtitle--light">{{ person.name }}.</span>
       </h2>
       <div class="about__content" v-html="$md.render(person.shortBio)" />
       <div class="about__recognition">
         <h3 class="about__recognition-title">Recognition</h3>
         <ul class="recognition-list">
-          <li class="recognition-list__item" v-for="source in person.recognition">
+          <li class="recognition-list__item" v-for="(source, index) in person.recognition" :key="index">
             <a :href="source.link" class="recognition-list__link">
-              <strong>{{source.publisher}}</strong>
-              &nbsp;{{source.title}}
+              <strong>{{ source.publisher }}</strong>
+              &nbsp;{{ source.title }}
             </a>
           </li>
         </ul>
@@ -28,31 +28,29 @@
 </template>
 
 <script>
-import PageHeader from "~/components/PageHeader";
 export default {
   transition: "about",
-  components: { PageHeader },
   computed: {
     person() {
       const fields = this.$store.state.person.person.fields;
       const { shortBio, name } = this.$store.state.person.person.fields;
-      const recognition = fields.recognition.map(recognition => {
+      const recognition = fields.recognition.map((recognition) => {
         return recognition.fields;
       });
       const avatar = {
         src: this.$store.state.person.person.fields.image.fields.file.url,
-        alt: this.$store.state.person.person.fields.image.fields.description
+        alt: this.$store.state.person.person.fields.image.fields.description,
       };
       return {
         shortBio,
         name,
         recognition,
-        avatar
+        avatar,
       };
-    }
+    },
   },
   async fetch({ store }) {
     await store.dispatch("person/getPerson");
-  }
+  },
 };
 </script>

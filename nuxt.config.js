@@ -6,7 +6,7 @@ const contentful = require("contentful");
 
 const client = contentful.createClient({
   space: process.env.CTF_SPACE_ID,
-  accessToken: process.env.CTF_CD_ACCESS_TOKEN
+  accessToken: process.env.CTF_CD_ACCESS_TOKEN,
 });
 
 export default {
@@ -16,15 +16,15 @@ export default {
     contentfulAccessToken: process.env.CTF_CD_ACCESS_TOKEN,
     spotifyId: process.env.SPOTIFY_ID,
     spotifySecret: process.env.SPOTIFY_SECRET,
-    spotifyToken: process.env.SPOTIFY_TOKEN
+    spotifyToken: process.env.SPOTIFY_TOKEN,
   },
   css: ["~/assets/scss/style.scss"],
   router: {
-    linkExactActiveClass: "nav__link--active"
+    linkExactActiveClass: "nav__link--active",
   },
   head: {
     htmlAttrs: {
-      lang: "en"
+      lang: "en",
     },
     title: pkg.headMeta.title,
     meta: [
@@ -34,7 +34,7 @@ export default {
         hid: "description",
         name: "description",
         itemprop: "description",
-        content: pkg.headMeta.description
+        content: pkg.headMeta.description,
       },
       { name: "theme-color", content: pkg.headMeta.themeColor },
       { name: "msapplication-TileColor", content: pkg.headMeta.themeColor },
@@ -45,12 +45,12 @@ export default {
       {
         hid: "twitter:title",
         name: "twitter:title",
-        content: pkg.headMeta.title
+        content: pkg.headMeta.title,
       },
       {
         hid: "twitter:description",
         name: "twitter:description",
-        content: pkg.headMeta.description
+        content: pkg.headMeta.description,
       },
       { name: "twitter:site", content: pkg.headMeta.twitter },
       { name: "twitter:creator", content: pkg.headMeta.twitter },
@@ -59,50 +59,50 @@ export default {
       {
         hid: "og:description",
         name: "og:description",
-        content: pkg.headMeta.description
+        content: pkg.headMeta.description,
       },
       { name: "og:image", content: pkg.headMeta.imageUrl },
       { hid: "og:url", name: "og:url", content: pkg.headMeta.siteUrl },
       { name: "og:site_name", content: pkg.headMeta.title },
       { name: "og:locale", content: "en_US" },
-      { name: "og:type", content: "website" }
+      { name: "og:type", content: "website" },
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "apple-touch-icon",
         sizes: "180x180",
-        href: "/apple-touch-icon.png"
+        href: "/apple-touch-icon.png",
       },
       {
         rel: "icon",
         type: "image/png",
         sizes: "32x32",
-        href: "/favicon-32x32.png"
+        href: "/favicon-32x32.png",
       },
       {
         rel: "icon",
         type: "image/png",
         sizes: "16x16",
-        href: "/favicon-16x16.png"
+        href: "/favicon-16x16.png",
       },
       { rel: "manifest", href: "/site.webmanifest" },
       {
         rel: "mask-icon",
         href: "/safari-pinned-tab.svg",
-        color: pkg.headMeta.themeColor
-      }
-    ]
+        color: pkg.headMeta.themeColor,
+      },
+    ],
   },
   generate: {
     routes: () => {
-      return client.getEntries().then(response => {
+      return client.getEntries().then((response) => {
         return response.items
-          .filter(entry => {
+          .filter((entry) => {
             const { id } = entry.sys.contentType.sys;
             return id === `project` || id === `blogPost`;
           })
-          .map(entry => {
+          .map((entry) => {
             let slugBase;
             if (entry.sys.contentType.sys.id === `project`) {
               slugBase = `work`;
@@ -111,15 +111,19 @@ export default {
             }
             return {
               route: `${slugBase}/${entry.fields.slug}`,
-              payload: entry
+              payload: entry,
             };
           });
       });
-    }
+    },
   },
-  modules: ["@nuxtjs/markdownit", "@nuxtjs/dotenv", "@bazzite/nuxt-optimized-images", "@nuxtjs/feed"],
+  modules: ["@nuxtjs/markdownit", "@nuxtjs/dotenv", "@bazzite/nuxt-optimized-images", "@nuxtjs/feed", "@nuxtjs/pwa"],
+  buildModules: [
+    // TODO: Remove when upgrading to nuxt 2.13+
+    "@nuxt/components",
+  ],
   optimizedImages: {
-    optimizeImages: true
+    optimizeImages: true,
   },
   markdownit: {
     injected: true,
@@ -136,7 +140,7 @@ export default {
       require("prismjs/components/prism-scss");
       /* eslint-enable no-undef */
       return Prism.highlight(code, Prism.languages[lang] || Prism.languages.markup);
-    }
+    },
   },
   feed: [
     {
@@ -146,37 +150,37 @@ export default {
         feed.options = {
           title: "Henry Desroches' Writing",
           link: "https://henry.codes/rss.xml",
-          description: "Small bites and deep dives about UX engineering, and rants about socialism. 💛"
+          description: "Small bites and deep dives about UX engineering, and rants about socialism. 💛",
         };
-        const posts = await client.getEntries().then(response => {
-          return response.items.filter(entry => entry.sys.contentType.sys.id === `blogPost`);
+        const posts = await client.getEntries().then((response) => {
+          return response.items.filter((entry) => entry.sys.contentType.sys.id === `blogPost`);
         });
 
-        posts.forEach(post => {
+        posts.forEach((post) => {
           feed.addItem({
             title: post.fields.title,
             id: post.fields.slug,
             link: `https://henry.codes/writing/${post.fields.slug}`,
             description: post.fields.excerpt,
-            content: md.render(post.fields.body)
+            content: md.render(post.fields.body),
           });
         });
 
         feed.addContributor({
           name: "Henry Desroches",
           email: "yo@henry.codes",
-          link: "https://henry.codes"
+          link: "https://henry.codes",
         });
       },
       cacheTime: 1000 * 60 * 15,
-      type: "rss2"
-    }
+      type: "rss2",
+    },
   ],
   build: {
     extend(config) {
       config.node = {
-        fs: "empty"
+        fs: "empty",
       };
-    }
-  }
+    },
+  },
 };

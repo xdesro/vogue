@@ -30,6 +30,7 @@
     "@bazzite/nuxt-optimized-images": "^0.2.2",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/feed": "^1.1.0",
+    "@nuxtjs/pwa": "^3.0.0-beta.20",
     "contentful": "^7.13.0",
     "gsap": "3.0.1",
     "imagemin-mozjpeg": "^8.0.0",
@@ -42,10 +43,11 @@
     "spotify-web-api-js": "^1.2.0"
   },
   "devDependencies": {
+    "@nuxt/components": "^0.2.5",
     "@nuxtjs/markdownit": "^1.2.7",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^5.2.3",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.14.0",
     "sass-loader": "^7.3.1",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended-scss": "^3.3.0",

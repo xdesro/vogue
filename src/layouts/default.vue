@@ -7,21 +7,17 @@
 </template>
 <script>
 import { gsap } from "gsap";
-import Nav from "~/components/Nav";
 export default {
-  components: {
-    Nav
-  },
   data() {
     return {
       deltaY: 0,
-      easedDeltaY: 0
+      easedDeltaY: 0,
     };
   },
   computed: {
     darkMode() {
       return this.$store.state.darkMode;
-    }
+    },
   },
   watch: {
     darkMode() {
@@ -30,7 +26,7 @@ export default {
       } else {
         document.querySelector("html").removeAttribute("dark");
       }
-    }
+    },
   },
   beforeDestroy() {
     document.removeEventListener("mousemove", this.handleMouseMove);
@@ -45,12 +41,12 @@ export default {
     handleMouseMove(e) {
       this.deltaY = ((e.clientY - window.innerHeight / 2) / window.innerHeight) * 2;
       gsap.to(this, 1, {
-        easedDeltaY: this.deltaY
+        easedDeltaY: this.deltaY,
       });
     },
     updateAnimation() {
       this.$el.style.setProperty("--translateX", `${this.easedDeltaY * 4}vw`);
-    }
-  }
+    },
+  },
 };
 </script>

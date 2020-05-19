@@ -11,10 +11,8 @@
 </template>
 
 <script>
-import PostHeader from "~/components/PostHeader";
 export default {
   transition: "post",
-  components: { PostHeader },
   computed: {
     currentPost() {
       return this.$store.state.post.currentPost;
@@ -28,9 +26,9 @@ export default {
         description: this.currentPost.fields.excerpt,
         image: this.currentPost.fields.socialSharingImage
           ? this.currentPost.fields.socialSharingImage.fields.file.url
-          : false
+          : false,
       };
-    }
+    },
   },
   head() {
     return {
@@ -40,42 +38,42 @@ export default {
           hid: "description",
           name: "description",
           itemprop: "description",
-          content: this.meta.description
+          content: this.meta.description,
         },
         {
           hid: "twitter:title",
           name: "twitter:title",
-          content: this.meta.title
+          content: this.meta.title,
         },
         {
           hid: "twitter:description",
           name: "twitter:description",
-          content: this.meta.description
+          content: this.meta.description,
         },
         { hid: "og:title", name: "og:title", content: this.meta.title },
         {
           hid: "og:description",
           name: "og:description",
-          content: this.meta.description
+          content: this.meta.description,
         },
         {
           name: "twitter:card",
-          content: this.meta.image ? "summary_large_image" : "summary"
+          content: this.meta.image ? "summary_large_image" : "summary",
         },
         {
           property: "og:image",
-          content: this.meta.image ? `http:${this.meta.image}` : "https://henry.codes/open-graph.jpg"
+          content: this.meta.image ? `http:${this.meta.image}` : "https://henry.codes/open-graph.jpg",
         },
         {
           name: "twitter:image:src",
-          content: this.meta.image ? `http:${this.meta.image}` : "https://henry.codes/open-graph.jpg"
-        }
+          content: this.meta.image ? `http:${this.meta.image}` : "https://henry.codes/open-graph.jpg",
+        },
       ],
-      script: [{ src: "https://static.codepen.io/assets/embed/ei.js" }]
+      script: [{ src: "https://static.codepen.io/assets/embed/ei.js" }],
     };
   },
   async fetch({ store, params }) {
     await store.dispatch("post/getPostBySlug", params.slug);
-  }
+  },
 };
 </script>

@@ -10,18 +10,15 @@
 </template>
 
 <script>
-import WritingListItem from "~/components/WritingListItem";
-import PageHeader from "~/components/PageHeader";
 export default {
   transition: "writing-list-page",
-  components: { WritingListItem, PageHeader },
   computed: {
     posts() {
       return this.$store.state.posts.posts;
-    }
+    },
   },
   async fetch({ store, params }) {
     await store.dispatch("posts/getPosts", params.slug);
-  }
+  },
 };
 </script>
