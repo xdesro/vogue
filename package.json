@@ -31,27 +31,29 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/feed": "^1.1.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
-    "contentful": "^7.13.0",
+    "contentful": "^7.14.4",
     "gsap": "3.0.1",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
-    "jimp": "^0.9.3",
+    "jimp": "^0.9.8",
     "markdown-it-attrs": "^2.4.1",
-    "nuxt": "^2.11.0",
-    "prismjs": "^1.18.0",
+    "nuxt": "^2.12.2",
+    "prismjs": "^1.20.0",
     "responsive-loader": "^1.2.0",
-    "spotify-web-api-js": "^1.2.0"
+    "spotify-web-api-js": "^1.4.0"
   },
   "devDependencies": {
+    "@babel/runtime-corejs2": "^7.10.1",
     "@nuxt/components": "^0.2.5",
-    "@nuxtjs/markdownit": "^1.2.7",
+    "@nuxtjs/markdownit": "^1.2.9",
+    "core-js": "^2.6.11",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^5.2.3",
-    "node-sass": "^4.14.0",
+    "node-sass": "^4.14.1",
     "sass-loader": "^7.3.1",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended-scss": "^3.3.0",
-    "stylelint-scss": "^3.13.0"
+    "stylelint-scss": "^3.17.2"
   },
   "headMeta": {
     "title": "Henry Desroches | Creative Developer & UX Engineer",
