@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <a href="#main" class="skip-link">Skip to main content</a>
+    <BlackLivesMatter />
     <Nav />
     <nuxt />
   </div>
