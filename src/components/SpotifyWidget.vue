@@ -1,51 +1,48 @@
 <template>
   <transition name="spotify">
-    <div class="spotify" v-if="spotify.active">
+    <div class="spotify" v-if="spotify">
       <a class="spotify__link" href="https://open.spotify.com/user/1239993406?si=5AjW4kDxQVKeofWOR_i7Yw">
         <IconSocial class="spotify__icon" icon="spotify" />
       </a>
-      <p class="spotify__track">{{ spotify.track }}</p>
+      <p class="spotify__track">
+        <a href="spotify.url">{{ spotify.name }}</a>
+      </p>
       <ul class="spotify__artists">
-        <li class="spotify__artist" v-for="(artist, index) in spotify.artists" :key="index">{{ artist }}</li>
+        <li class="spotify__artist" v-for="(artist, index) in spotify.artists" :key="index">
+          <a :href="artist.url">{{ artist.name }}</a>
+        </li>
       </ul>
     </div>
   </transition>
 </template>
 <script>
-import * as Spotify from "spotify-web-api-js";
+// import * as Spotify from "spotify-web-api-js";
 import IconSocial from "~/components/icons/IconSocial";
 export default {
   data() {
     return {
-      spotify: {
-        active: false,
-        artists: null,
-        track: null,
-      },
+      spotify: false,
     };
   },
   components: {
     IconSocial,
   },
-  mounted() {
-    const spot = new Spotify();
-    /* eslint-disable no-undef */
-    spot.setAccessToken(process.env.spotifyToken);
-    spot.getMyRecentlyPlayedTracks({ limit: 1 }, (err, result) => {
-      if (err) {
-        console.log(err);
+  methods: {
+    async getSpotify() {
+      try {
+        const response = await this.$axios.$get("/.netlify/functions/spotify");
+        console.log(response);
+        this.spotify = response;
+        this.error = null;
+      } catch (err) {
+        this.error = err.response;
+        this.response = "-";
       }
-      const { track } = result.items[0];
-      const { artists } = track;
-      this.spotify.track = track.name;
-      const artistNames = [];
-      artists.map((artist) => {
-        artistNames.push(artist.name);
-      });
-      this.spotify.artists = artistNames;
-      console.log(this.spotify.artists);
-      this.spotify.active = true;
-    });
+    },
+  },
+  mounted() {
+    console.log(this.$axios);
+    this.getSpotify();
   },
 };
 </script>

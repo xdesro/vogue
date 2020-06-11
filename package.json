@@ -28,6 +28,7 @@
   "homepage": "https://github.com/xdesro/vogue#readme",
   "dependencies": {
     "@bazzite/nuxt-optimized-images": "^0.2.2",
+    "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/feed": "^1.1.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
@@ -37,10 +38,10 @@
     "imagemin-pngquant": "^8.0.0",
     "jimp": "^0.9.8",
     "markdown-it-attrs": "^2.4.1",
+    "node-fetch": "^2.6.0",
     "nuxt": "^2.12.2",
     "prismjs": "^1.20.0",
-    "responsive-loader": "^1.2.0",
-    "spotify-web-api-js": "^1.4.0"
+    "responsive-loader": "^1.2.0"
   },
   "devDependencies": {
     "@babel/runtime-corejs2": "^7.10.1",

@@ -1,0 +1,7 @@
+[dev]
+    command = 'npm run ✨'
+
+[build]
+    command = 'npm run 📦'
+    publish = 'dist'
+    functions = 'src/functions'

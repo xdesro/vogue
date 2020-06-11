@@ -117,11 +117,21 @@ export default {
       });
     },
   },
-  modules: ["@nuxtjs/markdownit", "@nuxtjs/dotenv", "@bazzite/nuxt-optimized-images", "@nuxtjs/feed", "@nuxtjs/pwa"],
+  modules: [
+    "@nuxtjs/markdownit",
+    "@nuxtjs/dotenv",
+    "@bazzite/nuxt-optimized-images",
+    "@nuxtjs/feed",
+    "@nuxtjs/pwa",
+    "@nuxtjs/axios",
+  ],
   buildModules: [
     // TODO: Remove when upgrading to nuxt 2.13+
     "@nuxt/components",
   ],
+  axios: {
+    baseURL: "/",
+  },
   optimizedImages: {
     optimizeImages: true,
   },

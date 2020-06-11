@@ -23,7 +23,7 @@
         </p>
       </div>
       <p class="index__date">Fall 2019</p>
-      <!-- <SpotifyWidget class="index__music" /> -->
+      <SpotifyWidget class="index__music" />
       <p class="index__location">denver, colorado</p>
     </main>
     <div class="index__accent-pic-container">
@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       deltaX: 0,
-      easedDeltaX: 0
+      easedDeltaX: 0,
     };
   },
   components: {
@@ -63,12 +63,12 @@ export default {
     handleMouseMove(e) {
       this.deltaX = ((e.clientX - window.innerWidth / 2) / window.innerWidth) * 2;
       gsap.to(this, 0.5, {
-        easedDeltaX: this.deltaX
+        easedDeltaX: this.deltaX,
       });
     },
     updateAnimation() {
       this.$el.style.setProperty("--translateX", `${this.easedDeltaX * 10}px`);
-    }
-  }
+    },
+  },
 };
 </script>
