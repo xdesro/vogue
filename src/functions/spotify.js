@@ -16,7 +16,10 @@ exports.handler = async (event, context) => {
       Authorization: `Basic ${auth}`,
       "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: `grant_type=refresh_token&refresh_token=${refreshToken}&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2F.netlify%2Ffunctions%2Fcallback`,
+    body: `grant_type=refresh_token&refresh_token=${refreshToken}&redirect_uri=${encodeURI(
+      process.env.URL,
+      +"/.netlify/functions/callback"
+    )}`,
   };
 
   const accessToken = await fetch(tokenEndpoint, options)
@@ -27,7 +30,6 @@ exports.handler = async (event, context) => {
     .catch((err) => {
       console.err(err);
     });
-
   return fetch(`${playerEndpoint}?limit=1`, {
     method: "GET",
     headers: {
