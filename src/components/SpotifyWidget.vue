@@ -31,7 +31,6 @@ export default {
     async getSpotify() {
       try {
         const response = await this.$axios.$get("/.netlify/functions/spotify");
-        console.log(response);
         this.spotify = response;
         this.error = null;
       } catch (err) {
@@ -41,7 +40,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$axios);
     this.getSpotify();
   },
 };
