@@ -1,20 +1,20 @@
-/* Generated with http://k88hudson.github.io/syntax-highlighting-theme-generator/www */
+/**
+ * Nord Theme Originally by Arctic Ice Studio
+ * https://nordtheme.com
+ *
+ * Ported for PrismJS by Zane Hitchcoxc (@zwhitchcox) and Gabriel Ramos (@gabrieluizramos)
+ */
 
-/*********************************************************
-* General
-*/
-
-pre[class*="language-"],
-code[class*="language-"] {
-  color: #d8dee9;
-  font-size: 1em;
-  text-shadow: none;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  direction: ltr;
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #f8f8f2;
+  background: none;
+  font-family: "Fira Code", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
+  word-wrap: normal;
   line-height: 1.5;
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -25,144 +25,100 @@ code[class*="language-"] {
   hyphens: none;
 }
 
-pre[class*="language-"]::selection,
-code[class*="language-"]::selection,
-pre[class*="language-"]::mozselection,
-code[class*="language-"]::mozselection {
-  text-shadow: none;
-  background: none;
-}
-
-@media print {
-  pre[class*="language-"],
-  code[class*="language-"] {
-    text-shadow: none;
-  }
-}
-
+/* Code blocks */
 pre[class*="language-"] {
   padding: 1em;
   margin: 0.5em 0;
   overflow: auto;
+  border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
   background: #2e3440;
 }
 
+/* Inline code */
 :not(pre) > code[class*="language-"] {
   padding: 0.1em;
   border-radius: 0.3em;
-  color: #d8dee9;
-  background: #2e3440;
+  white-space: normal;
 }
 
-/*********************************************************
-  * Tokens
-  */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #636f88;
+}
+
+.token.punctuation {
+  color: #81a1c1;
+}
 
 .namespace {
   opacity: 0.7;
 }
 
-.token {
-  &.comment,
-  &.prolog,
-  &.doctype,
-  &.cdata {
-    color: #606e87;
-  }
-
-  &.punctuation {
-    color: #81a1c1;
-  }
-
-  &.property,
-  &.tag,
-  &.boolean,
-  &.number,
-  &.constant,
-  &.symbol,
-  &.deleted {
-    color: #b48ead;
-  }
-
-  &.selector,
-  &.attr-name,
-  &.string,
-  &.char,
-  &.builtin,
-  &.inserted {
-    color: #a2bf8c;
-  }
-
-  &.operator,
-  &.entity,
-  &.url {
-    color: #80a2c1;
-    background: none;
-  }
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #81a1c1;
 }
 
+.token.number {
+  color: #b48ead;
+}
+
+.token.boolean {
+  color: #81a1c1;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #a3be8c;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
 .language-css .token.string,
-.style .token.string {
-  color: #80a2c1;
-  background: none;
+.style .token.string,
+.token.variable {
+  color: #81a1c1;
 }
 
-.token {
-  &.atrule,
-  &.attr-value,
-  &.keyword {
-    color: #81a1c1;
-  }
-
-  &.function {
-    color: #8fbcbc;
-  }
-
-  &.regex,
-  &.important,
-  &.variable {
-    color: #ee9900;
-  }
-
-  &.important,
-  &.bold {
-    font-weight: bold;
-  }
-
-  &.italic {
-    font-style: italic;
-  }
-
-  &.entity {
-    cursor: help;
-  }
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #88c0d0;
 }
 
-/*********************************************************
-  * Line highlighting
-  */
-
-pre {
-  &[data-line] {
-    position: relative;
-  }
-
-  &[class*="language-"] > code[class*="language-"] {
-    position: relative;
-    z-index: 1;
-  }
+.token.keyword {
+  color: #81a1c1;
 }
 
-.line-highlight {
-  position: absolute;
-  left: 0;
-  right: 0;
-  padding: inherit 0;
-  margin-top: 1em;
-  background: #3b4251;
-  box-shadow: inset 5px 0 0 #d8dee9;
-  z-index: 0;
-  pointer-events: none;
-  line-height: inherit;
-  white-space: pre;
+.token.regex,
+.token.important {
+  color: #ebcb8b;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
 }
