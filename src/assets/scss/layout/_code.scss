@@ -19,9 +19,9 @@
 
 pre,
 code[class*="language-"] {
-  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter",
-    "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier,
-    monospace;
+  font-family: "SF Mono", Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console",
+    "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L",
+    "Courier New", Courier, monospace;
   font-size: 14px;
   line-height: 1.375;
   text-align: left;
@@ -35,15 +35,13 @@ code[class*="language-"] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-  color: #9a86fd;
-  background: #2a2734;
   direction: ltr;
 }
 
 code {
-  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter",
-    "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier,
-    monospace;
+  font-family: "SF Mono", Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console",
+    "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L",
+    "Courier New", Courier, monospace;
   &.language-css,
   &.language-scss {
     color: #ffcc99;
@@ -53,6 +51,7 @@ code {
 pre {
   // filter: grayscale(1);
   margin-block-end: 1rem;
+  border-radius: 2px;
   font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter",
     "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier,
     monospace;
@@ -71,142 +70,11 @@ pre {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-  color: #9a86fd;
-  background: #2a2734;
   direction: ltr;
+  background-color: #2e3440;
+  color: #f8f8f2;
   &::-moz-selection,
   ::-moz-selection {
-    background: #6a51e6;
     text-shadow: none;
   }
-}
-code[class*="language-"] {
-  &::selection,
-  ::selection {
-    background: #6a51e6;
-    text-shadow: none;
-  }
-  &::-moz-selection,
-  ::-moz-selection {
-    background: #6a51e6;
-    text-shadow: none;
-  }
-}
-
-pre[class*="language-"] {
-  &::selection,
-  ::selection {
-    background: #6a51e6;
-    text-shadow: none;
-  }
-}
-
-/* Inline code */
-
-:not(pre) > code[class*="language-"] {
-  padding: 0.1em;
-  border-radius: 0.3em;
-}
-
-.token {
-  &.comment,
-  &.prolog,
-  &.doctype,
-  &.cdata,
-  &.punctuation {
-    color: #6c6783;
-  }
-  &.namespace {
-    opacity: 0.7;
-  }
-  &.tag,
-  &.operator,
-  &.number {
-    color: #e09142;
-  }
-  &.property,
-  &.function {
-    color: #9a86fd;
-  }
-  &.tag-id,
-  &.selector,
-  &.atrule-id {
-    color: #eeebff;
-  }
-  &.boolean,
-  &.string,
-  &.entity,
-  &.url {
-    color: #ffcc99;
-  }
-  &.attr-value,
-  &.keyword,
-  &.control,
-  &.directive,
-  &.unit,
-  &.statement,
-  &.regex,
-  &.atrule,
-  &.placeholder,
-  &.variable {
-    color: #ffcc99;
-  }
-  &.deleted {
-    text-decoration: line-through;
-  }
-  &.inserted {
-    text-decoration: none;
-    border-bottom: 1px dotted #eeebff;
-  }
-  &.italic {
-    font-style: italic;
-  }
-  &.important,
-  &.bold {
-    font-weight: bold;
-  }
-  &.important {
-    color: #c4b9fe;
-  }
-  &.entity {
-    cursor: help;
-  }
-}
-
-code.language-javascript,
-.token.attr-name {
-  color: #c4b9fe;
-}
-
-.language-css .token.string,
-.language-scss .token.string,
-.style .token.string {
-  color: #ffcc99;
-}
-
-pre > code.highlight {
-  outline: 0.4em solid #8a75f5;
-  outline-offset: 0.4em;
-}
-
-/* overrides color-values for the Line Numbers plugin
-   * http://prismjs.com/plugins/line-numbers/
-   */
-
-.line-numbers .line-numbers-rows {
-  border-right-color: #2c2937;
-}
-
-.line-numbers-rows > span:before {
-  color: #3c3949;
-}
-
-/* overrides color-values for the Line Highlight plugin
-  * http://prismjs.com/plugins/line-highlight/
-  */
-
-.line-highlight {
-  background: rgba(224, 145, 66, 0.2);
-  background: -webkit-linear-gradient(left, rgba(224, 145, 66, 0.2) 70%, rgba(224, 145, 66, 0));
-  background: linear-gradient(to right, rgba(224, 145, 66, 0.2) 70%, rgba(224, 145, 66, 0));
 }
