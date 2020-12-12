@@ -30,11 +30,13 @@ h1 {
   font-weight: 300;
   line-height: 0.9;
   text-transform: uppercase;
+  font-feature-settings: normal;
 }
 h2,
 h3,
 h4 {
   font-weight: 700;
+  font-feature-settings: normal;
 }
 h2 {
   font-family: $font--display;
