@@ -33,7 +33,7 @@
     "@nuxtjs/feed": "^1.1.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "contentful": "^7.14.4",
-    "gsap": "3.0.1",
+    "gsap": "3.6.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
     "jimp": "^0.9.8",
