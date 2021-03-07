@@ -157,8 +157,8 @@
   &__text {
     line-height: 1.2;
     // display: grid;
-    width: 50ch;
-    max-width: 100%;
+    width: 100%;
+    max-width: 50ch;
     ol {
       list-style-type: upper-roman;
       ::marker {
