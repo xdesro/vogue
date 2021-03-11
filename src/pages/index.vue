@@ -24,7 +24,7 @@
       </div>
       <p class="index__date">Fall 2019</p>
       <SpotifyWidget class="index__music" />
-      <p class="index__location">denver, colorado</p>
+      <p class="index__location">new york city</p>
     </main>
     <div class="index__accent-pic-container">
       <picture class="index__accent-pic" alt role="presentation">
